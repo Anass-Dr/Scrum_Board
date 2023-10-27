@@ -34,8 +34,9 @@ header .user_info {
   align-items: center;
 }
 header {
-  padding: 15px 20px;
+  padding: 6px 20px;
   border-bottom: 1px solid var(--gray_10);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 header .brand img {
   height: 32px;
@@ -59,8 +60,8 @@ header .user_info img {
   cursor: pointer;
 }
 header .user_img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   background: url("../icons/profile_img.jpg") center no-repeat;
   background-size: cover;
   border-radius: 50%;
