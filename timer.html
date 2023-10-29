@@ -7,5 +7,44 @@
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <title>Codzilla Board</title>
   </head>
-  <body></body>
+  <body>
+    <div class="d-flex flex-column h-100">
+      <header>
+        <div class="brand">
+          <a href="./index.html">
+            <img src="./assets/icons/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <div class="curr_page">
+          <img src="./assets/icons/backlog_icon.svg" alt="backlog_icon" />
+          <span>Backlog</span>
+        </div>
+        <div class="user_info">
+          <img
+            src="./assets/icons/notification_icon.svg"
+            alt="notification_icon"
+          />
+          <div class="user_img"></div>
+        </div>
+      </header>
+      <div class="flex-grow-1 d-flex">
+        <aside
+          style="width: 240px; height: 100%; background-color: aliceblue"
+        ></aside>
+        <main class="flex-fill ps-40 pt-4">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 fs-14">
+              <li class="breadcrumb-item text-secondary">
+                <a href="#">Projects</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Project1
+              </li>
+            </ol>
+          </nav>
+          <h3 class="fs-5 fw-semibold mt-1">Timeline</h3>
+        </main>
+      </div>
+    </div>
+  </body>
 </html>
