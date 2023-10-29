@@ -5,26 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles/backlog.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
+    <link rel="stylesheet" href="./assets/styles/bootstrap.css" />
     <title>Codzilla Board</title>
   </head>
   <body>
-    <header>
-      <div class="brand">
-        <a href="./index.html">
-          <img src="./assets/icons/logo.svg" alt="logo" />
-        </a>
+    <div class="d-flex flex-column h-100">
+      <header>
+        <div class="brand">
+          <a href="./index.html">
+            <img src="./assets/icons/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <div class="curr_page">
+          <img src="./assets/icons/backlog_icon.svg" alt="backlog_icon" />
+          <span>Backlog</span>
+        </div>
+        <div class="user_info">
+          <img
+            src="./assets/icons/notification_icon.svg"
+            alt="notification_icon"
+          />
+          <div class="user_img"></div>
+        </div>
+      </header>
+      <div class="backlog flex-grow-1">
+        <aside
+          style="width: 240px; height: 100%; background-color: aqua"
+        ></aside>
       </div>
-      <div class="curr_page">
-        <img src="./assets/icons/backlog_icon.svg" alt="backlog_icon" />
-        <span>Backlog</span>
-      </div>
-      <div class="user_info">
-        <img
-          src="./assets/icons/notification_icon.svg"
-          alt="notification_icon"
-        />
-        <div class="user_img"></div>
-      </div>
-    </header>
+    </div>
+    <script src="./scripts/bootstrap.js"></script>
   </body>
 </html>
