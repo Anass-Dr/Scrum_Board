@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/styles/timer.css" />
+    <link rel="stylesheet" href="./assets/styles/bootstrap.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
+    <link rel="stylesheet" href="./assets/styles/timer.css" />
     <title>Codzilla Board</title>
   </head>
-  <body>
+  <body class="overflow-hidden">
     <div class="d-flex flex-column h-100">
       <header>
         <div class="brand">
@@ -27,11 +28,11 @@
           <div class="user_img"></div>
         </div>
       </header>
-      <div class="flex-grow-1 d-flex">
+      <div class="flex-grow-1 d-flex bg-cyan">
         <aside
-          style="width: 240px; height: 100%; background-color: aliceblue"
+          style="min-width: 240px; height: 100%; background-color: aliceblue"
         ></aside>
-        <main class="flex-fill ps-40 pt-4">
+        <main class="flex-fill d-flex flex-column ps-40 pt-4">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 fs-14">
               <li class="breadcrumb-item text-secondary">
@@ -42,7 +43,71 @@
               </li>
             </ol>
           </nav>
-          <h3 class="fs-5 fw-semibold mt-1">Timeline</h3>
+          <h3 class="fs-4 fw-semibold mt-1 mb-4">Timeline</h3>
+          <section>
+            <div class="sticky h-100">
+              <div></div>
+              <div class="fs-14">Sprints</div>
+              <div class="fs-14">User Stories</div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr class="fs-11 text-center">
+                  <th scope="col" colspan="7">OCT</th>
+                  <th scope="col" colspan="7">OCT</th>
+                  <th scope="col" colspan="7">OCT</th>
+                  <th scope="col" colspan="7">OCT</th>
+                  <th scope="col" colspan="7">OCT</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                  <td>18</td>
+                  <td>19</td>
+                  <td>20</td>
+                  <td>21</td>
+                  <td>22</td>
+                  <td>23</td>
+                  <td>24</td>
+                  <td>25</td>
+                  <td>26</td>
+                  <td>27</td>
+                  <td>28</td>
+                  <td>29</td>
+                  <td>30</td>
+                  <td>31</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>3</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="7">f</td>
+                  <td colspan="7">f</td>
+                  <td colspan="7">f</td>
+                  <td colspan="7">f</td>
+                  <td colspan="7">f</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
         </main>
       </div>
     </div>
