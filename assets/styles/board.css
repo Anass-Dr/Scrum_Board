@@ -1,0 +1,61 @@
+.p-3 {
+    background: linear-gradient(to bottom, #63A6FF, #0000);
+    border-radius: 10px;
+
+}
+
+.p-2.rounded.bg-white {
+    border: 2px solid #94A3B8;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    background-color: #63A6FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.circle img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.circle p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #0055C5;
+}
+
+.custom-bg {
+    background-color: #F1F5F9;
+}
+
+.modal-header img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.circle1 {
+    width: 30px;
+    height: 30px;
+    background-color: #63A6FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.circle1 p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #0055C5;
+}
+.modal-header-img img{
+    width: 20px;
+    height: 20px;
+}
