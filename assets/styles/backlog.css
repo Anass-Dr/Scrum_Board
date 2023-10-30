@@ -1,0 +1,17 @@
+.deadline_userstorie {
+  width: 25px;
+  text-align: center;
+  border-radius: 300px;
+  background-color: #007ea7;
+  color: aliceblue;
+}
+.option_sprint {
+  height: 35px;
+}
+.users_storise_sprint {
+  height: 45px;
+}
+.princip_sprint {
+  background-color: rgb(244, 245, 247);
+  width: 98%;
+}
