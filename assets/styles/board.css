@@ -1,11 +1,11 @@
 .p-3 {
-    background: linear-gradient(to bottom, #63A6FF, #0000);
+    background: rgb(244, 245, 247);
     border-radius: 10px;
 
 }
 
 .p-2.rounded.bg-white {
-    border: 2px solid #94A3B8;
+    border: 1px solid #94A3B8;
 }
 
 .circle {
@@ -59,3 +59,12 @@
     width: 20px;
     height: 20px;
 }
+.close{
+    border: none;
+    background: none;
+   
+ 
+}
+ .list-group li{
+    list-style: disc;
+ }
