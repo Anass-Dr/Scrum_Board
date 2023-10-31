@@ -7,9 +7,10 @@ section {
 }
 .sticky {
   position: sticky;
-  min-width: 310px;
+  min-width: 280px;
   left: 0;
   background-color: #fff;
+  z-index: 100;
 }
 .sticky > div:first-child {
   height: 50px;
@@ -67,6 +68,10 @@ thead td:nth-child(7n) {
 tbody tr {
   height: 35px !important;
 }
+tbody td {
+  padding: 0 !important;
+  padding-top: 0.5rem !important;
+}
 
 .bg-sprint1 {
   background-color: #deebff;
@@ -112,6 +117,32 @@ tbody tr {
 }
 .user6 > span {
   background-color: #cdb4db !important;
+}
+
+.sprints {
+  z-index: 10;
+}
+
+.sprints,
+.user_story {
+  position: relative;
+}
+.user_story::before,
+.user_story::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  transform: translateY(-100%);
+  width: 1px;
+  height: calc(35px * var(--i));
+}
+.user_story::before {
+  left: 0;
+  border-right: 1px dotted rgba(0, 0, 0, 0.4);
+}
+tbody tr:last-of-type .user_story::after {
+  right: 0;
+  border-left: 1px dotted rgba(0, 0, 0, 0.4);
 }
 
 .hidden {

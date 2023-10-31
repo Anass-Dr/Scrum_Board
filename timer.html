@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./assets/styles/bootstrap.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <link rel="stylesheet" href="./assets/styles/timer.css" />
@@ -182,14 +189,14 @@
               <tbody>
                 <tr>
                   <td colspan="5"></td>
-                  <td colspan="7">
+                  <td colspan="7" class="sprints">
                     <span
                       class="d-block bg-sprint1 rounded-3 fs-14 text-primary"
                       >Sprint 1</span
                     >
                   </td>
                   <td></td>
-                  <td colspan="7">
+                  <td colspan="7" class="sprints">
                     <span
                       class="d-block bg-sprint2 rounded-3 fs-14 text-primary"
                       >Sprint 2</span
@@ -200,23 +207,27 @@
                 </tr>
                 <tr>
                   <td colspan="5"></td>
-                  <td class="user_story user1" colspan="2"><span></span></td>
+                  <td style="--i: 1" class="user_story user1" colspan="2">
+                    <span></span>
+                  </td>
                 </tr>
                 <tr>
                   <td colspan="7"></td>
-                  <td class="user_story user2"><span></span></td>
+                  <td style="--i: 2" class="user_story user2"><span></span></td>
                 </tr>
                 <tr>
                   <td colspan="8"></td>
-                  <td class="user_story user3"><span></span></td>
+                  <td style="--i: 3" class="user_story user3"><span></span></td>
                 </tr>
                 <tr>
                   <td colspan="9"></td>
-                  <td class="user_story user4"><span></span></td>
+                  <td style="--i: 4" class="user_story user4"><span></span></td>
                 </tr>
                 <tr>
                   <td colspan="10"></td>
-                  <td class="user_story user5" colspan="2"><span></span></td>
+                  <td style="--i: 5" class="user_story user5" colspan="2">
+                    <span></span>
+                  </td>
                 </tr>
               </tbody>
             </table>
