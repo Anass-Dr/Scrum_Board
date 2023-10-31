@@ -4,8 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles/settings.css" />
+    <link rel="stylesheet" href="./assets/styles/bootstrap.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <title>Codzilla Board</title>
   </head>
-  <body></body>
+  <body>
+    <div class="d-flex flex-column h-100">
+      <header>
+        <div class="brand">
+          <a href="./index.html">
+            <img src="./assets/icons/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <div class="curr_page">
+          <img src="./assets/icons/parametre.svg" alt="backlog_icon" />
+          <span>Parametres</span>
+        </div>
+        <div class="user_info">
+          <img
+            src="./assets/icons/notification_icon.svg"
+            alt="notification_icon"
+          />
+          <div class="user_img"></div>
+        </div>
+      </header>
+      <div class="backlog d-flex flex-grow-1">
+        <aside
+          style="width: 240px; height: 100%; background-color: aqua"
+        ></aside>
+        <main class="flex-fill d-flex flex-column ps-40 pt-4">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 fs-14">
+              <li class="breadcrumb-item text-secondary">
+                <a href="#">Projects</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Project1
+              </li>
+            </ol>
+          </nav>
+          <h3 class="fs-4 fw-semibold mt-1 mb-4">Parametres</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+
+              <tbody>
+                <tr>
+                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
+                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
+                  <th>
+                    <img src="./assets/icons/modif.svg" alt="">
+                    <img src="./assets/icons/add.svg" alt="" style="margin-inline: 25px;">
+                    <img src="./assets/icons/delete.svg" alt="">
+                  </th>
+                </tr>
+                <tr>
+                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
+                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
+                  <th>
+                    <img src="./assets/icons/modif.svg" alt="">
+                    <img src="./assets/icons/add.svg" alt="" style="margin-inline: 25px;">
+                    <img src="./assets/icons/delete.svg" alt="">
+
+                  </th>
+                </tr>
+                <tr>
+                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
+                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
+                  <th>
+                    <img src="./assets/icons/modif.svg" alt="">
+                    <img src="./assets/icons/add.svg" alt="" style="margin-inline: 25px;">
+                    <img src="./assets/icons/delete.svg" alt="">
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+       </main>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </body>
+  <script src="./scripts/bootstrap.js"></script>
+
 </html>

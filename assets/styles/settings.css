@@ -1,0 +1,10 @@
+.inputtab{
+    border: none;
+    outline: none;
+    background: none;
+}
+.act{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
