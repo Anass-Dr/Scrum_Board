@@ -26,6 +26,7 @@ section {
 .sticky,
 table {
   border: 1px solid #cdd7e5;
+  border-bottom: 0;
 }
 .sticky > div:first-child,
 thead {
