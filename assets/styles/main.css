@@ -72,3 +72,68 @@ header .user_img {
   cursor: pointer;
 }
 /* *************** */
+
+/* SIDEBAR STYLES : */
+#aside {
+  width: 240px;
+  padding: 25px 10px;
+  border-right: 1px solid #e2e2e2;
+}
+.aside_head {
+  display: flex;
+  gap: 0.5rem;
+}
+.project_img {
+  width: 50px;
+  height: 50px;
+  background: url("../icons/project_img.png") center no-repeat;
+  background-size: cover;
+}
+.project_info h5 {
+  font-size: 20px;
+  margin: 0 !important;
+}
+.project_info p {
+  font-size: 15px;
+}
+#aside h6 {
+  font-size: 16px;
+}
+#aside h6:first-of-type {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+#aside .aside_pages {
+  padding: 0;
+}
+#aside .aside_pages li {
+  padding: 6px 24px;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+#aside .aside_users {
+  display: flex;
+}
+#aside .user {
+  width: 40px;
+  height: 40px;
+  background: url("../icons/user_img.png") center no-repeat;
+  background-size: cover;
+}
+#aside .aside_footer {
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#aside .active {
+  color: #63a6ff;
+  background-color: rgba(99, 166, 255, 0.2);
+  border: 0 !important;
+}
+#aside .active svg {
+  fill: rgb(99, 166, 255);
+}
