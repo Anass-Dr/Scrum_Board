@@ -86,10 +86,6 @@ option {
   justify-content: space-between;
 }
 
-.accordion-item button:not(.collapsed) {
-  background-color: rgb(244, 245, 247);
-  border-bottom: none;
-}
 .accordion-body {
   background-color: rgb(244, 245, 247);
 }
@@ -158,4 +154,38 @@ option {
 }
 .add_ticket {
   border: none;
+  background: none;
+}
+.sprintf {
+  background: #dae3e5 !important;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: solid #dae3e5;
+  border-radius: 5px;
+}
+.start_sprintf {
+  background: #dae3e5 !important;
+  width: 125px;
+  color: #8b8c89;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid #dae3e5;
+  border-radius: 3px;
+}
+.startsprint {
+  font-size: 16px !important;
+}
+.namesprint {
+  border: 1.5px solid #e2e2e2;
+  width: 35%;
+}
+.goalsprint {
+  border: 1.5px solid #e2e2e2;
+  width: 85%;
+  height: 100px !important;
+  resize: none;
 }

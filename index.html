@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles/bootstrap.css" />
     <link rel="stylesheet" href="./assets/styles/backlog.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
-    <link rel="stylesheet" href="./assets/styles/bootstrap.css" />
     <title>Codzilla Board</title>
   </head>
   <body>
@@ -65,36 +65,70 @@
                     <span class="Statut_de_la_tache bg-success mx-2">0</span>
                     <span class="Statut_de_la_tache2 mx-2">0</span>
                     <span class="Statut_de_la_tache3 mx-2">0</span>
-                    <button
-                      class="h3 m-0 mx-4"
-                      style="
-                        background: #dae3e5;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        border: solid #dae3e5;
-                        border-radius: 5px;
-                      "
-                    >
-                      <span class="startsprint p-1">start sprint</span>
+                    <button class="start_sprintf h3 m-0 mx-4 p-1 d-flex align-items-center justify-content-center border-0"  data-bs-toggle="modal" data-bs-target="#myModal" >
+                      <span class="startsprint"  >start sprint</span>
                     </button>
-                    <button
-                      class="h3 m-0 mx-2"
-                      style="
-                        background: #dae3e5;
-                        display: flex;
-                        width: 30px;
-                        height: 30px;
-                        align-items: center;
-                        justify-content: center;
-                        border: solid #dae3e5;
-                        border-radius: 5px;
-                      "
-                    >
+                    <button class="sprintf h3 m-0 mx-2">
                       <span class="startsprint2">...</span>
                     </button>
                   </div>
                 </h2>
+                <!-- modal de start sprint  -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Démarrer le sprint</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="m-1">
+                                  <div class="ticket_sprint d-flex align-items-center">
+                                        <span class="number_de_ticket_sprint "><b>3</b></span>
+                                        <p class="p-1 m-0">ticket sera inclus dans ce sprint.</p>
+                                       </div>
+                                       <p>Les champs obligatoires sont marqués d'un astérisque</p>
+
+                                       <!-- nome de sprint -->
+
+                                       <label for="nome_de_sprint" class="d-block mb-2 mt-2">Nome de sprint</label>
+                                       <input type="text" name="nome_de_sprint" class="namesprint rounded p-1 px-2" placeholder="Nome de sprint">
+                                       <!-- duree sprint -->
+                                       <label for="duree_de_sprint" class="d-block mb-2 mt-2">Durée</label>
+                                       <select  name="duree_de_sprint" class="namesprint rounded p-1 px-2">
+                                        <option value="1-semaines">1 semaines</option>
+                                        <option value="2-semaines">2 semaines</option>
+                                        <option value="3-semaines">3 semaines</option>
+                                        <option value="4-semaines">4 semaines</option>
+                                       </select>
+                                       <!-- deadline start sprint -->
+                                       <label for="start_de_sprint" class="d-block mb-2 mt-2">Debut de sprint</label>
+                                       <input type="date" name="start_de_sprint" class="namesprint rounded p-1 px-2" placeholder="Nome de sprint">
+                                       <!-- deadline finel sprint -->
+                                       <label for="finel_de_sprint" class="d-block mb-2 mt-2">Final de sprint</label>
+                                       <input type="date" name="finel_de_sprint" class="namesprint rounded p-1 px-2" placeholder="Nome de sprint">
+                                       <!-- objectif du sprint -->
+                                       <label for="objectif_de_sprint" class="d-block mb-2 mt-2">Objectif du sprint</label>
+                                       <textarea name="objectif_de_sprint" class="goalsprint rounded p-1 px-2" cols="30" rows="10"></textarea>
+                                    
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div
                   id="collapseOne"
                   class="accordion-collapse collapse show"
@@ -104,7 +138,7 @@
                     <!-- user storie 1 -->
                     <div
                       class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
-                      draggable="true"
+                      draggable="true" data-bs-toggle="modal" data-bs-target="#myModal"
                     >
                       <div
                         class="title_userstori_sprint d-flex align-items-center"
@@ -136,10 +170,84 @@
                         <div class="user"><span>AA</span></div>
                       </div>
                     </div>
+                    <!-- modal de user storie -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row m-1">
+                                    <div class="col-sm-6 border">
+                                        <div class="h5">Description</div>
+                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                            cliquant
+                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                        </p>
+                                        <p>Acceptance Critirias :</p>
+                                        <ul class="list-group m-4">
+                                            <li>Sprint Div ( create, remove, update )</li>
+                                            <li>Backlog Div</li>
+                                            <li>When I click on Add user story button a Modal Pop up</li>
+                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                                Associed )
+                                            </li>
+                                            <li>I can modify and remove any user story</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 border ">
+                                        <div class="h5">Détails</div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Responsable</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>AA</p>
+                                                </div>
+                                                <p>Anass AIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Sprint</p>
+                                            <p>Board Sprint 1</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Story point estimate</p>
+                                            <p>Aucun Story </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Rapporteur</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>MB</p>
+                                                </div>
+                                                <p>Med BNE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                     <!-- user storie 2 -->
                     <div
                       class="users_storise_sprint w-100 bg-light rounded d-flex align-items-center justify-content-between border"
-                      draggable="true"
+                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"
                     >
                       <div
                         class="title_userstori_sprint d-flex align-items-center"
@@ -170,12 +278,86 @@
                           class="deadline_userstorie mx-4 d-flex justify-content-center align-items-center"
                           >-</span
                         >
+                        <div class="user"><span>AA</span></div>
                       </div>
                     </div>
+                    <!-- modal user storie 2 -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row m-1">
+                                    <div class="col-sm-6 border">
+                                        <div class="h5">Description</div>
+                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                            cliquant
+                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                        </p>
+                                        <p>Acceptance Critirias :</p>
+                                        <ul class="list-group m-4">
+                                            <li>Sprint Div ( create, remove, update )</li>
+                                            <li>Backlog Div</li>
+                                            <li>When I click on Add user story button a Modal Pop up</li>
+                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                                Associed )
+                                            </li>
+                                            <li>I can modify and remove any user story</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 border ">
+                                        <div class="h5">Détails</div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Responsable</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>AA</p>
+                                                </div>
+                                                <p>Anass AIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Sprint</p>
+                                            <p>Board Sprint 1</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Story point estimate</p>
+                                            <p>Aucun Story </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Rapporteur</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>MB</p>
+                                                </div>
+                                                <p>Med BNE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <!-- user storie 3 -->
                     <div
                       class="users_storise_sprint w-100 bg-light rounded d-flex align-items-center justify-content-between border"
-                      draggable="true"
+                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"
                     >
                       <div
                         class="title_userstori_sprint d-flex align-items-center"
@@ -203,6 +385,7 @@
                           <option value="doing">doing</option>
                         </select>
                         <span class="deadline_userstorie mx-4 h-25">-</span>
+                        <div class="user"><span>AA</span></div>
                       </div>
                     </div>
                     <button
@@ -211,6 +394,79 @@
                       <img src="./assets/icons/Add-ticket.svg" alt="" />
                       <h6 class="m-0 mx-2">Creer un ticket</h6>
                     </button>
+                    <!-- modal user storie 3 -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row m-1">
+                                    <div class="col-sm-6 border">
+                                        <div class="h5">Description</div>
+                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                            cliquant
+                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                        </p>
+                                        <p>Acceptance Critirias :</p>
+                                        <ul class="list-group m-4">
+                                            <li>Sprint Div ( create, remove, update )</li>
+                                            <li>Backlog Div</li>
+                                            <li>When I click on Add user story button a Modal Pop up</li>
+                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                                Associed )
+                                            </li>
+                                            <li>I can modify and remove any user story</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 border ">
+                                        <div class="h5">Détails</div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Responsable</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>AA</p>
+                                                </div>
+                                                <p>Anass AIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Sprint</p>
+                                            <p>Board Sprint 1</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Story point estimate</p>
+                                            <p>Aucun Story </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Rapporteur</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>MB</p>
+                                                </div>
+                                                <p>Med BNE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                   </div>
                 </div>
               </div>
@@ -221,9 +477,9 @@
           <section class="backlog w-100 d-flex justify-content-center">
             <div class="accordion" id="accordion_backlog">
               <div class="accordion-item">
-                <h2 class="accordion-header">
+                <h2  class="accordion-header d-flex align-items-center justify-content-between">
                   <button
-                    class="accordion-button collapsed shadow-none"
+                    class="accordion-button collapsed shadow-none w-50"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseOne2"
@@ -231,91 +487,353 @@
                     aria-controls="collapseOne"
                   >
                     Backlog
+                    <span class="mx-4"><b> 3 ticket </b></span>
                   </button>
+                  <div class="d-flex align-items-center justify-content-center">
+                    <span class="Statut_de_la_tache bg-success mx-2">0</span>
+                    <span class="Statut_de_la_tache2 mx-2">0</span>
+                    <span class="Statut_de_la_tache3 mx-2">0</span>
+                    <button class="start_sprintf h3 m-0 mx-4 p-1 d-flex align-items-center justify-content-center border-0">
+                      <span class="startsprint ">creer un sprint</span>
+                    </button>
                 </h2>
                 <div
                   id="collapseOne2"
                   class="accordion-collapse collapse show"
                   data-bs-parent="#accordionExample"
                 >
-                  <div class="accordion-body pt-0 bg-0">
+                  <div class="accordion-body">
+                    <!-- user storie 1 -->
                     <div
-                      class="ticket-1 d-flex align-items-center w-100 border border-primary rounded p-1"
-                      draggable="true"
+                      class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
+                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"
                     >
-                      <img
-                        class="saveimg"
-                        src="./assets/icons/Iconsave.svg"
-                        alt=""
-                      />
-                      <div class="nomstatu">
-                        <p class="mb-0">
-                          <strong>NomDuSprint</strong> -1 user_storie
-                        </p>
-
-                        <select class="status_todo rounded px-1" name="" id="">
-                          <option value="">todo</option>
-                          <option value="">doing</option>
-                          <option value="">done</option>
-                        </select>
+                      <div
+                        class="title_userstori_sprint d-flex align-items-center"
+                      >
+                        <img
+                          src="./assets/icons/userstori_icon.svg"
+                          alt=""
+                          class="mx-2"
+                        />
+                        <h5 class="pt-2 px-2">to do list</h5>
+                        <h5 class="pt-2 px-2">- 1</h5>
+                        <i class="p-2">user storie</i>
                       </div>
-                      <div class="duruser">
-                        <span class="span1">0</span>
+                      <div
+                        class="option_userstorie d-flex align-items-center w-25"
+                      >
+                        <select
+                          name="select_userstorie"
+                          class="select_userstorie w-25 h-75 px-2 align-items-center justify-content-center rounded"
+                        >
+                          <option value="to do" class="todo">to do</option>
+                          <option value="doing">doing</option>
+                          <option value="done" class="done text-success">
+                            done
+                          </option>
+                        </select>
+                        <span class="deadline_userstorie mx-4 h-25">-</span>
+
                         <div class="user"><span>AA</span></div>
                       </div>
                     </div>
+                    <!-- modal user storie 1 -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row m-1">
+                                    <div class="col-sm-6 border">
+                                        <div class="h5">Description</div>
+                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                            cliquant
+                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                        </p>
+                                        <p>Acceptance Critirias :</p>
+                                        <ul class="list-group m-4">
+                                            <li>Sprint Div ( create, remove, update )</li>
+                                            <li>Backlog Div</li>
+                                            <li>When I click on Add user story button a Modal Pop up</li>
+                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                                Associed )
+                                            </li>
+                                            <li>I can modify and remove any user story</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 border ">
+                                        <div class="h5">Détails</div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Responsable</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>AA</p>
+                                                </div>
+                                                <p>Anass AIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Sprint</p>
+                                            <p>Board Sprint 1</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Story point estimate</p>
+                                            <p>Aucun Story </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Rapporteur</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>MB</p>
+                                                </div>
+                                                <p>Med BNE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- user storie 2 -->
                     <div
-                      class="ticket-1 d-flex align-items-center w-100 border border-primary rounded p-1"
-                      draggable="true"
+                      class="users_storise_sprint w-100 bg-light rounded d-flex align-items-center justify-content-between border"
+                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"
                     >
-                      <img
-                        class="saveimg"
-                        src="./assets/icons/Iconsave.svg"
-                        alt=""
-                      />
-                      <div class="nomstatu">
-                        <p class="mb-0">
-                          <strong>NomDuSprint</strong> -1 user_storie
-                        </p>
-
-                        <select class="status_todo rounded px-1" name="" id="">
-                          <option value="">todo</option>
-                          <option value="">doing</option>
-                          <option value="">done</option>
-                        </select>
+                      <div
+                        class="title_userstori_sprint d-flex align-items-center"
+                      >
+                        <img
+                          src="./assets/icons/userstori_icon.svg"
+                          alt=""
+                          class="mx-2"
+                        />
+                        <h5 class="pt-2 px-2">to do list</h5>
+                        <h5 class="pt-2 px-2">- 1</h5>
+                        <i class="p-2">user storie</i>
                       </div>
-                      <div class="duruser">
-                        git <span class="span1">0</span>
+                      <div
+                        class="option_userstorie d-flex align-items-center w-25"
+                      >
+                        <select
+                          name="select_userstorie"
+                          class="select_userstorie w-25 h-75 px-2 align-items-center justify-content-center rounded"
+                        >
+                          <option value="doing">doing</option>
+                          <option value="to do">to do</option>
+                          <option value="done" class="done text-success">
+                            done
+                          </option>
+                        </select>
+                        <span
+                          class="deadline_userstorie mx-4 d-flex justify-content-center align-items-center"
+                          >-</span
+                        >
                         <div class="user"><span>AA</span></div>
                       </div>
                     </div>
+                    <!-- modal user storie 2 -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row m-1">
+                                    <div class="col-sm-6 border">
+                                        <div class="h5">Description</div>
+                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                            cliquant
+                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                        </p>
+                                        <p>Acceptance Critirias :</p>
+                                        <ul class="list-group m-4">
+                                            <li>Sprint Div ( create, remove, update )</li>
+                                            <li>Backlog Div</li>
+                                            <li>When I click on Add user story button a Modal Pop up</li>
+                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                                Associed )
+                                            </li>
+                                            <li>I can modify and remove any user story</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 border ">
+                                        <div class="h5">Détails</div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Responsable</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>AA</p>
+                                                </div>
+                                                <p>Anass AIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Sprint</p>
+                                            <p>Board Sprint 1</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Story point estimate</p>
+                                            <p>Aucun Story </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Rapporteur</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>MB</p>
+                                                </div>
+                                                <p>Med BNE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- user storie 3 -->
                     <div
-                      class="ticket-1 d-flex align-items-center w-100 border border-primary rounded p-1"
-                      draggable="true"
+                      class="users_storise_sprint w-100 bg-light rounded d-flex align-items-center justify-content-between border"
+                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"
                     >
-                      <img
-                        class="saveimg"
-                        src="./assets/icons/Iconsave.svg"
-                        alt=""
-                      />
-                      <div class="nomstatu">
-                        <p class="mb-0">
-                          <strong>NomDuSprint</strong> -1 user_storie
-                        </p>
-
-                        <select class="status_todo rounded px-1" name="" id="">
-                          <option value="">todo</option>
-                          <option value="">doing</option>
-                          <option value="">done</option>
-                        </select>
+                      <div
+                        class="title_userstori_sprint d-flex align-items-center"
+                      >
+                        <img
+                          src="./assets/icons/userstori_icon.svg"
+                          alt=""
+                          class="mx-2"
+                        />
+                        <h5 class="pt-2 px-2">to do list</h5>
+                        <h5 class="pt-2 px-2">- 1</h5>
+                        <i class="p-2">user storie</i>
                       </div>
-                      <div class="duruser">
-                        <span class="span1">0</span>
+                      <div
+                        class="option_userstorie d-flex align-items-center w-25"
+                      >
+                        <select
+                          name="select_userstorie"
+                          class="select_userstorie w-25 h-75 px-2 align-items-center justify-content-center rounded"
+                        >
+                          <option value="done" class="done text-success">
+                            done
+                          </option>
+                          <option value="to do">to do</option>
+                          <option value="doing">doing</option>
+                        </select>
+                        <span class="deadline_userstorie mx-4 h-25">-</span>
                         <div class="user"><span>AA</span></div>
                       </div>
                     </div>
-
-                    <h6>+ Creer un ticket</h6>
+                    <button
+                      class="add_ticket d-flex align-items-center justify-content-center"
+                    >
+                      <img src="./assets/icons/Add-ticket.svg" alt="" />
+                      <h6 class="m-0 mx-2">Creer un ticket</h6>
+                    </button>
+                    <!-- modal user storie 3 -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row m-1">
+                                    <div class="col-sm-6 border">
+                                        <div class="h5">Description</div>
+                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                            cliquant
+                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                        </p>
+                                        <p>Acceptance Critirias :</p>
+                                        <ul class="list-group m-4">
+                                            <li>Sprint Div ( create, remove, update )</li>
+                                            <li>Backlog Div</li>
+                                            <li>When I click on Add user story button a Modal Pop up</li>
+                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                                Associed )
+                                            </li>
+                                            <li>I can modify and remove any user story</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 border ">
+                                        <div class="h5">Détails</div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Responsable</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>AA</p>
+                                                </div>
+                                                <p>Anass AIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Sprint</p>
+                                            <p>Board Sprint 1</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Story point estimate</p>
+                                            <p>Aucun Story </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Rapporteur</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>MB</p>
+                                                </div>
+                                                <p>Med BNE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                   </div>
                 </div>
               </div>
