@@ -2,38 +2,54 @@
     margin: 0;
     padding: 0;
 }
-header ,body , html , .flex{
-   height: 100%;
 
-}
-.navLogo , .accont , .paraIcone{
-    display: flex;
-    justify-content: space-between;
-}
 
-.logo {
-    height: 40px ;
-    width: 12%;
+header,
+header .curr_page,
+header .user_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.para{
-    height: 40px;
-    width: 17%;
+header {
+  padding: 6px 20px;
+  border-bottom: 1px solid var(--gray_10);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
-.jaras{
-    height: 35px;
-    width: 40%;
+header .brand img {
+  height: 32px;
 }
-.account {
-    height: 38px;
-    width: 55%;
+header .curr_page {
+  gap: 8px;
 }
-.navLogo{
-    padding: 10px;
+header .curr_page {
+  color: var(--blue_100);
+  font-size: 20px;
+  font-weight: 600;
+}
+header .curr_page img {
+  height: 25px;
+}
+header .user_info {
+  gap: 14px;
+}
+header .user_info img {
+  height: 25px;
+  cursor: pointer;
+}
+header .user_img {
+  width: 35px;
+  height: 35px;
+  background: url("../icons/profile_img.jpg") center no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  cursor: pointer;
 }
 .side{
     width: 20%;
     height: 100%;
 }
+
 
 .modifIcon{
     display: flex;
@@ -60,4 +76,15 @@ header ,body , html , .flex{
 }
 .nom input , .desc textarea{
     width: 80%;
+}
+
+.annuler:hover , .modifier:hover {
+     background-color: rgb(229, 228, 228);
+}
+
+.icon {
+    gap: 12px;
+}
+.main {
+    margin-left: 50px;
 }

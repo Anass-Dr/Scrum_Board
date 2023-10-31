@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/styles/settings.css" />
-    <link rel="stylesheet" href="./assets/styles/main.css" />
-    <title>Codzilla Board</title>
-  </head>
-  <body></body>
-</html>
-<body>
-  <nav>
-      <div class="navLogo">
-      
-         <img class="logo" src="logo.png" alt="codzila">
-         
-         <div class="paraIcone">
-             <img class="para" src="para.png" alt="parametre">
-             <h2>Paramètres</h2>
-          </div>
-          
-          <div class="accont">
-              <img class="jaras" src="jaras.png" alt="notification">
-              <img class="account" src="account.png" alt="account">
-          </div> 
-      
-      </div>
-     
-  </nav>
-<section class="flex row">
-  
-  <header class="col-2 bg-warning">
-      <div class="side bg-warning "></div>
-  </header>
-  
-  <main class="col-10 ">
-      <h2> Details </h2>
-      
-      <div class="modifIcon">
-          <img  src="iconBrief.png" alt="icon">
-          <div>
-              <button class="m-1 btn btn-warning">Modifier l’icone</button>
-          </div>
-      </div>
-         
-        <div class="ml-5 mt-3 nom">
-             <p>Nom :</p>
-             <input type="text">
-         </div>
-         <div class="ml-5 mt-3 desc">
-             <p>Description :</p>
-             <textarea name="" id="" cols="30" rows="5"></textarea>
-         </div>
- 
-         <div class="row justify-content-center mt-3">
-                
-            <button class=" col-3  btn btn-primary">Enregistrer</button>
-            <button class=" col-3  btn btn-outline-warning">Annuler</button>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum Board - parametre</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/styles/settings.css">
 
-         </div>
-  </main>
+  </head>
+<body>
+    <nav>
+        <header>
+            <div class="brand">
+              <a href="./index.html">
+                <img src="assets/icons/logo.svg" alt="logo" />
+              </a>
+            </div>
+            <div class="curr_page">
+              <img src="assets/icons/backlog_icon.svg" alt="backlog_icon" />
+              <span>Parametre</span>
+            </div>
+            <div class="user_info">
+              <img
+                src="assets/icons/notification_icon.svg"
+                alt="notification_icon"
+              />
+              <div class="user_img"></div>
+            </div>
+          </header>
+    </nav>
+<section class="flex row">
+    
+    <header class="col-2 bg-warning">
+        <div class="side bg-warning "></div>
+    </header>
+    
+    <main class="col-10 ">
+        <h6>Projets / NomDuProjet</h6>
+        <h2 class="mt-2"> Details </h2>
+        
+        <div class="modifIcon">
+            <img  src="assets/icons/iconBrief.png" alt="icon">
+            <div>
+                <button class="modifier m-1 btn ">Modifier l’icone</button>
+            </div>
+        </div>
+        <form class="">  
+          <div class="ml-5 mt-3 form-group">
+               <label>Nom :</label>
+               <input class="form-control w-50" placeholder="Veuillez entrer le nom  ..." type="text">
+           </div>
+           <div class="ml-5 mt-3 form-group">
+               <label>Description :</label>
+               <textarea class="form-control w-75" placeholder="Veuillez entrer une description  ..." cols="30" rows="5"></textarea>
+           </div>
+   
+           <div class="row justify-content-center icon ">
+                  
+              <button class=" col-1  btn btn-primary">Enregistrer</button>
+              <button class=" annuler col-1  btn btn-outline">Annuler</button>
+
+           </div>
+        </form>   
+    </main>
 </section>    
 </body>
 </html>
-
