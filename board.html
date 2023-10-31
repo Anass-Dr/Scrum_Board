@@ -1,11 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/styles/board.css" />
-    <link rel="stylesheet" href="./assets/styles/main.css" />
-    <title>Codzilla Board</title>
-  </head>
-  <body></body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./assets/styles/board.css">
+    <link rel="stylesheet" href="./assets/styles/main.css">
+    <title>Scrum board</title>
+</head>
+
+<body>
+    <div class="d-flex flex-column h-100">
+        <header>
+            <div class="brand">
+                <a href="./index.html">
+                    <img src="./assets/icons/logo.svg" alt="logo" />
+                </a>
+            </div>
+            <div class="curr_page">
+                <img src="./assets/icons/image 34.png" alt="backlog_icon" />
+                <span>Scrum Board</span>
+            </div>
+            <div class="user_info">
+                <img src="./assets/icons/notification_icon.svg" alt="notification_icon" />
+                <div class="user_img"></div>
+            </div>
+        </header>
+        <div class="backlog flex-grow-1 d-flex">
+            <aside style="width: 240px; height: 100%; background-color: #e2eafc"></aside>
+
+            <main class="m-3">
+                <div class="container">
+                    <div class="h4 mt-4">Projets / NomDuProjet</div>
+                    <div class="h3"><strong> board Sprint 1</strong></div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn custom-bg ">
+                            <span class="text-muted"  data-bs-toggle="modal" data-bs-target="#myModal2"><strong>Terminer le sprint</strong></span>
+                        </button>
+                      
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            <div class="p-3"  ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn">
+                                <div class="h5 text-muted">A faire</div>
+                                <div class="p-2 rounded bg-white  mt-2" draggable="true" ondragstart="start(event)"
+                                    id="task1">
+                                    <div class="d-flex justify-content-start align-items-end">
+                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Impedit, maiores?</p>
+                                        <div>
+                                            <div class="circle">
+                                                <p>AA</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
+                                    id="task2">
+                                    <div class="d-flex justify-content-start align-items-end">
+                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Impedit, maiores?</p>
+                                        <div>
+                                            <div class="circle">
+                                                <p>AA</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
+                                    id="task3">
+                                    <div class="d-flex justify-content-start align-items-end">
+                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Impedit, maiores?</p>
+                                        <div>
+                                            <div class="circle">
+                                                <p>AA</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
+                                    id="task4">
+                                    <div class="d-flex justify-content-start align-items-end">
+                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Impedit, maiores?</p>
+                                        <div>
+                                            <div class="circle">
+                                                <p>AA</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="p-3" ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn">
+                                <div class="h5 text-muted">En cours</div>
+                                <div class="p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
+                                    id="task5">
+                                    <div class="d-flex justify-content-start align-items-end">
+                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Impedit, maiores?</p>
+                                        <div>
+                                            <div class="circle">
+                                                <p>AA</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
+                                    id="task6">
+                                    <div class="d-flex justify-content-start align-items-end">
+                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Impedit, maiores?</p>
+                                        <div>
+                                            <div class="circle">
+                                                <p>AA</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
+                                    id="task7">
+                                    <div class="d-flex justify-content-start align-items-end">
+                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Impedit, maiores?</p>
+                                        <div>
+                                            <div class="circle">
+                                                <p>AA</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="p-3" ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn1">
+                                <div class="h5 text-muted">Fini</div>
+                                <div class="p-2 rounded bg-white" draggable="true" ondragstart="start(event)"
+                                id="task8">
+                                    <div class="d-flex justify-content-start align-items-end">
+                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Impedit, maiores?</p>
+                                        <div>
+                                            <div class="circle">
+                                                <p>AA</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn  btn-sm custom-bg">
+                                <span class="text-muted"><strong>+</strong></span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row m-1">
+                                    <div class="col-sm-6 border">
+                                        <div class="h5">Description</div>
+                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                            cliquant
+                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                        </p>
+                                        <p>Acceptance Critirias :</p>
+                                        <ul class="list-group m-4">
+                                            <li>Sprint Div ( create, remove, update )</li>
+                                            <li>Backlog Div</li>
+                                            <li>When I click on Add user story button a Modal Pop up</li>
+                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                                Associed )
+                                            </li>
+                                            <li>I can modify and remove any user story</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 border ">
+                                        <div class="h5">Détails</div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Responsable</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>AA</p>
+                                                </div>
+                                                <p>Anass AIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Sprint</p>
+                                            <p>Board Sprint 1</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Story point estimate</p>
+                                            <p>Aucun Story </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Rapporteur</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>MB</p>
+                                                </div>
+                                                <p>Med BNE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <img src="./assets/icons/background1.png" alt="image de background">
+                        </div>
+                        <div class="modal-body">
+                            <h5>Terminer Tableau sprint 1</h5>
+                            <p>Ce sprint comprend :</p>
+                            <ul  class="list-group m-4">
+                                <li>0 ticket terminé</li>
+                                <li>3 tickets ouverts</li>
+                            </ul>
+                            <p>Déplacer les tickets ouverts vers</p>
+                            <select class="select-input" name="pets">
+                                <option>Nouveau sprint</option>
+                                <option>Backlog</option>
+                            </select>
+                               
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terminer le sprint</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            </main>
+        </div>
+    </div>
+    </div>
+    <script src="./scripts/main.js"></script>
+</body>
+
 </html>
