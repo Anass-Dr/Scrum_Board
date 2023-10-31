@@ -44,7 +44,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-sm-3">
-                            <div class="p-3">
+                            <div class="p-3"  ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn">
                                 <div class="h5 text-muted">A faire</div>
                                 <div class="p-2 rounded bg-white  mt-2" draggable="true" ondragstart="start(event)"
                                     id="task1">
@@ -248,7 +248,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sauvegarder les modifications</button>
                             </div>
                         </div>
                     </div>
@@ -277,8 +277,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terminer le sprint</button>
-                            <button type="button" class="btn btn-primary">Annuler</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
                         </div>
+                        
                     </div>
                 </div>
             </div>
