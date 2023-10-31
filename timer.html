@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./assets/styles/timer.css" />
     <title>Codzilla Board</title>
   </head>
-  <body class="overflow-hidden">
+  <body>
     <div class="d-flex flex-column h-100">
       <header>
         <div class="brand">
@@ -59,7 +59,7 @@
                   <th scope="col" colspan="7">OCT</th>
                   <th scope="col" colspan="7">OCT</th>
                 </tr>
-                <tr>
+                <tr id="weekdays">
                   <td>1</td>
                   <td>2</td>
                   <td>3</td>
@@ -99,17 +99,58 @@
               </thead>
               <tbody>
                 <tr>
-                  <td colspan="7">f</td>
-                  <td colspan="7">f</td>
-                  <td colspan="7">f</td>
-                  <td colspan="7">f</td>
-                  <td colspan="7">f</td>
+                  <td colspan="5"></td>
+                  <td colspan="7">
+                    <span
+                      class="d-block bg-sprint1 rounded-3 fs-14 text-primary"
+                      >Sprint 1</span
+                    >
+                  </td>
+                  <td></td>
+                  <td colspan="7">
+                    <span
+                      class="d-block bg-sprint2 rounded-3 fs-14 text-primary"
+                      >Sprint 2</span
+                    >
+                  </td>
+                  <td colspan="8"></td>
+                  <td colspan="7"></td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td class="user_story user1" colspan="2"><span></span></td>
+                </tr>
+                <tr>
+                  <td colspan="7"></td>
+                  <td class="user_story user2"><span></span></td>
+                </tr>
+                <tr>
+                  <td colspan="8"></td>
+                  <td class="user_story user3"><span></span></td>
+                </tr>
+                <tr>
+                  <td colspan="9"></td>
+                  <td class="user_story user4"><span></span></td>
+                </tr>
+                <tr>
+                  <td colspan="10"></td>
+                  <td class="user_story user5" colspan="2"><span></span></td>
                 </tr>
               </tbody>
             </table>
           </section>
+          <ul
+            onclick="controlVue(event)"
+            class="vue d-flex gap-1 position-absolute fs-14 py-1 px-1"
+          >
+            <li>Days</li>
+            <li class="active">Weeks</li>
+            <li>Months</li>
+          </ul>
         </main>
       </div>
     </div>
+
+    <script src="./scripts/main.js"></script>
   </body>
 </html>
