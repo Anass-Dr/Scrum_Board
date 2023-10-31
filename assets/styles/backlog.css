@@ -1,10 +1,16 @@
-<<<<<<< HEAD
 .deadline_userstorie {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 25px;
   text-align: center;
   border-radius: 300px;
   background-color: #007ea7;
   color: aliceblue;
+}
+main {
+  height: 100%;
+  width: 100%;
 }
 .option_sprint {
   height: 35px;
@@ -12,69 +18,144 @@
 .users_storise_sprint {
   height: 45px;
 }
-.princip_sprint {
-  background-color: rgb(244, 245, 247);
+
+#accordion {
   width: 98%;
 }
-=======
-.ticket-1{
-    Background-color: white;
+#accordion_backlog {
+  width: 98%;
 }
-.ticket-1 .saveimg{
-    width: 1.5em;
-    height: 1.25em;
-    margin: 0px 5px;
+
+.ticket-1 {
+  background-color: white;
 }
-.accordion-body{
-    Background-color: rgb(244, 245, 247);
+.ticket-1 .saveimg {
+  width: 1.5em;
+  height: 1.25em;
+  margin: 0px 5px;
 }
-.accordion-body h6{
-    margin-top: 8px;
-    margin-bottom: 0;
+.accordion-body {
+  background-color: rgb(244, 245, 247);
+}
+.accordion-body h6 {
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 .accordion-button:not(.collapsed) {
-    background-color: rgb(244, 245, 247);
+  background-color: rgb(244, 245, 247);
+}
+.nomstatu {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.status_todo {
+  display: flex;
+  background-color: rgb(241, 234, 234);
+}
+option {
+  margin: 0px 10px;
+  color: gray;
+  font-weight: bold;
+}
+.span1 {
+  background-color: rgb(241, 234, 234);
+  color: gray;
+  padding: 0 3px;
+  border-radius: 5px;
+}
+.span2 {
+  background-color: rgb(241, 234, 234);
+  color: gray;
+  padding: 0 3px;
+  border-radius: 5px;
+}
+.user {
+  padding: 6px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  border-radius: 200px;
+  color: blue;
+  background-color: rgb(99, 185, 250);
+}
+.duruser {
+  width: 10%;
+  margin-left: 304px;
+  display: flex;
+  justify-content: space-between;
+}
 
+.accordion-item button:not(.collapsed) {
+  background-color: rgb(244, 245, 247);
+  border-bottom: none;
 }
-.nomstatu{
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
+.accordion-body {
+  background-color: rgb(244, 245, 247);
 }
-.status_todo{
-    display: flex;
-    background-color: rgb(241, 234, 234);
+.users_storise_sprint {
+  background-color: white;
 }
-option{
-    margin: 0px 10px;
-    color: gray;
-    font-weight: bold;
+.select_userstorie {
+  background-color: #cfdee7;
 }
-.span1{
-    
-    background-color: rgb(241, 234, 234);
-    color: gray;
-    padding: 0 3px;
-    border-radius: 5px;
+.done {
+  width: 90%;
+  border-radius: 20px;
+  background-color: aquamarine;
+  font-weight: 900;
 }
-.span2{
-    
-    background-color: rgb(241, 234, 234);
-    color: gray;
-    padding: 0 3px;
-    border-radius: 5px;
+.todo {
+  color: #0c63e4;
+  width: 90%;
+  border-radius: 20px;
+  background-color: #92b4f4;
+  font-weight: 900;
 }
-.user{
-    padding: 3px;
-    border-radius: 20px;
-    color: blue;
-    background-color: rgb(99, 185, 250);
+.Statut_de_la_tache {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-size: 20px;
+  border-radius: 400px;
 }
-.duruser{
-    width: 10%;
-    margin-left: 304px;
-    display: flex;
-    justify-content: space-between;
+.Statut_de_la_tache2 {
+  background-color: #0c63e4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-size: 20px;
+  border-radius: 400px;
 }
-
->>>>>>> c35728f65224fbbf3d684e41b8b70d4e28109369
+.Statut_de_la_tache3 {
+  background-color: #e2e2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: black;
+  font-size: 20px;
+  border-radius: 400px;
+}
+.accordion-header {
+  background-color: rgb(244, 245, 247);
+}
+.startsprint {
+  font-size: 20px;
+}
+.startsprint2 {
+  font-size: 20px;
+  height: 0px;
+  display: flex;
+  align-items: center;
+}
+.add_ticket {
+  border: none;
+}
