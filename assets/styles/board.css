@@ -68,3 +68,6 @@
  .list-group li{
     list-style: disc;
  }
+ .select-input {
+    width: 100%;
+ }

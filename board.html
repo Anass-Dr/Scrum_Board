@@ -37,9 +37,10 @@
                     <div class="h4 mt-4">Projets / NomDuProjet</div>
                     <div class="h3"><strong> board Sprint 1</strong></div>
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn custom-bg">
-                            <span class="text-muted"><strong>Terminer le sprint</strong></span>
+                        <button type="button" class="btn custom-bg ">
+                            <span class="text-muted"  data-bs-toggle="modal" data-bs-target="#myModal2"><strong>Terminer le sprint</strong></span>
                         </button>
+                      
                     </div>
                     <div class="row mt-2">
                         <div class="col-sm-3">
@@ -196,7 +197,7 @@
                                 </div>
                             </div>
                             <div class="modal-body">
-                                <div class="row m-2">
+                                <div class="row m-1">
                                     <div class="col-sm-6 border">
                                         <div class="h5">Description</div>
                                         <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
@@ -252,6 +253,36 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <img src="./assets/icons/background1.png" alt="image de background">
+                        </div>
+                        <div class="modal-body">
+                            <h5>Terminer Tableau sprint 1</h5>
+                            <p>Ce sprint comprend :</p>
+                            <ul  class="list-group m-4">
+                                <li>0 ticket terminé</li>
+                                <li>3 tickets ouverts</li>
+                            </ul>
+                            <p>Déplacer les tickets ouverts vers</p>
+                            <select class="select-input" name="pets">
+                                <option>Nouveau sprint</option>
+                                <option>Backlog</option>
+                            </select>
+                               
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terminer le sprint</button>
+                            <button type="button" class="btn btn-primary">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             </main>
         </div>
     </div>
