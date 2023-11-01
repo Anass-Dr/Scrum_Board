@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="./assets/styles/backlog.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <title>Codzilla Board</title>
+    <link
+    rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
     <div class="d-flex flex-column h-100">
@@ -154,7 +160,7 @@
                     <span class="Statut_de_la_tache bg-success mx-2">0</span>
                     <span class="Statut_de_la_tache2 mx-2">0</span>
                     <span class="Statut_de_la_tache3 mx-2">0</span>
-                    <button class="start_sprintf h3 m-0 mx-4 p-1 d-flex align-items-center justify-content-center border-0"  data-bs-toggle="modal" data-bs-target="#myModal" >
+                    <button class="start_sprintf h3 m-0 mx-4 p-1 d-flex align-items-center justify-content-center border-0"  data-bs-toggle="modal" data-bs-target="#myModal_sprint" >
                       <span class="startsprint"  >start sprint</span>
                     </button>
                     <button class="sprintf h3 m-0 mx-2">
@@ -163,7 +169,7 @@
                   </div>
                 </h2>
                 <!-- modal de start sprint  -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                <div class="modal fade" id="myModal_sprint" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -224,23 +230,25 @@
                   data-bs-parent="#accordionExample"
                  
                 >
-                  <div class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn">
+                  <div class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="sortable1">
                     <!-- user storie 1 -->
                     <div
                       class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
-                      draggable="true" data-bs-toggle="modal" data-bs-target="#myModal"  ondragstart="start(event)" id="userstorie1" 
+                      draggable="true" 
                     >
                       <div
-                        class="title_userstori_sprint d-flex align-items-center"
+                        class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
                       >
+                      <h6>
                         <img
                           src="./assets/icons/userstori_icon.svg"
                           alt=""
                           class="mx-2"
                         />
-                        <h5 class="pt-2 px-2">to do list</h5>
-                        <h5 class="pt-2 px-2">- 1</h5>
-                        <i class="p-2">user storie</i>
+                      </h6>
+                        <h6 class="pt-2 px-2 m-0">to do list</h6>
+                        <h6 class="pt-2 px-2 m-0">- 1</h6>
+                        <p class="pt-2 m-0">user storie</p>
                       </div>
                       <div
                         class="option_userstorie d-flex align-items-center w-25"
@@ -336,21 +344,23 @@
 
                     <!-- user storie 2 -->
                     <div
-                      class="users_storise_sprint w-100 bg-light rounded d-flex align-items-center justify-content-between border"
-                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"  ondragstart="start(event)" id="userstorie2" 
-                    >
-                      <div
-                        class="title_userstori_sprint d-flex align-items-center"
-                      >
-                        <img
-                          src="./assets/icons/userstori_icon.svg"
-                          alt=""
-                          class="mx-2"
-                        />
-                        <h5 class="pt-2 px-2">to do list</h5>
-                        <h5 class="pt-2 px-2">- 1</h5>
-                        <i class="p-2">user storie</i>
-                      </div>
+                    class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
+                    draggable="true" 
+                  >
+                  <div
+                  class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
+                >
+                <h6>
+                  <img
+                    src="./assets/icons/userstori_icon.svg"
+                    alt=""
+                    class="mx-2"
+                  />
+                </h6>
+                  <h6 class="pt-2 px-2 m-0">to do list</h6>
+                  <h6 class="pt-2 px-2 m-0">- 1</h6>
+                  <p class="pt-2 m-0">user storie</p>
+                </div>
                       <div
                         class="option_userstorie d-flex align-items-center w-25"
                       >
@@ -373,21 +383,23 @@
                     </div>
                     <!-- user storie 3 -->
                     <div
-                      class="users_storise_sprint w-100 bg-light rounded d-flex align-items-center justify-content-between border"
-                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"  ondragstart="start(event)" id="userstorie3" 
+                      class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
+                      draggable="true" 
                     >
-                      <div
-                        class="title_userstori_sprint d-flex align-items-center"
-                      >
-                        <img
-                          src="./assets/icons/userstori_icon.svg"
-                          alt=""
-                          class="mx-2"
-                        />
-                        <h5 class="pt-2 px-2">to do list</h5>
-                        <h5 class="pt-2 px-2">- 1</h5>
-                        <i class="p-2">user storie</i>
-                      </div>
+                    <div
+                    class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
+                  >
+                  <h6>
+                    <img
+                      src="./assets/icons/userstori_icon.svg"
+                      alt=""
+                      class="mx-2"
+                    />
+                  </h6>
+                    <h6 class="pt-2 px-2 m-0">to do list</h6>
+                    <h6 class="pt-2 px-2 m-0">- 1</h6>
+                    <p class="pt-2 m-0">user storie</p>
+                  </div>
                       <div
                         class="option_userstorie d-flex align-items-center w-25"
                       >
@@ -448,24 +460,26 @@
                   data-bs-parent="#accordionExample"
                 
                 >
-                  <div class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn">
+                  <div class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="sortable2">
                     <!-- user storie 1 -->
                     <div
                       class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
-                      draggable="true" ondragstart="start(event)" id="userstorie4" data-bs-toggle="modal" data-bs-target="#myModal" 
+                      draggable="true"  
                     >
-                      <div
-                        class="title_userstori_sprint d-flex align-items-center"
-                      >
-                        <img
-                          src="./assets/icons/userstori_icon.svg"
-                          alt=""
-                          class="mx-2"
-                        />
-                        <h5 class="pt-2 px-2">to do list</h5>
-                        <h5 class="pt-2 px-2">- 1</h5>
-                        <i class="p-2">user storie</i>
-                      </div>
+                    <div
+                    class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
+                  >
+                  <h6>
+                    <img
+                      src="./assets/icons/userstori_icon.svg"
+                      alt=""
+                      class="mx-2"
+                    />
+                  </h6>
+                    <h6 class="pt-2 px-2 m-0">to do list</h6>
+                    <h6 class="pt-2 px-2 m-0">- 1</h6>
+                    <p class="pt-2 m-0">user storie</p>
+                  </div>
                       <div
                         class="option_userstorie d-flex align-items-center w-25"
                       >
@@ -487,21 +501,23 @@
                 
                     <!-- user storie 2 -->
                     <div
-                      class="users_storise_sprint w-100 bg-light rounded d-flex align-items-center justify-content-between border"
-                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"  ondragstart="start(event)" id="userstorie5" 
-                    >
-                      <div
-                        class="title_userstori_sprint d-flex align-items-center"
-                      >
-                        <img
-                          src="./assets/icons/userstori_icon.svg"
-                          alt=""
-                          class="mx-2"
-                        />
-                        <h5 class="pt-2 px-2">to do list</h5>
-                        <h5 class="pt-2 px-2">- 1</h5>
-                        <i class="p-2">user storie</i>
-                      </div>
+                    class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
+                    draggable="true" 
+                  >
+                  <div
+                  class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
+                >
+                <h6>
+                  <img
+                    src="./assets/icons/userstori_icon.svg"
+                    alt=""
+                    class="mx-2"
+                  />
+                </h6>
+                  <h6 class="pt-2 px-2 m-0">to do list</h6>
+                  <h6 class="pt-2 px-2 m-0">- 1</h6>
+                  <p class="pt-2 m-0">user storie</p>
+                </div>
                       <div
                         class="option_userstorie d-flex align-items-center w-25"
                       >
@@ -525,21 +541,23 @@
 
                     <!-- user storie 3 -->
                     <div
-                      class="users_storise_sprint w-100 bg-light rounded d-flex align-items-center justify-content-between border"
-                      draggable="true"  data-bs-toggle="modal" data-bs-target="#myModal"  ondragstart="start(event)" id="userstorie6" 
-                    >
-                      <div
-                        class="title_userstori_sprint d-flex align-items-center"
-                      >
-                        <img
-                          src="./assets/icons/userstori_icon.svg"
-                          alt=""
-                          class="mx-2"
-                        />
-                        <h5 class="pt-2 px-2">to do list</h5>
-                        <h5 class="pt-2 px-2">- 1</h5>
-                        <i class="p-2">user storie</i>
-                      </div>
+                    class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
+                    draggable="true" 
+                  >
+                  <div
+                  class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
+                >
+                <h6>
+                  <img
+                    src="./assets/icons/userstori_icon.svg"
+                    alt=""
+                    class="mx-2"
+                  />
+                </h6>
+                  <h6 class="pt-2 px-2 m-0">to do list</h6>
+                  <h6 class="pt-2 px-2 m-0">- 1</h6>
+                  <p class="pt-2 m-0">user storie</p>
+                </div>
                       <div
                         class="option_userstorie d-flex align-items-center w-25"
                       >
@@ -573,6 +591,17 @@
         </main>
       </div>
     </div>
+    <script>
+      $(function () {
+        $(".accordion-body").sortable({
+          connectWith: ".accordion-body", // Allow items to be connected between containers
+          helper: "clone", // Clone the dragged element
+          placeholder: "ui-state-highlight", // Style for placeholder when dragging
+        });
+
+        $(".accordion-body").disableSelection(); // Prevent text selection while dragging
+      });
+    </script>
     <script src="./scripts/bootstrap.js"></script>
   </body>
 </html>

@@ -18,7 +18,9 @@ main {
 .users_storise_sprint {
   height: 45px;
 }
-
+.users_storise_sprint:hover {
+  background-color: rgba(99, 166, 255, 0.2);
+}
 #accordion {
   width: 98%;
 }
@@ -93,7 +95,7 @@ option {
   background-color: white;
 }
 .select_userstorie {
-  background-color: #cfdee7;
+  background-color: rgb(218, 227, 229, 0.5);
 }
 .done {
   width: 90%;
@@ -144,7 +146,7 @@ option {
   background-color: rgb(244, 245, 247);
 }
 .startsprint {
-  font-size: 20px;
+  font-size: 16px !important;
 }
 .startsprint2 {
   font-size: 20px;
@@ -177,9 +179,7 @@ option {
   border: solid #dae3e5;
   border-radius: 3px;
 }
-.startsprint {
-  font-size: 16px !important;
-}
+
 .namesprint {
   border: 1.5px solid #e2e2e2;
   width: 35%;
@@ -189,4 +189,11 @@ option {
   width: 85%;
   height: 100px !important;
   resize: none;
+}
+.close {
+  background: none;
+  border: none;
+}
+.title_userstori_sprint {
+  color: #757575;
 }
