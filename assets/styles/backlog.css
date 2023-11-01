@@ -16,6 +16,8 @@ main {
   height: 35px;
 }
 .users_storise_sprint {
+  display: none;
+  background-color: white;
   height: 45px;
 }
 .users_storise_sprint:hover {
@@ -91,9 +93,7 @@ option {
 .accordion-body {
   background-color: rgb(244, 245, 247);
 }
-.users_storise_sprint {
-  background-color: white;
-}
+
 .select_userstorie {
   background-color: rgb(218, 227, 229, 0.5);
 }

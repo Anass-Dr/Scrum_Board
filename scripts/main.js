@@ -37,3 +37,22 @@ function drop(e) {
 
   draggedElement = null;
 }
+// add users stories
+function createNewDiv() {
+  // Clone the existing container div
+  const container = document.getElementById("container");
+  const user = document.getElementById("userStorie");
+  const existingDiv = user.cloneNode(true);
+
+  // Add the cloned div to the container
+  container.appendChild(existingDiv);
+}
+function createNewDiv2() {
+  // Clone the existing container div
+  const container = document.getElementById("container2");
+  const user = document.getElementById("userStorie");
+  const existingDiv = user.cloneNode(true);
+
+  // Add the cloned div to the container
+  container.appendChild(existingDiv);
+}
