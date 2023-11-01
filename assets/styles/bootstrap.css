@@ -7593,6 +7593,10 @@ fieldset:disabled .btn {
   font-size: 14px !important;
 }
 
+.fs-11 {
+  font-size: 11px !important;
+}
+
 .fst-italic {
   font-style: italic !important;
 }
