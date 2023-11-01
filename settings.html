@@ -3,9 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/styles/settings.css" />
-    <link rel="stylesheet" href="./assets/styles/bootstrap.css" />
-    <link rel="stylesheet" href="./assets/styles/main.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link rel="stylesheet" href="./assets/styles/bootstrap.css" />
+  <link rel="stylesheet" href="./assets/styles/main.css" />
+  <link rel="stylesheet" href="./assets/styles/settings.css" />
     <title>Codzilla Board</title>
   </head>
   <body>
@@ -28,7 +36,7 @@
           <div class="user_img"></div>
         </div>
       </header>
-      <div class="backlog flex-grow-1">
+      <div class="backlog d-flex flex-grow-1">
         <aside id="aside">
           <div class="aside_head">
             <div class="project_img"></div>
@@ -114,6 +122,73 @@
             Vous faites partie d'un projet géré par l'équipe
           </p>
         </aside>
+        <main class="flex-fill d-flex flex-column ps-40 pt-4">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 fs-14">
+              <li class="breadcrumb-item text-secondary">
+                <a href="#">Projects</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Project1
+              </li>
+            </ol>
+          </nav>
+          <div class="setting_add">
+            <h3 class="fs-4 fw-semibold mt-1 mb-4">Parametres</h3>
+            <button class="settings_add_pers"><span>Ajouter des personnes</span></button>
+
+          </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+
+              <tbody>
+                <tr>
+                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
+                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
+                  <th>
+                    <button class="btn-modif">
+                      <img src="./assets/icons/modif.svg" alt="">
+                    </button>
+                    <button class="btn-sup"> 
+                      <img src="./assets/icons/delete.svg" alt="">
+                    </button>
+                  </th>
+                </tr>
+                <tr>
+                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
+                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
+                  <th>
+                    <button class="btn-modif">
+                      <img src="./assets/icons/modif.svg" alt="">
+                    </button>
+                    <button class="btn-sup"> 
+                      <img src="./assets/icons/delete.svg" alt="">
+                    </button>
+
+                  </th>
+                </tr>
+                <tr>
+                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
+                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
+                  <th>
+                    <button class="btn-modif">
+                      <img src="./assets/icons/modif.svg" alt="">
+                    </button>
+                    <button class="btn-sup"> 
+                      <img src="./assets/icons/delete.svg" alt="">
+                    </button>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
       </div>
 
 

@@ -12,10 +12,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
 }
 
 .settings_add_pers{
-    padding: 5px 2px;
+    padding: 5px 6px;
+    margin-right: 25px;
     width: auto;
     height: auto;
     border-radius: 5px;
@@ -26,6 +29,17 @@
 .settings_add_pers span{
     font-weight: bold;
 }
+.btn-modif, .btn-sup{
+    border: none;
+    background-color: white;
+}
+.btn-modif{
+    margin-right:25px;
+}
+
+
+
+
 .edit{
     margin-right: 20%;
 }
