@@ -8,3 +8,24 @@
     justify-content: space-between;
     width: 90%;
 }
+.setting_add{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings_add_pers{
+    padding: 5px 2px;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    color: white;
+    background-color: #056df5;
+    border: none;
+}
+.settings_add_pers span{
+    font-weight: bold;
+}
+.edit{
+    margin-right: 20%;
+}
