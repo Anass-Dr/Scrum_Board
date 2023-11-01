@@ -6,10 +6,12 @@ function start(e) {
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("text", e.target.id);
     draggedElement = e.target;
+  
 }
 
 function over(e) {
     e.preventDefault();
+   
 }
 
 function drop(e) {
