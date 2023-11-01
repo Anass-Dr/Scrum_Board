@@ -30,13 +30,107 @@
             </div>
         </header>
         <div class="backlog flex-grow-1 d-flex">
-            <aside style="width: 240px; height: 100%; background-color: #e2eafc"></aside>
+            <aside id="aside">
+                <div class="aside_head">
+                  <div class="project_img"></div>
+                  <div class="project_info">
+                    <h5>Project 1</h5>
+                    <p>Software Project</p>
+                  </div>
+                </div>
+                <h6>PLANNING</h6>
+                <ul class="aside_pages">
+                  <li>
+                    <a href="./timer.html">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        role="presentation"
+                      >
+                        <path
+                          d="M6 2h10a3 3 0 010 6H6a3 3 0 110-6zm0 2a1 1 0 100 2h10a1 1 0 000-2H6zm4 5h8a3 3 0 010 6h-8a3 3 0 010-6zm0 2a1 1 0 000 2h8a1 1 0 000-2h-8zm-4 5h6a3 3 0 010 6H6a3 3 0 010-6zm0 2a1 1 0 000 2h6a1 1 0 000-2H6z"
+                          fill-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span>Timeline</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./index.html">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        role="presentation"
+                      >
+                        <g>
+                          <path
+                            d="M5 19.002C5 19 17 19 17 19v-2.002C17 17 5 17 5 17v2.002zm-2-2.004C3 15.894 3.895 15 4.994 15h12.012c1.101 0 1.994.898 1.994 1.998v2.004A1.997 1.997 0 0117.006 21H4.994A1.998 1.998 0 013 19.002v-2.004z"
+                          ></path>
+                          <path d="M5 15h12v-2H5v2zm-2-4h16v6H3v-6z"></path>
+                          <path
+                            d="M7 11.002C7 11 19 11 19 11V8.998C19 9 7 9 7 9v2.002zM5 8.998C5 7.894 5.895 7 6.994 7h12.012C20.107 7 21 7.898 21 8.998v2.004A1.997 1.997 0 0119.006 13H6.994A1.998 1.998 0 015 11.002V8.998z"
+                          ></path>
+                          <path
+                            d="M5 5v2h12V5H5zm-2-.002C3 3.894 3.895 3 4.994 3h12.012C18.107 3 19 3.898 19 4.998V9H3V4.998z"
+                          ></path>
+                        </g>
+                      </svg>
+                      <span>Backlog</span>
+                    </a>
+                  </li>
+                  <li class="active">
+                    <a href="./board.html">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        role="presentation"
+                      >
+                        <g>
+                          <path
+                            d="M4 18h16.008C20 18 20 6 20 6H3.992C4 6 4 18 4 18zM2 5.994C2 4.893 2.898 4 3.99 4h16.02C21.108 4 22 4.895 22 5.994v12.012A1.997 1.997 0 0120.01 20H3.99A1.994 1.994 0 012 18.006V5.994z"
+                          ></path>
+                          <path d="M8 6v12h2V6zm6 0v12h2V6z"></path>
+                        </g>
+                      </svg>
+                      <span>Board</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./settings.html">
+                      <i class="fa-solid fa-gear"></i>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                </ul>
+                <h6>Users</h6>
+                <div class="aside_users">
+                  <div class="user"></div>
+                  <div class="user"></div>
+                  <div class="user"></div>
+                </div>
+                <p class="aside_footer">
+                  Vous faites partie d'un projet géré par l'équipe
+                </p>
+              </aside>
 
             <main class="m-3">
                 <div class="container">
-                    <div class="h4 mt-4">Projets / NomDuProjet</div>
-                    <div class="h3"><strong> board Sprint 1</strong></div>
-                    <div class="d-flex justify-content-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 fs-14">
+                          <li class="breadcrumb-item text-secondary">
+                            <a href="#">Projects</a>
+                          </li>
+                          <li class="breadcrumb-item active" aria-current="page">
+                            Project1
+                          </li>
+                        </ol>
+                      </nav>
+                    
+                    <div class="d-flex justify-content-between">
+                        <h3 class="fs-4 fw-semibold mt-1 mb-4">Sprint 1</h3>
                         <button type="button" class="btn custom-bg ">
                             <span class="text-muted"  data-bs-toggle="modal" data-bs-target="#myModal2"><strong>Terminer le sprint</strong></span>
                         </button>
@@ -44,13 +138,13 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-sm-3">
-                            <div class="p-3"  ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn">
-                                <div class="h5 text-muted">A faire</div>
-                                <div class="p-2 rounded bg-white  mt-2" draggable="true" ondragstart="start(event)"
+                            <div class="arrive p-3"  ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn">
+                                <div class="h6 text-muted">A faire</div>
+                                <div class="depart p-2 rounded bg-white  mt-2" draggable="true" ondragstart="start(event)"
                                     id="task1">
                                     <div class="d-flex justify-content-start align-items-end">
                                         <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur
+                                            consectetur latifa
                                             adipisicing elit. Impedit, maiores?</p>
                                         <div>
                                             <div class="circle">
@@ -107,7 +201,7 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="p-3" ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn">
-                                <div class="h5 text-muted">En cours</div>
+                                <div class="h6 text-muted">En cours</div>
                                 <div class="p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
                                     id="task5">
                                     <div class="d-flex justify-content-start align-items-end">
@@ -153,7 +247,7 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="p-3" ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn1">
-                                <div class="h5 text-muted">Fini</div>
+                                <div class="h6 text-muted">Fini</div>
                                 <div class="p-2 rounded bg-white" draggable="true" ondragstart="start(event)"
                                 id="task8">
                                     <div class="d-flex justify-content-start align-items-end">
