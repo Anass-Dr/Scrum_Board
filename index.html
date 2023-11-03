@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="./assets/styles/backlog.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <title>Codzilla Board</title>
+    <link
+    rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
     <div class="d-flex flex-column h-100">
@@ -35,7 +41,7 @@
           <div class="user_img"></div>
         </div>
       </header>
-      <div class="backlog flex-grow-1">
+      <div class="backlog flex-grow-1 d-flex">
         <aside id="aside">
           <div class="aside_head">
             <div class="project_img"></div>
@@ -121,8 +127,332 @@
             Vous faites partie d'un projet géré par l'équipe
           </p>
         </aside>
+        <main>
+          <div class="titel_backloge mx-4">
+            <div class="d-flex pt-4">
+              <p class="px-2">project</p>
+              <p class="px-2">/</p>
+              <p class="px-2">scrum bord</p>
+            </div>
+            <h2 class="px-2">Backlog</h2>
+          </div>
+          <!--sprint-->
+          <section
+            class="sprint_section w-100 mt-4 mb-4 d-flex justify-content-center"
+          >
+            <div class="accordion" id="accordion">
+              <div class="accordion-item">
+                <h2
+                  class="accordion-header d-flex align-items-center justify-content-between"
+                >
+                  <button
+                    class="accordion-button shadow-none w-50"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    SCRUMBORD
+                    <p class="px-4 m-0"><b>Sprint - 1</b></p>
+                  </button>
+                  <div class="d-flex align-items-center justify-content-center">
+                    <span class="Statut_de_la_tache bg-success mx-2">0</span>
+                    <span class="Statut_de_la_tache2 mx-2">0</span>
+                    <span class="Statut_de_la_tache3 mx-2">0</span>
+                    <button class="start_sprintf h3 m-0 mx-4 p-1 d-flex align-items-center justify-content-center border-0"  data-bs-toggle="modal" data-bs-target="#myModal_sprint" >
+                      <span class="startsprint"  >start sprint</span>
+                    </button>
+                    <button class="sprintf h3 m-0 mx-2">
+                      <span class="startsprint2">...</span>
+                    </button>
+                  </div>
+                </h2>
+                <!-- modal de start sprint  -->
+                <div class="modal fade" id="myModal_sprint" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Démarrer le sprint</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="m-1">
+                                  <div class="ticket_sprint d-flex align-items-center">
+                                        <span class="number_de_ticket_sprint "><b>3</b></span>
+                                        <p class="p-1 m-0">ticket sera inclus dans ce sprint.</p>
+                                       </div>
+                                       <p>Les champs obligatoires sont marqués d'un astérisque</p>
+
+                                       <!-- nome de sprint -->
+
+                                       <label for="nome_de_sprint" class="d-block mb-2 mt-2">Nome de sprint</label>
+                                       <input type="text" name="nome_de_sprint" class="namesprint rounded p-1 px-2" placeholder="Nome de sprint">
+                                       <!-- duree sprint -->
+                                       <label for="duree_de_sprint" class="d-block mb-2 mt-2">Durée</label>
+                                       <select  name="duree_de_sprint" class="namesprint rounded p-1 px-2">
+                                        <option value="1-semaines">1 semaines</option>
+                                        <option value="2-semaines">2 semaines</option>
+                                        <option value="3-semaines">3 semaines</option>
+                                        <option value="4-semaines">4 semaines</option>
+                                       </select>
+                                       <!-- deadline start sprint -->
+                                       <label for="start_de_sprint" class="d-block mb-2 mt-2">Debut de sprint</label>
+                                       <input type="date" name="start_de_sprint" class="namesprint rounded p-1 px-2" placeholder="Nome de sprint">
+                                       <!-- deadline finel sprint -->
+                                       <label for="finel_de_sprint" class="d-block mb-2 mt-2">Final de sprint</label>
+                                       <input type="date" name="finel_de_sprint" class="namesprint rounded p-1 px-2" placeholder="Nome de sprint">
+                                       <!-- objectif du sprint -->
+                                       <label for="objectif_de_sprint" class="d-block mb-2 mt-2">Objectif du sprint</label>
+                                       <textarea name="objectif_de_sprint" class="goalsprint rounded p-1 px-2" cols="30" rows="10"></textarea>
+                                    
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse show"
+                  data-bs-parent="#accordionExample"
+                 
+                >
+                  <div id="container" class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="sortable1">
+                    <!-- user storie 1 -->
+                  
+                    <!-- modal de user storie -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                <div class="modal-header-img">
+                                    <img src="./assets/icons/eye.png" alt="photo">
+                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row m-1">
+                                    <div class="col-sm-6 border">
+                                        <div class="h5">Description</div>
+                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                            cliquant
+                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                        </p>
+                                        <p>Acceptance Critirias :</p>
+                                        <ul class="list-group m-4">
+                                            <li>Sprint Div ( create, remove, update )</li>
+                                            <li>Backlog Div</li>
+                                            <li>When I click on Add user story button a Modal Pop up</li>
+                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                                Associed )
+                                            </li>
+                                            <li>I can modify and remove any user story</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 border ">
+                                        <div class="h5">Détails</div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Responsable</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>AA</p>
+                                                </div>
+                                                <p>Anass AIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Sprint</p>
+                                            <p>Board Sprint 1</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Story point estimate</p>
+                                            <p>Aucun Story </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p>Rapporteur</p>
+                                            <div class="d-flex">
+                                                <div class="circle1">
+                                                    <p>MB</p>
+                                                </div>
+                                                <p>Med BNE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+              </div>
+              <button
+                      class="add_ticket d-flex align-items-center px-4 pb-2" id="add_backlog_btn"
+                      onclick="createNewDiv()">
+                      <img src="./assets/icons/Add-ticket.svg" alt="" />
+                      <h6 class="m-0 mx-2">Creer un ticket</h6>
+                    </button>
+                  </div>
+                </div>
+            </div>
+          </section>
+
+          <!--backlog part -->
+          <section class="backlog w-100 d-flex justify-content-center">
+            <div class="accordion" id="accordion_backlog">
+              <div class="accordion-item">
+                <h2  class="accordion-header d-flex align-items-center justify-content-between">
+                  <button
+                    class="accordion-button collapsed shadow-none w-50"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne2"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    Backlog
+                    <span class="mx-4"><b> 3 ticket </b></span>
+                  </button>
+                  <div class="d-flex align-items-center justify-content-center">
+                    <span class="Statut_de_la_tache bg-success mx-2">0</span>
+                    <span class="Statut_de_la_tache2 mx-2">0</span>
+                    <span class="Statut_de_la_tache3 mx-2">0</span>
+                    <button class="start_sprintf h3 m-0 mx-4 p-1 d-flex align-items-center justify-content-center border-0">
+                      <span class="startsprint ">creer un sprint</span>
+                    </button>
+                </h2>
+                <div
+                  id="collapseOne2"
+                  class="accordion-collapse collapse show"
+                  data-bs-parent="#accordionExample"
+                
+                >
+                <div id="container2" class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="sortable1">
+                  <!-- user storie 1 -->
+      
+                  <!-- modal de user storie -->
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                              <div class="modal-header-img">
+                                  <img src="./assets/icons/eye.png" alt="photo">
+                                  <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                  <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                      <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                                  </button>
+                              </div>
+                          </div>
+                          <div class="modal-body">
+                              <div class="row m-1">
+                                  <div class="col-sm-6 border">
+                                      <div class="h5">Description</div>
+                                      <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                          cliquant
+                                          sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
+                                      </p>
+                                      <p>Acceptance Critirias :</p>
+                                      <ul class="list-group m-4">
+                                          <li>Sprint Div ( create, remove, update )</li>
+                                          <li>Backlog Div</li>
+                                          <li>When I click on Add user story button a Modal Pop up</li>
+                                          <li>I can add new user story in the backlog ( Titre, Description, Sprint
+                                              Associed )
+                                          </li>
+                                          <li>I can modify and remove any user story</li>
+                                      </ul>
+                                  </div>
+                                  <div class="col-sm-6 border ">
+                                      <div class="h5">Détails</div>
+                                      <div class="d-flex justify-content-between">
+                                          <p>Responsable</p>
+                                          <div class="d-flex">
+                                              <div class="circle1">
+                                                  <p>AA</p>
+                                              </div>
+                                              <p>Anass AIT</p>
+                                          </div>
+                                      </div>
+                                      <div class="d-flex justify-content-between">
+                                          <p>Sprint</p>
+                                          <p>Board Sprint 1</p>
+                                      </div>
+                                      <div class="d-flex justify-content-between">
+                                          <p>Story point estimate</p>
+                                          <p>Aucun Story </p>
+                                      </div>
+                                      <div class="d-flex justify-content-between">
+                                          <p>Rapporteur</p>
+                                          <div class="d-flex">
+                                              <div class="circle1">
+                                                  <p>MB</p>
+                                              </div>
+                                              <p>Med BNE</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+                              <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                  
+            </div>
+            <button
+                    class="add_ticket d-flex align-items-center px-4 pb-2" id="add_backlog_btn2"
+                    onclick="createNewDiv2()"
+                  >
+                    <img src="./assets/icons/Add-ticket.svg" alt="" />
+                    <h6 class="m-0 mx-2">Creer un ticket</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
       </div>
     </div>
+    <script>
+      $(function () {
+        $(".accordion-body").sortable({
+          connectWith: ".accordion-body", // Allow items to be connected between containers
+          helper: "clone", // Clone the dragged element
+          placeholder: "ui-state-highlight", // Style for placeholder when dragging
+        });
+
+        $(".accordion-body").disableSelection(); // Prevent text selection while dragging
+      });
+    </script>
     <script src="./scripts/bootstrap.js"></script>
   </body>
 </html>
+<script src="./scripts/main.js"></script>
