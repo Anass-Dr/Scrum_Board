@@ -1,3 +1,4 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
 .p-3 {
     background: rgb(244, 245, 247);
     border-radius: 10px;
@@ -75,6 +76,7 @@
     flex-wrap: wrap;
  }
 
+
  .modifier-story{
     display: none;
  }
@@ -104,3 +106,13 @@
     font-size: 13px;
   }
 
+
+  #searchInput {
+    width: 150px;
+    height: 30px;
+    border-radius: 3px;
+    border: 2px solid #E2E8F0;
+    background-color: #F7F5F5;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 700;
+  }

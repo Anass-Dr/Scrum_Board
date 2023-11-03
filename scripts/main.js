@@ -80,3 +80,33 @@ function supprimerStory(button) {
         userStory.remove();
     }
 }
+//Code de barre de recherche sur un element dans les trois carte
+
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const content = document.getElementById('content');
+
+searchInput.addEventListener('input', function () {
+  const searchTerm = searchInput.value.toLowerCase();
+  filterContent(searchTerm);
+});
+
+
+function filterContent(searchTerm) {
+  const searshes = content.querySelectorAll('.zone');
+
+  for (const item of searshes) {
+    const text = item.textContent.toLowerCase();
+
+    if (text.includes(searchTerm)) {
+        item.style.display = 'block';
+    } else {
+        item.style.display = 'none';
+    }
+  }
+}
+
+// Au chargement de la page, assurez-vous que tous les éléments sont affichés
+window.addEventListener('load', function () {
+  filterContent('');
+});
