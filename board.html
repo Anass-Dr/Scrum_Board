@@ -119,8 +119,6 @@
                             </li>
                         </ol>
                     </nav>
-
-
                     <h3 class="fs-4 fw-semibold mt-1 mb-4">Sprint 1</h3>
                     <div class="d-flex justify-content-between">
                         <input type="text" id="searchInput" placeholder=" &#xf002;">
@@ -131,12 +129,12 @@
                         </button>
 
                     </div>
-                    <div class="row mt-2 " style="width: 1200px;" id="content">
+                    <div class="cartes row mt-2 " style="width: 1250px;" id="content">
 
                         <!---------------------------------------------------------------A FAIRE----------------------------------------------------------->
-                        <div class="col-sm-3">
+                        <div class="carte col-sm-3">
                             <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)" id="sortable1">
-                                <div class="d-flex justify-content-between">
+                                <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">A faire</div>
                                     <img src="./assets/icons/modif.svg" class="modifierButton">
                                 </div>
@@ -280,9 +278,9 @@
                         </div>
 
                         <!---------------------------------------------------------------EN COURS ------------------------------------------------------------>
-                        <div class="col-sm-3">
+                        <div class="carte col-sm-3">
                             <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)" id="sortable2">
-                                <div class="d-flex justify-content-between">
+                                <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">En cours</div>
                                     <img src="./assets/icons/modif.svg" class="modifierButton">
                                 </div>
@@ -392,10 +390,10 @@
                         </div>
 
                         <!-----------------------------------------------------------FINI---------------------------------------------------------------------->
-                        <div class="col-sm-3">
+                        <div class="carte col-sm-3">
                             <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)"
                                 id="inProgressColumn1">
-                                <div class="d-flex justify-content-between">
+                                <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">Fini</div>
                                     <img src="./assets/icons/modif.svg" class="modifierButton">
                                 </div>
