@@ -61,7 +61,7 @@ const sprints = [
   },
 ];
 
-/***  TIMELINE PAGE STYLES    ***/
+/***  TIMELINE PAGE SCRIPT    ***/
 loadTableRows();
 
 // Get Start & End point for table tr :
@@ -102,6 +102,7 @@ function loadTableRows() {
   loadMonthsTd(startDate, endDate);
   loadSprints(startDate);
   loadUserStories(startDate);
+  loadYearMonths();
 }
 
 // load table td for months :
@@ -168,7 +169,7 @@ function loadUserStories(startDate) {
       tbody.insertAdjacentHTML(
         "beforeend",
         `
-        <tr>
+        <tr class="user_story_tr">
           <td colspan="${colspan}"></td>
           <td style="--i: 1" class="user_story user1" colspan="${story.duration}">
             <span></span>
@@ -182,9 +183,13 @@ function loadUserStories(startDate) {
   });
 }
 
+// Load all Months :
+function loadYearMonths() {}
+
 // change vue :
 const controlVue = (e) => {
   const value = e.target.textContent.toLowerCase();
+  const storiesTr = document.querySelectorAll(".user_story_tr");
 
   Object.values(e.currentTarget.children).forEach((item) =>
     item.classList.remove("active")
@@ -192,7 +197,9 @@ const controlVue = (e) => {
   e.target.classList.add("active");
   if (value == "months") {
     weekdaysTr.classList.add("hidden");
+    storiesTr.forEach((story) => story.classList.add("hidden"));
   } else if (value == "weeks") {
     weekdaysTr.classList.remove("hidden");
+    storiesTr.forEach((story) => story.classList.remove("hidden"));
   }
 };
