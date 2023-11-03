@@ -1,4 +1,7 @@
 "use strict";
+
+/***  Board PAGE STYLES    ***/
+
 // generate user HTML
 function generate_user_html(title) {
   const htmluser = ` <div
@@ -83,6 +86,7 @@ function createNewDiv2() {
   const create_name_userstorie = document.querySelector(
     ".create_name_userstorie"
   );
+
   create_name_userstorie.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       const creat_title_userstorie = document.getElementById("create_title");
@@ -98,4 +102,3 @@ function createNewDiv2() {
       button2.disabled = false;
     }
   });
-}
