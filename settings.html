@@ -135,7 +135,7 @@
           </nav>
           <div class="setting_add">
             <h3 class="fs-4 fw-semibold mt-1 mb-4">Parametres</h3>
-            <button class="settings_add_pers"><span>Ajouter des personnes</span></button>
+            <button class="settings_add_pers" onclick="add_user()"><span>Ajouter des personnes</span></button>
 
           </div>
 
@@ -150,7 +150,7 @@
 
 
               <tbody>
-                <tr>
+                <tr class="tabRow">
                   <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
                   <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
                   <th>
@@ -158,46 +158,17 @@
                       <button class="btn-modif">
                         <img src="./assets/icons/modif.svg" alt="">
                       </button>
-                      <button class="btn-sup"> 
+                      <button class="btn-sup" onclick="del_user()"> 
                         <img src="./assets/icons/delete.svg" alt="">
                       </button>
 
                     </div>
                   </th>
                 </tr>
-                <tr>
-                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
-                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
-                  <th>
-                    <div class="btn-modsup">
-                      <button class="btn-modif">
-                        <img src="./assets/icons/modif.svg" alt="">
-                      </button>
-                      <button class="btn-sup"> 
-                        <img src="./assets/icons/delete.svg" alt="">
-                      </button>
 
-                    </div>
-
-                  </th>
-                </tr>
-                <tr>
-                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
-                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
-                  <th>
-                    <div class="btn-modsup">
-                      <button class="btn-modif">
-                        <img src="./assets/icons/modif.svg" alt="">
-                      </button>
-                      <button class="btn-sup"> 
-                        <img src="./assets/icons/delete.svg" alt="">
-                      </button>
-
-                    </div>
-                  </th>
-                </tr>
               </tbody>
             </table>
+      </main>
       </div>
 
 
@@ -212,6 +183,7 @@
 
     </div>
   </body>
+  <script src="./scripts/main.js"></script>
   <script src="./scripts/bootstrap.js"></script>
 
 </html>

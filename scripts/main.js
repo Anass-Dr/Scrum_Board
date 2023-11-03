@@ -53,7 +53,7 @@ function getEndPoint(d, m, y) {
 function loadMonthsTd() {}
 
 // load table td for weekdays :
-function loadWeeksTd(startDate, endDate) {
+function loadWeeksTd() {
     const startDate = getStartPoint(21, 10, 2023);
     const endDate = getEndPoint(9, 12, 2023);
   const currDate = startDate;
@@ -97,5 +97,74 @@ const controlVue = (e) => {
 
 
 /***  USER_SECTION STYLES    ***/
+
+
+function add_user() {
+    // Get the table body element
+    const tableBody = document.querySelector("table tbody");
+
+  
+    // Create a new row element
+    const newRow = document.createElement("tr");
+  
+    // Create the cells for the new row
+    const nameCell = document.createElement("th");
+    const emailCell = document.createElement("th");
+    const actionCell = document.createElement("th");
+  
+    // Create input elements for the name and email cells
+    const nameInput = document.createElement("input");
+    nameInput.className = "inputtab";
+    nameInput.type = "text";
+    nameInput.placeholder = "User_name";
+  
+    const emailInput = document.createElement("input");
+    emailInput.className = "inputtab";
+    emailInput.type = "email";
+    emailInput.placeholder = "User_email";
+
+    // Create a div element for the action buttons
+    const actionDiv = document.createElement("div");
+    actionDiv.className = "btn-modsup";
+
+  
+    // Create the buttons for the action cell
+    const modifyButton = document.createElement("button");
+    modifyButton.className = "btn-modif";
+    modifyButton.innerHTML = '<img src="./assets/icons/modif.svg" alt="">';
+  
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "btn-sup";
+    deleteButton.innerHTML = '<img src="./assets/icons/delete.svg" alt="">';
+  
+    // Append the input elements and buttons to their respective cells
+    nameCell.appendChild(nameInput);
+    emailCell.appendChild(emailInput);
+    // Append the buttons to the action div
+    actionDiv.appendChild(modifyButton);
+    actionDiv.appendChild(deleteButton);
+    actionCell.appendChild(actionDiv);
+
+  
+    // Append the cells to the new row
+    newRow.appendChild(nameCell);
+    newRow.appendChild(emailCell);
+    newRow.appendChild(actionCell);
+  
+    // Append the new row to the table body
+    tableBody.appendChild(newRow);
+  }
+
+
+
+
+  
+
+  function del_user() {
+    let delRow = document.querySelectorAll(".tabRow");
+    delRow[0].remove();
+    
+  }
+  
 
 
