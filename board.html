@@ -7,22 +7,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/styles/board.css">
     <link rel="stylesheet" href="./assets/styles/main.css">
     <title>Scrum board</title>
-    <link
-    rel="stylesheet"
-    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-  />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -45,166 +38,235 @@
         <div class="backlog flex-grow-1 d-flex">
             <aside id="aside">
                 <div class="aside_head">
-                  <div class="project_img"></div>
-                  <div class="project_info">
-                    <h5>Project 1</h5>
-                    <p>Software Project</p>
-                  </div>
+                    <div class="project_img"></div>
+                    <div class="project_info">
+                        <h5>Project 1</h5>
+                        <p>Software Project</p>
+                    </div>
                 </div>
                 <h6>PLANNING</h6>
                 <ul class="aside_pages">
-                  <li>
-                    <a href="./timer.html">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        role="presentation"
-                      >
-                        <path
-                          d="M6 2h10a3 3 0 010 6H6a3 3 0 110-6zm0 2a1 1 0 100 2h10a1 1 0 000-2H6zm4 5h8a3 3 0 010 6h-8a3 3 0 010-6zm0 2a1 1 0 000 2h8a1 1 0 000-2h-8zm-4 5h6a3 3 0 010 6H6a3 3 0 010-6zm0 2a1 1 0 000 2h6a1 1 0 000-2H6z"
-                          fill-rule="evenodd"
-                        ></path>
-                      </svg>
-                      <span>Timeline</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="./index.html">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        role="presentation"
-                      >
-                        <g>
-                          <path
-                            d="M5 19.002C5 19 17 19 17 19v-2.002C17 17 5 17 5 17v2.002zm-2-2.004C3 15.894 3.895 15 4.994 15h12.012c1.101 0 1.994.898 1.994 1.998v2.004A1.997 1.997 0 0117.006 21H4.994A1.998 1.998 0 013 19.002v-2.004z"
-                          ></path>
-                          <path d="M5 15h12v-2H5v2zm-2-4h16v6H3v-6z"></path>
-                          <path
-                            d="M7 11.002C7 11 19 11 19 11V8.998C19 9 7 9 7 9v2.002zM5 8.998C5 7.894 5.895 7 6.994 7h12.012C20.107 7 21 7.898 21 8.998v2.004A1.997 1.997 0 0119.006 13H6.994A1.998 1.998 0 015 11.002V8.998z"
-                          ></path>
-                          <path
-                            d="M5 5v2h12V5H5zm-2-.002C3 3.894 3.895 3 4.994 3h12.012C18.107 3 19 3.898 19 4.998V9H3V4.998z"
-                          ></path>
-                        </g>
-                      </svg>
-                      <span>Backlog</span>
-                    </a>
-                  </li>
-                  <li class="active">
-                    <a href="./board.html">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        role="presentation"
-                      >
-                        <g>
-                          <path
-                            d="M4 18h16.008C20 18 20 6 20 6H3.992C4 6 4 18 4 18zM2 5.994C2 4.893 2.898 4 3.99 4h16.02C21.108 4 22 4.895 22 5.994v12.012A1.997 1.997 0 0120.01 20H3.99A1.994 1.994 0 012 18.006V5.994z"
-                          ></path>
-                          <path d="M8 6v12h2V6zm6 0v12h2V6z"></path>
-                        </g>
-                      </svg>
-                      <span>Board</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="./settings.html">
-                      <i class="fa-solid fa-gear"></i>
-                      <span>Settings</span>
-                    </a>
-                  </li>
+                    <li>
+                        <a href="./timer.html">
+                            <svg width="24" height="24" viewBox="0 0 24 24" role="presentation">
+                                <path
+                                    d="M6 2h10a3 3 0 010 6H6a3 3 0 110-6zm0 2a1 1 0 100 2h10a1 1 0 000-2H6zm4 5h8a3 3 0 010 6h-8a3 3 0 010-6zm0 2a1 1 0 000 2h8a1 1 0 000-2h-8zm-4 5h6a3 3 0 010 6H6a3 3 0 010-6zm0 2a1 1 0 000 2h6a1 1 0 000-2H6z"
+                                    fill-rule="evenodd"></path>
+                            </svg>
+                            <span>Timeline</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./index.html">
+                            <svg width="24" height="24" viewBox="0 0 24 24" role="presentation">
+                                <g>
+                                    <path
+                                        d="M5 19.002C5 19 17 19 17 19v-2.002C17 17 5 17 5 17v2.002zm-2-2.004C3 15.894 3.895 15 4.994 15h12.012c1.101 0 1.994.898 1.994 1.998v2.004A1.997 1.997 0 0117.006 21H4.994A1.998 1.998 0 013 19.002v-2.004z">
+                                    </path>
+                                    <path d="M5 15h12v-2H5v2zm-2-4h16v6H3v-6z"></path>
+                                    <path
+                                        d="M7 11.002C7 11 19 11 19 11V8.998C19 9 7 9 7 9v2.002zM5 8.998C5 7.894 5.895 7 6.994 7h12.012C20.107 7 21 7.898 21 8.998v2.004A1.997 1.997 0 0119.006 13H6.994A1.998 1.998 0 015 11.002V8.998z">
+                                    </path>
+                                    <path
+                                        d="M5 5v2h12V5H5zm-2-.002C3 3.894 3.895 3 4.994 3h12.012C18.107 3 19 3.898 19 4.998V9H3V4.998z">
+                                    </path>
+                                </g>
+                            </svg>
+                            <span>Backlog</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="./board.html">
+                            <svg width="24" height="24" viewBox="0 0 24 24" role="presentation">
+                                <g>
+                                    <path
+                                        d="M4 18h16.008C20 18 20 6 20 6H3.992C4 6 4 18 4 18zM2 5.994C2 4.893 2.898 4 3.99 4h16.02C21.108 4 22 4.895 22 5.994v12.012A1.997 1.997 0 0120.01 20H3.99A1.994 1.994 0 012 18.006V5.994z">
+                                    </path>
+                                    <path d="M8 6v12h2V6zm6 0v12h2V6z"></path>
+                                </g>
+                            </svg>
+                            <span>Board</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./settings.html">
+                            <i class="fa-solid fa-gear"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
                 </ul>
                 <h6>Users</h6>
                 <div class="aside_users">
-                  <div class="user"></div>
-                  <div class="user"></div>
-                  <div class="user"></div>
+                    <div class="user"></div>
+                    <div class="user"></div>
+                    <div class="user"></div>
                 </div>
                 <p class="aside_footer">
-                  Vous faites partie d'un projet géré par l'équipe
+                    Vous faites partie d'un projet géré par l'équipe
                 </p>
-              </aside>
+            </aside>
 
             <main class="m-3">
                 <div class="container">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 fs-14">
-                          <li class="breadcrumb-item text-secondary">
-                            <a href="#">Projects</a>
-                          </li>
-                          <li class="breadcrumb-item active" aria-current="page">
-                            Project1
-                          </li>
+                            <li class="breadcrumb-item text-secondary">
+                                <a href="#">Projects</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Project1
+                            </li>
                         </ol>
-                      </nav>
-                    
+                    </nav>
+
                     <div class="d-flex justify-content-between">
                         <h3 class="fs-4 fw-semibold mt-1 mb-4">Sprint 1</h3>
                         <button type="button" class="btn custom-bg ">
-                            <span class="text-muted"  data-bs-toggle="modal" data-bs-target="#myModal2"><strong>Terminer le sprint</strong></span>
+                            <span class="text-muted" data-bs-toggle="modal" data-bs-target="#myModal2"><strong>Terminer
+                                    le sprint</strong></span>
                         </button>
-                      
+
                     </div>
-                    <div class="row mt-2">
+                    <div class="row mt-2 " style="width: 1200px;">
+
+                        <!---------------------------------------------------------------A FAIRE----------------------------------------------------------->
                         <div class="col-sm-3">
-                            <div class="arrive p-3"  ondragover="over(event)" ondrop="drop(event)"   id="sortable1">
-                                <div class="h6 text-muted">A faire</div>
-                                <div class="depart p-2 rounded bg-white  mt-2" draggable="true" ondragstart="start(event)"
+                            <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)" id="sortable1">
+                                <div class="d-flex justify-content-between">
+                                    <div class="title h6 text-muted" contentEditable="true">A faire</div>
+                                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                                </div>
+                                <div class="zone p-2 rounded bg-white  mt-2" draggable="true" ondragstart="start(event)"
                                     id="task1">
-                                    <div class="d-flex justify-content-start align-items-end">
-                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur latifa
-                                            adipisicing elit. Impedit, maiores?</p>
-                                        <div>
-                                            <div class="circle">
-                                                <p>AA</p>
-                                            </div>
+                                    <div class="userstory-options">
+                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                            contentEditable="true">
+                                            gérer les utilisateurs de l'application </p>
+
+                                        <img src="./assets/icons/modif.svg" class="modifier-story"
+                                            onclick="editParagraph(this)">
+                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
+                                            alt="supprimer user story" class="supprimer-story"
+                                            onclick="supprimerStory(this)">
+
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="scrum-board-story ">
+                                            <img
+                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb mb-0 fs-14">
+                                                    <li class="breadcrumb-item text-secondary">
+                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
+                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
+                                                    </li>
+
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                        <div class="circle">
+                                            <p>AA</p>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
+                                <div class="zone p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
                                     id="task2">
-                                    <div class="d-flex justify-content-start align-items-end">
-                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur
-                                            adipisicing elit. Impedit, maiores?</p>
-                                        <div>
-                                            <div class="circle">
-                                                <p>AA</p>
-                                            </div>
+                                    <div class="userstory-options">
+                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                            contentEditable="true">
+                                            Gérer les utilisateurs</p>
+
+                                        <img src="./assets/icons/modif.svg" class="modifier-story"
+                                            onclick="editParagraph(this)">
+                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
+                                            alt="supprimer user story" class="supprimer-story"
+                                            onclick="supprimerStory(this)">
+
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="scrum-board-story ">
+                                            <img
+                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb mb-0 fs-8">
+                                                    <li class="breadcrumb-item text-secondary ">
+                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
+                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
+                                                    </li>
+
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                        <div class="circle">
+                                            <p>AA</p>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
+                                <div class="zone p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
                                     id="task3">
-                                    <div class="d-flex justify-content-start align-items-end">
-                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur
-                                            adipisicing elit. Impedit, maiores?</p>
-                                        <div>
-                                            <div class="circle">
-                                                <p>AA</p>
-                                            </div>
+                                    <div class="userstory-options">
+                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                            contentEditable="true">
+                                            Drag and Drop in Board Page</p>
+                                        <img src="./assets/icons/modif.svg" class="modifier-story"
+                                            onclick="editParagraph(this)">
+                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
+                                            alt="supprimer user story" class="supprimer-story"
+                                            onclick="supprimerStory(this)">
+
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="scrum-board-story ">
+                                            <img
+                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb mb-0 fs-14">
+                                                    <li class="breadcrumb-item text-secondary">
+                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
+                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
+                                                    </li>
+
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                        <div class="circle">
+                                            <p>AA</p>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
+                                <div class="zone p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
                                     id="task4">
-                                    <div class="d-flex justify-content-start align-items-end">
-                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur
-                                            adipisicing elit. Impedit, maiores?</p>
-                                        <div>
-                                            <div class="circle">
-                                                <p>AA</p>
-                                            </div>
+                                    <div class="userstory-options">
+                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                            contentEditable="true">
+                                            Documentation globale en java Script </p>
+
+                                        <img src="./assets/icons/modif.svg" class="modifier-story"
+                                            onclick="editParagraph(this)">
+                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
+                                            alt="supprimer user story" class="supprimer-story"
+                                            onclick="supprimerStory(this)">
+
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="scrum-board-story ">
+                                            <img
+                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb mb-0 fs-14">
+                                                    <li class="breadcrumb-item text-secondary">
+                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
+                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
+                                                    </li>
+
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                        <div class="circle">
+                                            <p>AA</p>
                                         </div>
 
                                     </div>
@@ -212,76 +274,168 @@
                             </div>
 
                         </div>
+
+                        <!---------------------------------------------------------------EN COURS ------------------------------------------------------------>
                         <div class="col-sm-3">
-                            <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)"  id="sortable2">
-                                <div class="h6 text-muted">En cours</div>
-                                <div class="p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
+                            <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)" id="sortable2">
+                                <div class="d-flex justify-content-between">
+                                    <div class="title h6 text-muted" contentEditable="true">En cours</div>
+                                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                                </div>
+                                <div class="zone p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
                                     id="task5">
-                                    <div class="d-flex justify-content-start align-items-end">
-                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur
-                                            adipisicing elit. Impedit, maiores?</p>
-                                        <div>
-                                            <div class="circle">
-                                                <p>AA</p>
-                                            </div>
+                                    <div class="userstory-options">
+                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                            contentEditable="true">
+                                            Contact page maquette for ( Desktop, Tablette, mobile ) </p>
+
+                                        <img src="./assets/icons/modif.svg" class="modifier-story"
+                                            onclick="editParagraph(this)">
+                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
+                                            alt="supprimer user story" class="supprimer-story"
+                                            onclick="supprimerStory(this)">
+
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="scrum-board-story ">
+                                            <img
+                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb mb-0 fs-14">
+                                                    <li class="breadcrumb-item text-secondary">
+                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
+                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
+                                                    </li>
+
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                        <div class="circle">
+                                            <p>AA</p>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
-                                    id="task6">
-                                    <div class="d-flex justify-content-start align-items-end">
-                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur
-                                            adipisicing elit. Impedit, maiores?</p>
-                                        <div>
-                                            <div class="circle">
-                                                <p>AA</p>
-                                            </div>
+                                <div class="zone p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
+                                    id="task5">
+                                    <div class="userstory-options">
+                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                            contentEditable="true">
+                                            Contact page with HTML / CSS</p>
+
+                                        <img src="./assets/icons/modif.svg" class="modifier-story"
+                                            onclick="editParagraph(this)">
+                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
+                                            alt="supprimer user story" class="supprimer-story"
+                                            onclick="supprimerStory(this)">
+
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="scrum-board-story ">
+                                            <img
+                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb mb-0 fs-14">
+                                                    <li class="breadcrumb-item text-secondary">
+                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
+                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
+                                                    </li>
+
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                        <div class="circle">
+                                            <p>AA</p>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
-                                    id="task7">
-                                    <div class="d-flex justify-content-start align-items-end">
-                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur
-                                            adipisicing elit. Impedit, maiores?</p>
-                                        <div>
-                                            <div class="circle">
-                                                <p>AA</p>
-                                            </div>
+                                <div class="zone p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
+                                    id="task5">
+                                    <div class="userstory-options">
+                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                            contentEditable="true">
+                                            Prix total pour sidebar et page du panier d'achat </p>
+
+                                        <img src="./assets/icons/modif.svg" class="modifier-story"
+                                            onclick="editParagraph(this)">
+                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
+                                            alt="supprimer user story" class="supprimer-story"
+                                            onclick="supprimerStory(this)">
+
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="scrum-board-story ">
+                                            <img
+                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb mb-0 fs-14">
+                                                    <li class="breadcrumb-item text-secondary">
+                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
+                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
+                                                    </li>
+
+                                                </ol>
+                                            </nav>
                                         </div>
+                                        <div class="circle">
+                                            <p>AA</p>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-----------------------------------------------------------FINI---------------------------------------------------------------------->
                         <div class="col-sm-3">
-                            <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)" id="inProgressColumn1">
-                                <div class="h6 text-muted">Fini</div>
-                                <div class="p-2 rounded bg-white" draggable="true" ondragstart="start(event)"
-                                id="task8">
-                                    <div class="d-flex justify-content-start align-items-end">
-                                        <p data-bs-toggle="modal" data-bs-target="#myModal">Lorem ipsum dolor sit amet
-                                            consectetur
-                                            adipisicing elit. Impedit, maiores?</p>
-                                        <div>
-                                            <div class="circle">
-                                                <p>AA</p>
-                                            </div>
+                            <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)"
+                                id="inProgressColumn1">
+                                <div class="d-flex justify-content-between">
+                                    <div class="title h6 text-muted" contentEditable="true">Fini</div>
+                                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                                </div>
+                                <div class="zone p-2 rounded bg-white" draggable="true" ondragstart="start(event)"
+                                    id="task8">
+                                    <div class="userstory-options">
+                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                            contentEditable="true">
+                                            Rendre toutes les pages réactives </p>
+
+                                        <img src="./assets/icons/modif.svg" class="modifier-story"
+                                            onclick="editParagraph(this)">
+                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
+                                            alt="supprimer user story" class="supprimer-story"
+                                            onclick="supprimerStory(this)">
+
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="scrum-board-story ">
+                                            <img
+                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb mb-0 fs-14">
+                                                    <li class="breadcrumb-item text-secondary">
+                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
+                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
+                                                    </li>
+
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                        <div class="circle">
+                                            <p>AA</p>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
 
                 </div>
-
+                <!--------------------------------------------------------MODAL---------------------------------------------------->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
@@ -299,9 +453,25 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row m-1">
-                                    <div class="col-sm-6 border">
-                                        <div class="h5">Description</div>
-                                        <p>En tant qu'utilisateur, je souhaite consulter les détails d'une user story en
+                                    <div class="col-sm-6 ">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="h5">Description</div>
+                                            <div class="d-flex">
+                                                <select id="fontSize" onchange="changeFontSize()">
+                                                    <option>Size</option>
+                                                    <option value="12px">12px</option>
+                                                    <option value="16px">16px</option>
+                                                    <option value="20px">20px</option>
+                                                </select>
+                                                <div>
+                                                    <label for="fontColor"></label>
+                                                    <input type="color" value="#8B919A" id="fontColor"
+                                                        onchange="changeFontColor()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p id="textArea">En tant qu'utilisateur, je souhaite consulter les détails d'une
+                                            user story en
                                             cliquant
                                             sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
                                         </p>
@@ -317,7 +487,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-sm-6 border ">
-                                        <div class="h5">Détails</div>
+                                        <div class="h5 border-bottom">Détails</div>
                                         <div class="d-flex justify-content-between">
                                             <p>Responsable</p>
                                             <div class="d-flex">
@@ -349,60 +519,80 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sauvegarder les modifications</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sauvegarder les
+                                    modifications</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <img src="./assets/icons/modale-sprint.png" alt="image de background">
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <img src="./assets/icons/modale-sprint.png" alt="image de background">
+                            </div>
+                            <div class="modal-body">
+                                <h5>Terminer Tableau sprint 1</h5>
+                                <p>Ce sprint comprend :</p>
+                                <ul class="list-group m-4">
+                                    <li>0 ticket terminé</li>
+                                    <li>3 tickets ouverts</li>
+                                </ul>
+                                <p>Déplacer les tickets ouverts vers</p>
+                                <select class="select-input" name="pets">
+                                    <option>Nouveau sprint</option>
+                                    <option>Backlog</option>
+                                </select>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terminer le
+                                    sprint</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
+                            </div>
+
                         </div>
-                        <div class="modal-body">
-                            <h5>Terminer Tableau sprint 1</h5>
-                            <p>Ce sprint comprend :</p>
-                            <ul  class="list-group m-4">
-                                <li>0 ticket terminé</li>
-                                <li>3 tickets ouverts</li>
-                            </ul>
-                            <p>Déplacer les tickets ouverts vers</p>
-                            <select class="select-input" name="pets">
-                                <option>Nouveau sprint</option>
-                                <option>Backlog</option>
-                            </select>
-                               
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terminer le sprint</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
-                        </div>
-                        
                     </div>
                 </div>
-            </div>
+                <div class="modal fade" id="modal2">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal 2</h5>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Contenu du deuxième modal</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </main>
         </div>
     </div>
     </div>
-   
+
     <script>
-         $(function () {
-        $(".arrive").sortable({
-          connectWith: ".arrive",
-          helper: "clone", 
-          placeholder: "ui-state-highlight", 
+        $(function () {
+            $(".arrive").sortable({
+                connectWith: ".arrive",
+                helper: "clone",
+                placeholder: "ui-state-highlight",
+            });
+
+            $(".arrive").disableSelection();
         });
 
-        $(".arrive").disableSelection(); 
-      });
-      </script>
-       <script src="./scripts/main.js"></script>
-    
+    </script>
+    <script src="./scripts/main.js"></script>
+
 </body>
 
 </html>

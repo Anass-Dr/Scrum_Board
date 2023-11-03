@@ -9,8 +9,8 @@
 }
 
 .circle {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-color: #63A6FF;
     border-radius: 50%;
     display: flex;
@@ -28,6 +28,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #0055C5;
+    font-size: 15px;
 }
 
 .custom-bg {
@@ -69,3 +70,37 @@
  .select-input {
     width: 100%;
  }
+ .userstory-options {
+    display: flex;
+    flex-wrap: wrap;
+ }
+
+ .modifier-story{
+    display: none;
+ }
+
+ .zone:hover .modifier-story {
+    display: block;
+  }
+
+  .supprimer-story{
+    display: none;
+  }
+
+  .zone:hover .supprimer-story {
+    display: block;
+  }
+  .paragraphe{
+    margin-bottom: 0;
+  }
+  .scrum-board-story{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .breadcrumb-scrum  {
+    font-size: 13px;
+  }
+
