@@ -62,7 +62,7 @@ function loadWeeksTd() {
   while (currDate.getTime() !== endDate.getTime()) {
       if (i == 100) break;
       
-      weekdaysTr.insertAdjacentHTML(
+      weekdaysTr?.insertAdjacentHTML(
           "beforeend",
           `<td>${currDate.getDate()}</td>`
     );
@@ -83,88 +83,78 @@ const controlVue = (e) => {
         weekdaysTr.classList.add("hidden");
     } else if (value == "weeks") {
         weekdaysTr.classList.remove("hidden");
-    }
-};
-
-/***  settings PAGE STYLES    ***/
-/***  settings PAGE STYLES    ***/
-
-/***  INFO_SECTION STYLES    ***/
-
-
-
-
-
-
-/***  USER_SECTION STYLES    ***/
-
-
-function add_user() {
-    // Get the table body element
-    const tableBody = document.querySelector("table tbody");
-
-  
-    // Create a new row element
-    const newRow = document.createElement("tr");
-  
-    // Create the cells for the new row
-    const nameCell = document.createElement("th");
-    const emailCell = document.createElement("th");
-    const actionCell = document.createElement("th");
-  
-    // Create input elements for the name and email cells
-    const nameInput = document.createElement("input");
-    nameInput.className = "inputtab";
-    nameInput.type = "text";
-    nameInput.placeholder = "User_name";
-  
-    const emailInput = document.createElement("input");
-    emailInput.className = "inputtab";
-    emailInput.type = "email";
-    emailInput.placeholder = "User_email";
-
-    // Create a div element for the action buttons
-    const actionDiv = document.createElement("div");
-    actionDiv.className = "btn-modsup";
-
-  
-    // Create the buttons for the action cell
-    const modifyButton = document.createElement("button");
-    modifyButton.className = "btn-modif";
-    modifyButton.innerHTML = '<img src="./assets/icons/modif.svg" alt="">';
-  
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "btn-sup";
-    deleteButton.innerHTML = '<img src="./assets/icons/delete.svg" alt="">';
-  
-    // Append the input elements and buttons to their respective cells
-    nameCell.appendChild(nameInput);
-    emailCell.appendChild(emailInput);
-    // Append the buttons to the action div
-    actionDiv.appendChild(modifyButton);
-    actionDiv.appendChild(deleteButton);
-    actionCell.appendChild(actionDiv);
-
-  
-    // Append the cells to the new row
-    newRow.appendChild(nameCell);
-    newRow.appendChild(emailCell);
-    newRow.appendChild(actionCell);
-  
-    // Append the new row to the table body
-    tableBody.appendChild(newRow);
-  }
-
-
-
-
-  
-
-  function del_user() {
-    let delRow = document.querySelectorAll(".tabRow");
-    delRow[0].remove();
+      }
+    };
     
+    /***  settings PAGE STYLES    ***/
+    /***  settings PAGE STYLES    ***/
+    
+    /***  INFO_SECTION STYLES    ***/
+    
+    
+    
+    
+    
+    
+    /***  USER_SECTION STYLES    ***/
+    
+    
+
+   function add_user() {
+      const rowHTML = `
+      <tr class="tabRow">
+      <th ><input class="inputtab" type="text" placeholder="User_name"></th>
+      <th ><input class="inputtab" type="email" placeholder="User_email"></th>
+      <th>
+        <div class="btn-modsup">
+          <button class="btn-modif">
+            <img src="./assets/icons/modif.svg" alt="">
+          </button>
+          <button class="btn-sup"> 
+            <img src="./assets/icons/delete.svg" alt="">
+          </button>
+
+        </div>
+      </th>
+    </tr>
+      `
+      document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML)
+
+      buttonEvent();
   }
+  buttonEvent();
+
+    
+  function buttonEvent(){
+    
+    let tabRow = document.querySelectorAll(".tabRow");
+    let delButton = document.querySelectorAll(".btn-sup");
+    for(let i = 0 ; i < delButton.length ; i++){
+      delButton[i].addEventListener("click", function(){
+        console.log(tabRow)
+        tabRow[i].remove();
+        
+      })
+    }
+  }
+
+
+
+
+
+
+
+//     let delButton = document.querySelectorAll(".btn-sup");
+
+// for (let i = 0; i < delButton.length; i++) {
+//   delButton[i].addEventListener("click", function () {
+//     // Get the parent row of the clicked button and remove it
+//     const rowToDelete = delButton[i].closest("tr");
+//     rowToDelete.remove();
+//   });
+// }
+
+  
   
 
 

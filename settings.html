@@ -111,6 +111,12 @@
                 <span>Settings</span>
               </a>
             </li>
+            <li style="border: none;">
+              <ul class="sous-titre">
+                 <li class="details">Details</li>
+                 <li class="users active">Users</li>
+              </ul>
+            </li>
           </ul>
           <h6>Users</h6>
           <div class="aside_users">
@@ -122,53 +128,56 @@
             Vous faites partie d'un projet géré par l'équipe
           </p>
         </aside>
-        <main class="flex-fill d-flex flex-column ps-40 pt-4">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 fs-14">
-              <li class="breadcrumb-item text-secondary">
-                <a href="#">Projects</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">
-                Project1
-              </li>
-            </ol>
-          </nav>
-          <div class="setting_add">
-            <h3 class="fs-4 fw-semibold mt-1 mb-4">Parametres</h3>
-            <button class="settings_add_pers" onclick="add_user()"><span>Ajouter des personnes</span></button>
+        <section class="user_section flex-fill">
+          <main class="d-flex flex-column ps-40 pt-4">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0 fs-14">
+                <li class="breadcrumb-item text-secondary">
+                  <a href="#">Projects</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Project1
+                </li>
+              </ol>
+            </nav>
+            <div class="setting_add">
+              <h3 class="fs-4 fw-semibold mt-1 mb-4">Parametres</h3>
+              <button class="settings_add_pers" onclick="add_user()"><span>Ajouter des personnes</span></button>
+  
+            </div>
+  
+              <table class="table w-80">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+  
+  
+                <tbody>
+                  <tr class="tabRow">
+                    <th ><input class="inputtab" type="text" placeholder="User_name" value="user1" disabled></th>
+                    <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
+                    <th>
+                      <div class="btn-modsup">
+                        <button class="btn-modif">
+                          <img src="./assets/icons/modif.svg" alt="">
+                        </button>
+                        <button class="btn-sup"> 
+                          <img src="./assets/icons/delete.svg" alt="">
+                        </button>
+  
+                      </div>
+                    </th>
+                  </tr>
+  
+                </tbody>
+              </table>
+        </main>
 
-          </div>
-
-            <table class="table w-80">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-
-
-              <tbody>
-                <tr class="tabRow">
-                  <th ><input class="inputtab" type="text" placeholder="User_name" disabled></th>
-                  <th ><input class="inputtab" type="email" placeholder="User_email" disabled></th>
-                  <th>
-                    <div class="btn-modsup">
-                      <button class="btn-modif">
-                        <img src="./assets/icons/modif.svg" alt="">
-                      </button>
-                      <button class="btn-sup" onclick="del_user()"> 
-                        <img src="./assets/icons/delete.svg" alt="">
-                      </button>
-
-                    </div>
-                  </th>
-                </tr>
-
-              </tbody>
-            </table>
-      </main>
+        </section>
       </div>
 
 
