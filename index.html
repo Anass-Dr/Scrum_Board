@@ -232,43 +232,7 @@
                 >
                   <div id="container" class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="sortable1">
                     <!-- user storie 1 -->
-                    <div
-                    id="userStorie"
-                      class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
-                      draggable="true" 
-                    >
-                      <div
-                        class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
-                      >
-                      <h6>
-                        <img
-                          src="./assets/icons/userstori_icon.svg"
-                          alt=""
-                          class="mx-2"
-                        />
-                      </h6>
-                        <h6 class="pt-2 px-2 m-0">to do list</h6>
-                        <h6 class="pt-2 px-2 m-0">- 1</h6>
-                        <p class="pt-2 m-0">user storie</p>
-                      </div>
-                      <div
-                        class="option_userstorie d-flex align-items-center w-25"
-                      >
-                        <select
-                          name="select_userstorie"
-                          class="select_userstorie w-25 h-75 px-2 align-items-center justify-content-center rounded"
-                        >
-                          <option value="to do" class="todo">to do</option>
-                          <option value="doing">doing</option>
-                          <option value="done" class="done text-success">
-                            done
-                          </option>
-                        </select>
-                        <span class="deadline_userstorie mx-4 h-25">-</span>
-
-                        <div class="user"><span>AA</span></div>
-                      </div>
-                    </div>
+                  
                     <!-- modal de user storie -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                     aria-hidden="true">
@@ -345,9 +309,8 @@
                     
               </div>
               <button
-                      class="add_ticket d-flex align-items-center px-4 pb-2"
-                      onclick="createNewDiv()"
-                    >
+                      class="add_ticket d-flex align-items-center px-4 pb-2" id="add_backlog_btn"
+                      onclick="createNewDiv()">
                       <img src="./assets/icons/Add-ticket.svg" alt="" />
                       <h6 class="m-0 mx-2">Creer un ticket</h6>
                     </button>
@@ -388,43 +351,7 @@
                 >
                 <div id="container2" class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="sortable1">
                   <!-- user storie 1 -->
-                  <div
-                  id="userStorie"
-                    class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
-                    draggable="true" 
-                  >
-                    <div
-                      class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
-                    >
-                    <h6>
-                      <img
-                        src="./assets/icons/userstori_icon.svg"
-                        alt=""
-                        class="mx-2"
-                      />
-                    </h6>
-                      <h6 class="pt-2 px-2 m-0">to do list</h6>
-                      <h6 class="pt-2 px-2 m-0">- 1</h6>
-                      <p class="pt-2 m-0">user storie</p>
-                    </div>
-                    <div
-                      class="option_userstorie d-flex align-items-center w-25"
-                    >
-                      <select
-                        name="select_userstorie"
-                        class="select_userstorie w-25 h-75 px-2 align-items-center justify-content-center rounded"
-                      >
-                        <option value="to do" class="todo">to do</option>
-                        <option value="doing">doing</option>
-                        <option value="done" class="done text-success">
-                          done
-                        </option>
-                      </select>
-                      <span class="deadline_userstorie mx-4 h-25">-</span>
-
-                      <div class="user"><span>AA</span></div>
-                    </div>
-                  </div>
+      
                   <!-- modal de user storie -->
                   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                   aria-hidden="true">
@@ -501,7 +428,7 @@
                   
             </div>
             <button
-                    class="add_ticket d-flex align-items-center px-4 pb-2"
+                    class="add_ticket d-flex align-items-center px-4 pb-2" id="add_backlog_btn2"
                     onclick="createNewDiv2()"
                   >
                     <img src="./assets/icons/Add-ticket.svg" alt="" />

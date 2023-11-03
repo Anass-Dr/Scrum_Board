@@ -16,12 +16,12 @@ main {
   height: 35px;
 }
 .users_storise_sprint {
-  display: none;
   background-color: white;
   height: 45px;
 }
 .users_storise_sprint:hover {
   background-color: rgba(99, 166, 255, 0.2);
+  cursor: pointer;
 }
 #accordion {
   width: 98%;
@@ -196,4 +196,16 @@ option {
 }
 .title_userstori_sprint {
   color: #757575;
+}
+.create_name_userstorie {
+  margin-left: 20px;
+  width: 98%;
+  border: 1px solid #8b8c89;
+  border-radius: 4px;
+  padding: 5px;
+  padding-left: 20px;
+  outline: none;
+}
+.create_name_userstorie:focus {
+  border: 3px solid #0c63e4;
 }
