@@ -1,6 +1,6 @@
 "use strict";
 
-/***  Backlog PAGE STYLES    ***/
+/***  Backlog PAGE SCRIPT    ***/
 
 // generate user HTML
 function generate_user_html(title) {
