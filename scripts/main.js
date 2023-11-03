@@ -1,6 +1,6 @@
 "use strict";
 
-/***  Board PAGE STYLES    ***/
+/***  Backlog PAGE STYLES    ***/
 
 // generate user HTML
 function generate_user_html(title) {
