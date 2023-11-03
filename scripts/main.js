@@ -267,4 +267,5 @@ function createNewDiv2() {
       button2.disabled = false;
     }
   });
+}
   
