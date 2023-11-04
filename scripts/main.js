@@ -62,7 +62,7 @@ const sprints = [
 ];
 
 /***  TIMELINE PAGE SCRIPT    ***/
-loadTableRows();
+if (window.location.pathname == "/timer.html") loadTableRows();
 
 // Get Start & End point for table tr :
 function getStartPoint(d, m, y) {
