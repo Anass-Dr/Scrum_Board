@@ -111,7 +111,7 @@ function loadMonthsTd(startDate, endDate) {
   const currDate = new Date(startDate.getTime());
 
   for (let i = 0; i < monthsNumber; i++) {
-    monthsTr.insertAdjacentHTML(
+    monthsTr?.insertAdjacentHTML(
       "beforeend",
       `<th scope="col" colspan="7">${timelineMonths[getMonth(currDate)]}</th>`
     );
@@ -126,7 +126,7 @@ function loadWeeksTd(startDate, endDate) {
   while (currDate.getTime() !== endDate.getTime()) {
     if (i == 100) break;
 
-    weekdaysTr.insertAdjacentHTML(
+    weekdaysTr?.insertAdjacentHTML(
       "beforeend",
       `<td>${currDate.getDate()}</td>`
     );
@@ -146,7 +146,7 @@ function loadSprints(startDate) {
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
-    sprintsTr.insertAdjacentHTML(
+    sprintsTr?.insertAdjacentHTML(
       "beforeend",
       `
         <td colspan="${colspan}"></td>
@@ -166,7 +166,7 @@ function loadUserStories(startDate) {
     const sprintStart = new Date(sprint.start);
     sprint.user_stories?.forEach((story) => {
       const colspan = (sprintStart - startDate) / 86400000;
-      tbody.insertAdjacentHTML(
+      tbody?.insertAdjacentHTML(
         "beforeend",
         `
         <tr class="user_story_tr">
@@ -196,10 +196,10 @@ const controlVue = (e) => {
   );
   e.target.classList.add("active");
   if (value == "months") {
-    weekdaysTr.classList.add("hidden");
+    weekdaysTr?.classList.add("hidden");
     storiesTr.forEach((story) => story.classList.add("hidden"));
   } else if (value == "weeks") {
-    weekdaysTr.classList.remove("hidden");
+    weekdaysTr?.classList.remove("hidden");
     storiesTr.forEach((story) => story.classList.remove("hidden"));
   }
 };
