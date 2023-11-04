@@ -304,21 +304,8 @@ function createNewDiv2() {
       button2.disabled = false;
     }
   });
-}
 
-const value = e.target.textContent.toLowerCase();
-    
-    Object.values(e.currentTarget.children).forEach((item) =>
-    item.classList.remove("active")
-    );
-    e.target.classList.add("active");
-    if (value == "months") {
-        weekdaysTr.classList.add("hidden");
-    } else if (value == "weeks") {
-        weekdaysTr.classList.remove("hidden");
-      }
-    };
-    
+  
     /***  settings PAGE STYLES    ***/
     /***  settings PAGE STYLES    ***/
     
