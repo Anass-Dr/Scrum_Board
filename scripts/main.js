@@ -98,7 +98,7 @@ function getMonth(startDate) {
 function loadTableRows() {
   const startDate = getStartPoint(21, 10, 2023);
   const endDate = getEndPoint(9, 12, 2023);
-  loadWeeksTd(startDate, endDate);  
+  loadWeeksTd(startDate, endDate);
   loadMonthsTd(startDate, endDate);
   loadSprints(startDate);
   loadUserStories(startDate);
@@ -111,7 +111,7 @@ function loadMonthsTd(startDate, endDate) {
   const currDate = new Date(startDate.getTime());
 
   for (let i = 0; i < monthsNumber; i++) {
-    monthsTr?.insertAdjacentHTML(
+    monthsTr.insertAdjacentHTML(
       "beforeend",
       `<th scope="col" colspan="7">${timelineMonths[getMonth(currDate)]}</th>`
     );
@@ -126,7 +126,7 @@ function loadWeeksTd(startDate, endDate) {
   while (currDate.getTime() !== endDate.getTime()) {
     if (i == 100) break;
 
-    weekdaysTr?.insertAdjacentHTML(
+    weekdaysTr.insertAdjacentHTML(
       "beforeend",
       `<td>${currDate.getDate()}</td>`
     );
@@ -146,7 +146,7 @@ function loadSprints(startDate) {
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
-    sprintsTr?.insertAdjacentHTML(
+    sprintsTr.insertAdjacentHTML(
       "beforeend",
       `
         <td colspan="${colspan}"></td>
@@ -166,7 +166,7 @@ function loadUserStories(startDate) {
     const sprintStart = new Date(sprint.start);
     sprint.user_stories?.forEach((story) => {
       const colspan = (sprintStart - startDate) / 86400000;
-      tbody?.insertAdjacentHTML(
+      tbody.insertAdjacentHTML(
         "beforeend",
         `
         <tr class="user_story_tr">
@@ -196,13 +196,14 @@ const controlVue = (e) => {
   );
   e.target.classList.add("active");
   if (value == "months") {
-    weekdaysTr?.classList.add("hidden");
+    weekdaysTr.classList.add("hidden");
     storiesTr.forEach((story) => story.classList.add("hidden"));
   } else if (value == "weeks") {
-    weekdaysTr?.classList.remove("hidden");
+    weekdaysTr.classList.remove("hidden");
     storiesTr.forEach((story) => story.classList.remove("hidden"));
   }
 };
+
 
 /***  Backlog PAGE SCRIPT    ***/
 
@@ -304,4 +305,68 @@ function createNewDiv2() {
     }
   });
 }
-  
+
+const value = e.target.textContent.toLowerCase();
+    
+    Object.values(e.currentTarget.children).forEach((item) =>
+    item.classList.remove("active")
+    );
+    e.target.classList.add("active");
+    if (value == "months") {
+        weekdaysTr.classList.add("hidden");
+    } else if (value == "weeks") {
+        weekdaysTr.classList.remove("hidden");
+      }
+    };
+    
+    /***  settings PAGE STYLES    ***/
+    /***  settings PAGE STYLES    ***/
+    
+    /***  INFO_SECTION STYLES    ***/
+    
+    
+    
+    
+    
+    
+    /***  USER_SECTION STYLES    ***/
+    
+    
+
+   function add_user() {
+      const rowHTML = `
+      <tr class="tabRow">
+      <th ><input class="inputtab" type="text" placeholder="User_name"></th>
+      <th ><input class="inputtab" type="email" placeholder="User_email"></th>
+      <th>
+        <div class="btn-modsup">
+          <button class="btn-modif">
+            <img src="./assets/icons/modif.svg" alt="">
+          </button>
+          <button class="btn-sup"> 
+            <img src="./assets/icons/delete.svg" alt="">
+          </button>
+
+        </div>
+      </th>
+    </tr>
+      `
+      document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML)
+
+      buttonEvent();
+  }
+  buttonEvent();
+
+    
+  function buttonEvent(){
+    
+    let tabRow = document.querySelectorAll(".tabRow");
+    let delButton = document.querySelectorAll(".btn-sup");
+    for(let i = 0 ; i < delButton.length ; i++){
+      delButton[i].addEventListener("click", function(){
+        console.log(tabRow)
+        tabRow[i].remove();
+        
+      })
+    }
+  }
