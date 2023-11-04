@@ -204,7 +204,6 @@ const controlVue = (e) => {
   }
 };
 
-
 /***  Backlog PAGE SCRIPT    ***/
 
 // generate user HTML
@@ -277,7 +276,7 @@ function createNewDiv() {
     }
   });
 }
-  
+
 // backloge
 const container2 = document.getElementById("container2");
 
@@ -304,24 +303,17 @@ function createNewDiv2() {
       button2.disabled = false;
     }
   });
+}
 
-  
-    /***  settings PAGE STYLES    ***/
-    /***  settings PAGE STYLES    ***/
-    
-    /***  INFO_SECTION STYLES    ***/
-    
-    
-    
-    
-    
-    
-    /***  USER_SECTION STYLES    ***/
-    
-    
+/***  settings PAGE STYLES    ***/
+/***  settings PAGE STYLES    ***/
 
-   function add_user() {
-      const rowHTML = `
+/***  INFO_SECTION STYLES    ***/
+
+/***  USER_SECTION STYLES    ***/
+
+function add_user() {
+  const rowHTML = `
       <tr class="tabRow">
       <th ><input class="inputtab" type="text" placeholder="User_name"></th>
       <th ><input class="inputtab" type="email" placeholder="User_email"></th>
@@ -337,23 +329,22 @@ function createNewDiv2() {
         </div>
       </th>
     </tr>
-      `
-      document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML)
+      `;
+  document
+    .querySelector("table tbody")
+    .insertAdjacentHTML("beforeend", rowHTML);
 
-      buttonEvent();
-  }
   buttonEvent();
+}
+buttonEvent();
 
-    
-  function buttonEvent(){
-    
-    let tabRow = document.querySelectorAll(".tabRow");
-    let delButton = document.querySelectorAll(".btn-sup");
-    for(let i = 0 ; i < delButton.length ; i++){
-      delButton[i].addEventListener("click", function(){
-        console.log(tabRow)
-        tabRow[i].remove();
-        
-      })
-    }
+function buttonEvent() {
+  let tabRow = document.querySelectorAll(".tabRow");
+  let delButton = document.querySelectorAll(".btn-sup");
+  for (let i = 0; i < delButton.length; i++) {
+    delButton[i].addEventListener("click", function () {
+      console.log(tabRow);
+      tabRow[i].remove();
+    });
   }
+}
