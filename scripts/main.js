@@ -1,9 +1,11 @@
 "use strict";
 
 // GLOBAL VARIABLES :
+const onlyMonthsTr = document.getElementById("only-months");
 const monthsTr = document.getElementById("months");
 const weekdaysTr = document.getElementById("weekdays");
-const sprintsTr = document.getElementById("sprints-tr");
+const sprintsWTr = document.getElementById("sprints-tr_vw");
+const sprintsMTr = document.getElementById("sprints-tr_vm");
 const tbody = document.querySelector("tbody");
 const timelineMonths = [
   "JAN",
@@ -62,7 +64,8 @@ const sprints = [
 ];
 
 /***  TIMELINE PAGE SCRIPT    ***/
-loadTableRows();
+if (window.location.pathname.split("/").slice(-1) == "timer.html")
+  loadTableRows();
 
 // Get Start & End point for table tr :
 function getStartPoint(d, m, y) {
@@ -97,12 +100,13 @@ function getMonth(startDate) {
 // Load table rows :
 function loadTableRows() {
   const startDate = getStartPoint(21, 10, 2023);
-  const endDate = getEndPoint(9, 12, 2023);
+  const endDate = getEndPoint(9, 11, 2023);
   loadWeeksTd(startDate, endDate);
   loadMonthsTd(startDate, endDate);
-  loadSprints(startDate);
+  loadSprintsWV(startDate);
+  loadSprintsMV(startDate);
   loadUserStories(startDate);
-  loadYearMonths();
+  loadYearMonths(startDate, endDate);
 }
 
 // load table td for months :
@@ -111,12 +115,25 @@ function loadMonthsTd(startDate, endDate) {
   const currDate = new Date(startDate.getTime());
 
   for (let i = 0; i < monthsNumber; i++) {
-    monthsTr.insertAdjacentHTML(
+    monthsTr?.insertAdjacentHTML(
       "beforeend",
-      `<th scope="col" colspan="7">${timelineMonths[getMonth(currDate)]}</th>`
+      `<th scope="col" colspan="7">${
+        timelineMonths[getMonth(currDate) + 1]
+      }</th>`
     );
     currDate.setDate(currDate.getDate() + 7);
   }
+}
+
+// Load Only Months :
+function loadYearMonths(startDate, endDate) {
+  for (let i = startDate.getMonth(); i <= endDate.getMonth(); i++)
+    onlyMonthsTr?.insertAdjacentHTML(
+      "beforeend",
+      `<th scope="col" colspan="7">${timelineMonths[i]}</th>`
+    );
+
+  onlyMonthsTr?.classList.add("hidden");
 }
 
 // load table td for weekdays :
@@ -126,7 +143,7 @@ function loadWeeksTd(startDate, endDate) {
   while (currDate.getTime() !== endDate.getTime()) {
     if (i == 100) break;
 
-    weekdaysTr.insertAdjacentHTML(
+    weekdaysTr?.insertAdjacentHTML(
       "beforeend",
       `<td>${currDate.getDate()}</td>`
     );
@@ -135,8 +152,8 @@ function loadWeeksTd(startDate, endDate) {
   }
 }
 
-// load Sprints in table :
-function loadSprints(startDate) {
+// load Sprints in table for Weeks vue :
+function loadSprintsWV(startDate) {
   sprints.forEach((sprint, indx) => {
     let colspan;
     if (indx == 0) colspan = (new Date(sprint.start) - startDate) / 86400000;
@@ -146,7 +163,7 @@ function loadSprints(startDate) {
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
-    sprintsTr.insertAdjacentHTML(
+    sprintsWTr?.insertAdjacentHTML(
       "beforeend",
       `
         <td colspan="${colspan}"></td>
@@ -160,13 +177,42 @@ function loadSprints(startDate) {
   });
 }
 
+// load Sprints in table for Weeks vue :
+function loadSprintsMV(startDate) {
+  sprints.forEach((sprint, indx) => {
+    const sprintStartDate = new Date(sprint.start);
+    let colspan, nDays;
+    if (indx == 0) {
+      nDays = sprintStartDate.getDate();
+    } else {
+      const endDate = new Date(sprints[indx - 1].start);
+      endDate.setDate(endDate.getDate() + sprints[indx - 1].duration);
+      nDays = (sprintStartDate - endDate) / 86400000;
+    }
+
+    colspan = (nDays * 7) / 28;
+    sprintsMTr?.insertAdjacentHTML(
+      "beforeend",
+      `
+        <td colspan="${Math.round(colspan)}"></td>
+        <td colspan="${Math.round((sprint.duration * 7) / 30)}" class="sprints">
+          <span class="d-block bg-sprint1 rounded-3 fs-14 text-primary">
+            ${sprint.name}
+          </span>
+        </td>
+        `
+    );
+  });
+  sprintsMTr?.classList.add("hidden");
+}
+
 // load User Stories in Table :
 function loadUserStories(startDate) {
   sprints.forEach((sprint) => {
     const sprintStart = new Date(sprint.start);
     sprint.user_stories?.forEach((story) => {
       const colspan = (sprintStart - startDate) / 86400000;
-      tbody.insertAdjacentHTML(
+      tbody?.insertAdjacentHTML(
         "beforeend",
         `
         <tr class="user_story_tr">
@@ -183,9 +229,6 @@ function loadUserStories(startDate) {
   });
 }
 
-// Load all Months :
-function loadYearMonths() {}
-
 // change vue :
 const controlVue = (e) => {
   const value = e.target.textContent.toLowerCase();
@@ -196,10 +239,18 @@ const controlVue = (e) => {
   );
   e.target.classList.add("active");
   if (value == "months") {
-    weekdaysTr.classList.add("hidden");
+    onlyMonthsTr?.classList.remove("hidden");
+    sprintsMTr.classList.remove("hidden");
+    sprintsWTr.classList.add("hidden");
+    monthsTr?.classList.add("hidden");
+    weekdaysTr?.classList.add("hidden");
     storiesTr.forEach((story) => story.classList.add("hidden"));
   } else if (value == "weeks") {
-    weekdaysTr.classList.remove("hidden");
+    onlyMonthsTr?.classList.add("hidden");
+    sprintsMTr.classList.add("hidden");
+    sprintsWTr.classList.remove("hidden");
+    monthsTr?.classList.remove("hidden");
+    weekdaysTr?.classList.remove("hidden");
     storiesTr.forEach((story) => story.classList.remove("hidden"));
   }
 };
