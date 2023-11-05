@@ -209,3 +209,8 @@ option {
 .create_name_userstorie:focus {
   border: 3px solid #0c63e4;
 }
+.account_ticket,
+.account_ticket_sprint {
+  font-size: 18px;
+  color: #6da5f8;
+}
