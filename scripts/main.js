@@ -207,7 +207,7 @@ const controlVue = (e) => {
 
 /***  Backlog PAGE SCRIPT    ***/
 
-// generate user HTML
+// generate user-stories HTML
 function generate_user_html(title) {
   const htmluser = ` <div
   id="userStorie"
@@ -256,7 +256,7 @@ const inputHtml = `  <input type="text" class="create_name_userstorie" id="creat
 function account_tickets_sprint() {
   const numberTicketsprint = document.querySelector(".account_ticket_sprint");
   NumberTicket_sprint++;
-  numberTicketsprint.innerText = `${NumberTicket_sprint} -ticket`;
+  numberTicketsprint.innerText = `${NumberTicket_sprint} - ticket`;
 }
 const container1 = document.getElementById("container");
 let NumberTicket_sprint = 0;
@@ -280,7 +280,7 @@ function createNewDiv() {
       );
 
       create_name_userstorie.remove();
-
+      account_tickets_sprint();
       button.disabled = false;
     }
   });
@@ -290,7 +290,7 @@ function createNewDiv() {
 function account_tickets_backlog() {
   const numberTicketbacklog = document.querySelector(".account_ticket");
   NumberTicket_backlog++;
-  numberTicketbacklog.innerText = `${NumberTicket_backlog} -ticket`;
+  numberTicketbacklog.innerText = `${NumberTicket_backlog} - ticket`;
 }
 
 const container2 = document.getElementById("container2");
