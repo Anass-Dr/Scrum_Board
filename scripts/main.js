@@ -376,3 +376,38 @@ function filterContent(searchTerm) {
 window.addEventListener('load', function () {
   filterContent('');
 });
+
+
+     // Variables pour stocker l'ID du paragraphe actuellement édité
+     let currentParagraphId;
+    
+     // Fonction pour afficher la modale au clic sur un paragraphe
+     function showParagraphModal() {
+         currentParagraphId = this.getAttribute('data-paragraph-id');
+         const targetModal = document.getElementById('myModal');
+         const editableContent = targetModal.querySelector('#editableContent');
+         const saveChangesButton = targetModal.querySelector('#saveChanges');
+         const paragraphContent = this.getAttribute('data-paragraph-content');
+ 
+         // Remplir la zone de texte avec le contenu du paragraphe
+         editableContent.value = paragraphContent;
+ 
+         // Action de sauvegarde des modifications
+         saveChangesButton.removeEventListener('click', saveChanges);
+         saveChangesButton.addEventListener('click', saveChanges);
+ 
+         targetModal.style.display = 'block';
+     }
+ 
+     // Fonction pour sauvegarder les modifications
+     function saveChanges() {
+         const newContent = document.getElementById('editableContent').value;
+         document.querySelector(`[data-paragraph-id="${currentParagraphId}"]`).setAttribute('data-paragraph-content', newContent);
+         document.getElementById('myModal').style.display = 'none';
+     }
+ 
+     // Attacher le gestionnaire d'événement aux paragraphes
+     const clickableParagraphs = document.querySelectorAll('.clickable-paragraph');
+     clickableParagraphs.forEach(function(paragraph) {
+         paragraph.addEventListener('click', showParagraphModal);
+     });

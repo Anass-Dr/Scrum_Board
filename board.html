@@ -141,7 +141,8 @@
                                 <div class="zone p-2 rounded bg-white  mt-2" draggable="true" ondragstart="start(event)"
                                     id="task1">
                                     <div class="userstory-options">
-                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                        <p class="clickable-paragraph" data-paragraph-id="1"
+                                        data-paragraph-content="Contenu du paragraphe 1" 
                                             contentEditable="true">
                                             gérer les utilisateurs de l'application </p>
 
@@ -175,8 +176,8 @@
                                 <div class="zone p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
                                     id="task2">
                                     <div class="userstory-options">
-                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
-                                            contentEditable="true">
+                                        <p  class="clickable-paragraph" data-paragraph-id="2"
+                                            data-paragraph-content="Contenu du paragraphe 2" contentEditable="true">
                                             Gérer les utilisateurs</p>
 
                                         <img src="./assets/icons/modif.svg" class="modifier-story"
@@ -209,7 +210,8 @@
                                 <div class="zone p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
                                     id="task3">
                                     <div class="userstory-options">
-                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
+                                        <p class="clickable-paragraph" data-paragraph-id="3"
+                                        data-paragraph-content="Contenu du paragraphe 3" 
                                             contentEditable="true">
                                             Drag and Drop in Board Page</p>
                                         <img src="./assets/icons/modif.svg" class="modifier-story"
@@ -438,7 +440,7 @@
 
                 </div>
                 <!--------------------------------------------------------MODAL---------------------------------------------------->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -472,21 +474,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p id="textArea">En tant qu'utilisateur, je souhaite consulter les détails d'une
-                                            user story en
-                                            cliquant
-                                            sur une carte, ce qui ouvrira un modal affichant sa Critères d'acceptation.
-                                        </p>
-                                        <p>Acceptance Critirias :</p>
-                                        <ul class="list-group m-4">
-                                            <li>Sprint Div ( create, remove, update )</li>
-                                            <li>Backlog Div</li>
-                                            <li>When I click on Add user story button a Modal Pop up</li>
-                                            <li>I can add new user story in the backlog ( Titre, Description, Sprint
-                                                Associed )
-                                            </li>
-                                            <li>I can modify and remove any user story</li>
-                                        </ul>
+         
+                                        <div class="form-group">
+                                            <label for="editableContent"></label>
+                                            <textarea class="form-control" id="editableContent"></textarea>
+                                        </div>
                                     </div>
                                     <div class="col-sm-6 border ">
                                         <div class="h5 border-bottom">Détails</div>
@@ -521,7 +513,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sauvegarder les
+                                <button type="button" class="btn btn-primary" id="saveChanges">Sauvegarder les
                                     modifications</button>
                             </div>
                         </div>
@@ -563,8 +555,9 @@
         </div>
     </div>
     </div>
-
+   
     <script>
+        
         $(function () {
             $(".arrive").sortable({
                 connectWith: ".arrive",
