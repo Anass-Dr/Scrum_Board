@@ -61,6 +61,20 @@ const sprints = [
   },
 ];
 
+/***  ASIDE SCRIPT    ***/
+document.getElementById("aside_icon").addEventListener("click", controlAside);
+
+function controlAside(e) {
+  console.log(e);
+  const tabAsideItems = document.querySelectorAll(".aside_tablet_hidden");
+  const mobAsideItems = document.querySelectorAll(".aside_mobile_hidden");
+
+  [...tabAsideItems, ...mobAsideItems].forEach((item) => {
+    item.setAttribute("style", "display: block !important");
+  });
+  e.target.style.transform = "translateX(50%) rotate(180deg)";
+}
+
 /***  TIMELINE PAGE SCRIPT    ***/
 if (window.location.pathname.split("/").slice(-1) == "timer.html")
   loadTableRows();
