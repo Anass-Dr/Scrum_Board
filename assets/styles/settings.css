@@ -27,6 +27,23 @@
 .settings_add_pers span{
     font-weight: bold;
 }
+.btn-add{
+    display: none;
+    padding: 1px 6px;
+    border-radius: 5px;
+    color: white;
+    background-color: #056df5;
+    border: none;
+}
+/* .tabRow th:nth-child(1) input:focus{
+    background-color: aquamarine;
+
+
+
+} */
+.btn-add span{
+    font-weight: 600;
+}
 .btn-modif, .btn-sup{
     border: none;
     background-color: white;
@@ -34,14 +51,14 @@
 .btn-modsup{
     display: flex;
     justify-content: space-between;
-    width: 60%;
+    width: 80%;
 }
-.details , .users {
+/* .details , .users {
     padding: 0px;
     height: 2rem;
     width: 100px;
     margin-left : 45%;
     display: flex;
     align-items: center;
-  }
+  } */
 
