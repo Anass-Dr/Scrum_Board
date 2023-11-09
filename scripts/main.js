@@ -1,68 +1,5 @@
 "use strict";
 
-// Local Storage :
-function loadData() {
-  const backlog = [
-    {
-      name: "",
-      status: "To Do",
-      description: "",
-      start: "01-01-2000",
-      duration: 1,
-    },
-  ];
-
-  const sprints = [
-    {
-      name: "Sprint 1",
-      duration: 7,
-      start: "2023-10-21",
-      isStarted: true,
-      user_stories: [
-        {
-          name: "User 1",
-          status: 0,
-          description: "",
-          start: "01-01-2000",
-          duration: 1,
-        },
-        {
-          name: "User 2",
-          status: 0,
-          description: "",
-          start: "01-01-2000",
-          duration: 1,
-        },
-        {
-          name: "User 3",
-          status: 0,
-          description: "",
-          start: "01-01-2000",
-          duration: 1,
-        },
-      ],
-    },
-    {
-      name: "Sprint 2",
-      duration: 8,
-      start: "2023-11-1",
-      isStarted: false,
-    },
-  ];
-
-  const users = [
-    {
-      name: "user 1",
-      email: "email",
-    },
-  ];
-
-  localStorage.setItem("backlog", JSON.stringify(backlog));
-  localStorage.setItem("allSprints", JSON.stringify(sprints));
-  localStorage.setItem("users", JSON.stringify(users));
-}
-if (!localStorage.getItem("users")) loadData();
-
 // GLOBAL VARIABLES :
 const monthsTr = document.getElementById("months");
 const weekdaysTr = document.getElementById("weekdays");
@@ -82,6 +19,11 @@ const timelineMonths = [
   "NOV",
   "DEC",
 ];
+const projectData = {
+  backlog: JSON.parse(localStorage.getItem("backlog")) || [],
+  sprints: JSON.parse(localStorage.getItem("sprints")) || [],
+  users: JSON.parse(localStorage.getItem("users")) || [],
+};
 
 /***  ASIDE SCRIPT    ***/
 document.getElementById("aside_icon").addEventListener("click", controlAside);
@@ -174,12 +116,14 @@ function loadWeeksTd(startDate, endDate) {
 
 // load Sprints in table :
 function loadSprints(startDate) {
-  sprints.forEach((sprint, indx) => {
+  projectData.sprints.forEach((sprint, indx) => {
     let colspan;
     if (indx == 0) colspan = (new Date(sprint.start) - startDate) / 86400000;
     else {
-      const endDate = new Date(sprints[indx - 1].start);
-      endDate.setDate(endDate.getDate() + sprints[indx - 1].duration);
+      const endDate = new Date(projectData.sprints[indx - 1].start);
+      endDate.setDate(
+        endDate.getDate() + projectData.sprints[indx - 1].duration
+      );
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
@@ -199,7 +143,7 @@ function loadSprints(startDate) {
 
 // load User Stories in Table :
 function loadUserStories(startDate) {
-  sprints.forEach((sprint) => {
+  projectData.sprints.forEach((sprint) => {
     const sprintStart = new Date(sprint.start);
     sprint.user_stories?.forEach((story) => {
       const colspan = (sprintStart - startDate) / 86400000;
