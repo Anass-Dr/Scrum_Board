@@ -21,49 +21,15 @@ const timelineMonths = [
   "NOV",
   "DEC",
 ];
-
-const sprints = [
-  {
-    name: "Sprint 1",
-    duration: 7,
-    start: "2023-10-21",
-    user_stories: [
-      {
-        name: "User Story 1",
-        status: "To Do",
-        duration: 2,
-      },
-      {
-        name: "User Story 2",
-        status: "To Do",
-        duration: 1,
-      },
-      {
-        name: "User Story 3",
-        status: "To Do",
-        duration: 1,
-      },
-      {
-        name: "User Story 4",
-        status: "To Do",
-        duration: 1,
-      },
-      {
-        name: "User Story 5",
-        status: "To Do",
-        duration: 2,
-        user_stories: [],
-      },
-    ],
-  },
-  {
-    name: "Sprint 2",
-    duration: 8,
-    start: "2023-11-1",
-  },
-];
+const projectData = {
+  backlog: JSON.parse(localStorage.getItem("backlog")) || [],
+  sprints: JSON.parse(localStorage.getItem("sprints")) || [],
+  users: JSON.parse(localStorage.getItem("users")) || [],
+};
 
 /***  TIMELINE PAGE SCRIPT    ***/
+
+// Check if the current page is timer.html :
 if (window.location.pathname.split("/").slice(-1) == "timer.html")
   loadTableRows();
 
@@ -97,7 +63,7 @@ function getMonth(startDate) {
     : currDate.getMonth() - 1;
 }
 
-// Load table rows :
+// Load all table rows :
 function loadTableRows() {
   const startDate = getStartPoint(21, 10, 2023);
   const endDate = getEndPoint(9, 11, 2023);
@@ -154,12 +120,14 @@ function loadWeeksTd(startDate, endDate) {
 
 // load Sprints in table for Weeks vue :
 function loadSprintsWV(startDate) {
-  sprints.forEach((sprint, indx) => {
+  projectData.sprints.forEach((sprint, indx) => {
     let colspan;
     if (indx == 0) colspan = (new Date(sprint.start) - startDate) / 86400000;
     else {
-      const endDate = new Date(sprints[indx - 1].start);
-      endDate.setDate(endDate.getDate() + sprints[indx - 1].duration);
+      const endDate = new Date(projectData.sprints[indx - 1].start);
+      endDate.setDate(
+        endDate.getDate() + projectData.sprints[indx - 1].duration
+      );
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
@@ -179,14 +147,16 @@ function loadSprintsWV(startDate) {
 
 // load Sprints in table for Weeks vue :
 function loadSprintsMV(startDate) {
-  sprints.forEach((sprint, indx) => {
+  projectData.sprints.forEach((sprint, indx) => {
     const sprintStartDate = new Date(sprint.start);
     let colspan, nDays;
     if (indx == 0) {
       nDays = sprintStartDate.getDate();
     } else {
-      const endDate = new Date(sprints[indx - 1].start);
-      endDate.setDate(endDate.getDate() + sprints[indx - 1].duration);
+      const endDate = new Date(projectData.sprints[indx - 1].start);
+      endDate.setDate(
+        endDate.getDate() + projectData.sprints[indx - 1].duration
+      );
       nDays = (sprintStartDate - endDate) / 86400000;
     }
 
@@ -208,7 +178,7 @@ function loadSprintsMV(startDate) {
 
 // load User Stories in Table :
 function loadUserStories(startDate) {
-  sprints.forEach((sprint) => {
+  projectData.sprints.forEach((sprint) => {
     const sprintStart = new Date(sprint.start);
     sprint.user_stories?.forEach((story) => {
       const colspan = (sprintStart - startDate) / 86400000;
