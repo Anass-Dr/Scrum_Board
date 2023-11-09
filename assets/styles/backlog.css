@@ -95,7 +95,10 @@ option {
 }
 
 .select_userstorie {
-  background-color: rgb(218, 227, 229, 0.5);
+  background-color: #e6e6e6;
+  height: 20px;
+  width: 120px;
+  cursor: pointer;
 }
 .done {
   width: 90%;
@@ -104,10 +107,7 @@ option {
   font-weight: 900;
 }
 .todo {
-  color: #0c63e4;
-  width: 90%;
-  border-radius: 20px;
-  background-color: #92b4f4;
+  width: 100%;
   font-weight: 900;
 }
 .Statut_de_la_tache {
@@ -208,4 +208,104 @@ option {
 }
 .create_name_userstorie:focus {
   border: 3px solid #0c63e4;
+}
+.account_ticket,
+.account_ticket_sprint {
+  font-size: 18px;
+  color: #6da5f8;
+}
+.status_storie {
+  display: none;
+  position: relative;
+  top: 20px;
+  right: 31%;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 20px #cfcdcd;
+  width: 200px;
+}
+
+.todo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.hv {
+  display: none;
+  width: 5px;
+  height: 30px;
+  background-color: #0c63e4;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.todo:nth-child(1):hover {
+  .hv {
+    display: block;
+  }
+  background-color: #cfcdcd;
+}
+.todo:nth-child(2):hover {
+  .hv {
+    display: block;
+  }
+  background-color: #cfcdcd;
+}
+.todo:nth-child(3):hover {
+  .hv {
+    display: block;
+  }
+  background-color: #cfcdcd;
+}
+.fill {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+.arrodown {
+  height: 20px;
+  padding-left: 10px;
+}
+.arrowup {
+  height: 20px;
+  position: relative;
+  display: none;
+  align-items: center;
+  border: none;
+  right: 32px;
+  height: 20px;
+  background-color: none;
+  cursor: pointer;
+}
+.all_status {
+  display: flex;
+  justify-content: space-around;
+}
+
+#Discription_userstorie {
+  resize: none;
+  border: 1px solid #8b8c89;
+  width: 100%;
+  height: 200px;
+  outline: none;
+}
+#Discription_userstorie:focus {
+  border: 2px solid #0c63e4;
+  box-shadow: 1px 1px 10px 2px rgb(109, 165, 248, 0.5);
+}
+.duration {
+  margin: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.duration_userstorie {
+  width: 100px;
+  border: 1px solid #8b8c89;
+  outline: none;
+}
+.duration_userstorie:focus {
+  border: 2px solid #0c63e4;
+  box-shadow: 1px 1px 10px 2px rgb(109, 165, 248, 0.5);
 }
