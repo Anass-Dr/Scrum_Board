@@ -292,8 +292,10 @@
 
             $(".arrive").disableSelection();
         });
-
     </script>
+
+    <script src="./scripts/main.js"></script>
+
     <script>
         let user_stories = [
             {
@@ -398,18 +400,18 @@
 
 
         function supprimerStory(button) {
-    var userStory = button.closest('.zone');
-    if (userStory) {
-        // Obtenez l'index de la carte (sprint)
-        const index = Array.from(document.querySelectorAll('.zone')).indexOf(userStory);
-        if (index !== -1) {
-            // Supprimez l'élément du tableau user_stories
-            user_stories.splice(index, 1);
-            userStory.remove();
-            saveSprintsToLocalStorage();
+            var userStory = button.closest('.zone');
+            if (userStory) {
+                // Obtenez l'index de la carte (sprint)
+                const index = Array.from(document.querySelectorAll('.zone')).indexOf(userStory);
+                if (index !== -1) {
+                    // Supprimez l'élément du tableau user_stories
+                    user_stories.splice(index, 1);
+                    userStory.remove();
+                    saveSprintsToLocalStorage();
+                }
+            }
         }
-    }
-}
 
 
         function editParagraph(button) {
@@ -530,6 +532,7 @@
         }
 
     </script>
+
 
 
 </body>
