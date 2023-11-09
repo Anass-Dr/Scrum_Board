@@ -1,5 +1,68 @@
 "use strict";
 
+// Local Storage :
+function loadData() {
+  const backlog = [
+    {
+      name: "",
+      status: "To Do",
+      description: "",
+      start: "01-01-2000",
+      duration: 1,
+    },
+  ];
+
+  const sprints = [
+    {
+      name: "Sprint 1",
+      duration: 7,
+      start: "2023-10-21",
+      isStarted: true,
+      user_stories: [
+        {
+          name: "User 1",
+          status: 0,
+          description: "",
+          start: "01-01-2000",
+          duration: 1,
+        },
+        {
+          name: "User 2",
+          status: 0,
+          description: "",
+          start: "01-01-2000",
+          duration: 1,
+        },
+        {
+          name: "User 3",
+          status: 0,
+          description: "",
+          start: "01-01-2000",
+          duration: 1,
+        },
+      ],
+    },
+    {
+      name: "Sprint 2",
+      duration: 8,
+      start: "2023-11-1",
+      isStarted: false,
+    },
+  ];
+
+  const users = [
+    {
+      name: "user 1",
+      email: "email",
+    },
+  ];
+
+  localStorage.setItem("backlog", JSON.stringify(backlog));
+  localStorage.setItem("allSprints", JSON.stringify(sprints));
+  localStorage.setItem("users", JSON.stringify(users));
+}
+if (!localStorage.getItem("users")) loadData();
+
 // GLOBAL VARIABLES :
 const monthsTr = document.getElementById("months");
 const weekdaysTr = document.getElementById("weekdays");
@@ -18,47 +81,6 @@ const timelineMonths = [
   "OCT",
   "NOV",
   "DEC",
-];
-
-const sprints = [
-  {
-    name: "Sprint 1",
-    duration: 7,
-    start: "2023-10-21",
-    user_stories: [
-      {
-        name: "User Story 1",
-        status: "To Do",
-        duration: 2,
-      },
-      {
-        name: "User Story 2",
-        status: "To Do",
-        duration: 1,
-      },
-      {
-        name: "User Story 3",
-        status: "To Do",
-        duration: 1,
-      },
-      {
-        name: "User Story 4",
-        status: "To Do",
-        duration: 1,
-      },
-      {
-        name: "User Story 5",
-        status: "To Do",
-        duration: 2,
-        user_stories: [],
-      },
-    ],
-  },
-  {
-    name: "Sprint 2",
-    duration: 8,
-    start: "2023-11-1",
-  },
 ];
 
 /***  ASIDE SCRIPT    ***/
