@@ -424,37 +424,74 @@ function choix(event) {
 
 function add_user() {
   const rowHTML = `
-      <tr class="tabRow">
-      <th ><input class="inputtab" type="text" placeholder="User_name"></th>
-      <th ><input class="inputtab" type="email" placeholder="User_email"></th>
-      <th>
-        <div class="btn-modsup">
-          <button class="btn-modif">
-            <img src="./assets/icons/modif.svg" alt="">
-          </button>
-          <button class="btn-sup"> 
-            <img src="./assets/icons/delete.svg" alt="">
-          </button>
+  <tr class="tabRow" onclick="actionEvent(event)" >
+  <th ><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)" ></th>
+  <th ><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)" ></th>
+  <th>
+    <div class="btn-modsup">
+      <button class="btn-modif" onclick="actionEvent(event)">
+        <img src="./assets/icons/modif.svg" alt="" >
+      </button>
+      <button class="btn-sup"> 
+        <img src="./assets/icons/delete.svg" alt="">
+      </button>
+      <button class="btn-add" type="submit" onclick="actionEvent(event)"><span>add</span></button>
+    
+  </div>
+ </th>
+</tr>
+  `
+  document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML)
 
-        </div>
-      </th>
-    </tr>
-      `;
-  document
-    .querySelector("table tbody")
-    .insertAdjacentHTML("beforeend", rowHTML);
-
-  buttonEvent();
+  // buttonEvent();
 }
-buttonEvent();
 
-function buttonEvent() {
-  let tabRow = document.querySelectorAll(".tabRow");
-  let delButton = document.querySelectorAll(".btn-sup");
-  for (let i = 0; i < delButton.length; i++) {
-    delButton[i].addEventListener("click", function () {
-      console.log(tabRow);
-      tabRow[i].remove();
-    });
-  }
+function actionEvent(event){
+// deleteUser
+if(event.target.parentElement.classList.contains("btn-sup")){
+  event.currentTarget.remove();
+
 }
+// savaInfo
+else if(event.target.parentElement.classList.contains("btn-add")){
+  let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab")
+  saveInfo[0].disabled = true
+  saveInfo[1].disabled = true
+  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "none"
+
+
+}
+//modifInfo
+else if(event.target.parentElement.classList.contains("btn-modif")){
+  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block"
+  let modifInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab")
+  modifInfo[0].disabled = false
+  modifInfo[1].disabled = false
+  
+}
+// editUser
+// if(event.target.parentElement.classList.contains("btn-modif")){
+//   event.currentTarget.closest(".tabRow").querySelector(".inputtab").disabled = false;
+// }
+
+//saveEdit(disibeled input)
+
+
+
+}
+function addButtonEvent(event){
+event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block"
+
+}
+  
+
+  
+  
+  
+
+
+
+  
+  
+
+
