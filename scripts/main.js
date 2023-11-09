@@ -485,7 +485,7 @@ event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display =
 }
   
 
-/***  Board PAGE SCRIPT    ***/
+  /***  Board PAGE SCRIPT    ***/
   
 // Changer la taille du texte
 function changeFontSize() {
@@ -544,3 +544,11 @@ window.addEventListener('load', function () {
 filterContent('');
 });
 
+
+  
+  
+
+
+
+  
+  
