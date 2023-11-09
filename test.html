@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/styles/board.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./assets/styles/">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="cartes row mt-2" style="width: 1250px" id="content">
+        <!-- "A FAIRE" Card Section -->
+        <div class="carte col-sm-3">
+            <div class="arrive p-3"  id="sortable1">
+                <div class="sticky-choice d-flex justify-content-between">
+                    <div class="title h6 text-muted" contentEditable="true">A faire</div>
+                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                </div>
+            </div>
+        </div>
+        <!----------en cours-->
+        <div class="carte col-sm-3">
+            <div class="arrive p-3"  id="sortable2">
+                <div class="sticky-choice d-flex justify-content-between">
+                    <div class="title h6 text-muted" contentEditable="true">En cours</div>
+                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                </div>
+            </div>
+        </div>
+        <!-----------fini-->
+        <div class="carte col-sm-3">
+            <div class="arrive p-3"  id="sortable3">
+                <div class="sticky-choice d-flex justify-content-between">
+                    <div class="title h6 text-muted" contentEditable="true">Fini</div>
+                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let sprints = [
+            {
+                name: 'Sprint 1',
+                description: 'Description du Sprint 1'
+            },
+            {
+                name: 'Sprint 2',
+                description: 'Description du Sprint 2'
+            },
+            {
+                name: 'Sprint 3',
+                description: 'Description du Sprint 3'
+            }
+        ];
+
+        // Function to create a sprint card
+        function createSprintCard(sprint) {
+    const card = document.createElement('div');
+    card.className = 'zone p-2 rounded bg-white mt-2';
+    card.draggable = true;
+    card.setAttribute('ondragstart', 'start(event)');
+
+    const paragraph = document.createElement('p');
+    paragraph.className = 'clickable-paragraph';
+    paragraph.contentEditable = true;
+    paragraph.textContent = sprint.name;
+
+    const editIcon = document.createElement('img');
+    editIcon.src = './assets/icons/modif.svg';
+    editIcon.className = 'modifier-story';
+    editIcon.onclick = function() {
+        editParagraph(this);
+    };
+
+    const deleteIcon = document.createElement('img');
+    deleteIcon.src = './assets/icons/supprimer-story.png';
+    deleteIcon.className = 'supprimer-story';
+    deleteIcon.onclick = function() {
+        supprimerStory(this);
+    };
+
+    const additionalInfo = document.createElement('div');
+    additionalInfo.className = 'd-flex justify-content-between';
+    
+    const scrumBoardStory = document.createElement('div');
+    scrumBoardStory.className = 'scrum-board-story';
+    
+    const avatarImg = document.createElement('img');
+    avatarImg.src = 'https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium';
+    
+    const breadcrumbNav = document.createElement('nav');
+    breadcrumbNav.setAttribute('aria-label', 'breadcrumb');
+    
+    const breadcrumbOl = document.createElement('ol');
+    breadcrumbOl.className = 'breadcrumb mb-0 fs-14';
+    
+    const breadcrumbLi = document.createElement('li');
+    breadcrumbLi.className = 'breadcrumb-item text-secondary';
+    
+    const breadcrumbLink = document.createElement('a');
+    breadcrumbLink.className = 'breadcrumb-scrum';
+    breadcrumbLink.textContent = 'SCRUMBOARD-1';
+    breadcrumbLink.setAttribute('data-bs-toggle', 'modal');
+    breadcrumbLink.setAttribute('data-bs-target', '#myModal');
+    
+    const circleDiv = document.createElement('div');
+    circleDiv.className = 'circle';
+    circleDiv.innerHTML = '<p>AA</p>';
+
+    additionalInfo.appendChild(scrumBoardStory);
+    scrumBoardStory.appendChild(avatarImg);
+    scrumBoardStory.appendChild(breadcrumbNav);
+    breadcrumbNav.appendChild(breadcrumbOl);
+    breadcrumbOl.appendChild(breadcrumbLi);
+    breadcrumbLi.appendChild(breadcrumbLink);
+    additionalInfo.appendChild(circleDiv);
+
+    card.appendChild(paragraph);
+    card.appendChild(editIcon);
+    card.appendChild(deleteIcon);
+    card.appendChild(additionalInfo);
+
+    return card;
+}
+
+
+function supprimerStory(button) {
+    var userStory = button.closest('.zone');
+    if (userStory) {
+        // Obtenez l'index de la carte (sprint)
+        const index = Array.from(userStory.parentNode.children).indexOf(userStory);
+        if (index !== -1) {
+            sprints.splice(index, 1);
+            userStory.remove();
+            saveSprintsToLocalStorage(); // Sauvegarder les sprints mis à jour dans le local storage
+        }
+    }
+}
+
+function editParagraph(button) {
+    var parentParagraph = button.previousElementSibling;
+    parentParagraph.focus();
+    saveSprintsToLocalStorage();
+}
+
+
+
+        // Function to load sprints from local storage
+        function loadSprintsFromLocalStorage() {
+            const sprintsJSON = localStorage.getItem('sprints');
+            return sprintsJSON ? JSON.parse(sprintsJSON) : [];
+        }
+
+        // Function to save sprints to local storage
+        function saveSprintsToLocalStorage() {
+            localStorage.setItem('sprints', JSON.stringify(sprints));
+        }
+
+        // Function to load sprints to "A FAIRE" section
+        function loadSprintsToAfaire() {
+            const todoSection = document.querySelector('.carte .arrive');
+            sprints.forEach((sprint) => {
+                const card = createSprintCard(sprint);
+                todoSection.appendChild(card);
+            });
+            saveSprintsToLocalStorage(); // Sauvegarder les sprints dans le local storage
+        }
+
+        // Call the function to load sprints into "A FAIRE" section
+        window.addEventListener('load', loadSprintsToAfaire);
+
+
+
+    </script>
+     <script>
+        
+        $(function () {
+            $(".arrive").sortable({
+                connectWith: ".arrive",
+                helper: "clone",
+                placeholder: "ui-state-highlight",
+            });
+
+            $(".arrive").disableSelection();
+        });
+
+    </script>
+    
+</body>
+</html>

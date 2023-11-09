@@ -311,13 +311,13 @@ function createNewDiv2() {
 // Changer la taille du texte
 function changeFontSize() {
     var fontSize = document.getElementById("fontSize").value;
-    document.getElementById("textArea").style.fontSize = fontSize;
+    document.getElementById("editableContent").style.fontSize = fontSize;
 }
 
 // Changer la couleur du texte
 function changeFontColor() {
     var fontColor = document.getElementById("fontColor").value;
-    document.getElementById("textArea").style.color = fontColor;
+    document.getElementById("editableContent").style.color = fontColor;
 }
 
 
@@ -335,17 +335,7 @@ function changeFontColor() {
 
 
 
- function editParagraph(button) {
-    var parentParagraph = button.previousElementSibling;
-    parentParagraph.focus();
-}
-
-function supprimerStory(button) {
-    var userStory = button.closest('.zone');
-    if (userStory) {
-        userStory.remove();
-    }
-}
+ 
 //Code de barre de recherche sur un element dans les trois carte
 
 const searchInput = document.getElementById('searchInput');
@@ -411,3 +401,6 @@ window.addEventListener('load', function () {
      clickableParagraphs.forEach(function(paragraph) {
          paragraph.addEventListener('click', showParagraphModal);
      });
+
+
+       

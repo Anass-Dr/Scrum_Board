@@ -131,433 +131,157 @@
                     </div>
                     <div class="cartes row mt-2 " style="width: 1250px;" id="content">
 
-                        <!---------------------------------------------------------------A FAIRE----------------------------------------------------------->
+                        <!-- "A FAIRE" Card Section -->
                         <div class="carte col-sm-3">
-                            <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)" id="sortable1">
+                            <div class="arrive p-3" id="sortable1">
                                 <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">A faire</div>
                                     <img src="./assets/icons/modif.svg" class="modifierButton">
                                 </div>
-                                <div class="zone p-2 rounded bg-white  mt-2" draggable="true" ondragstart="start(event)"
-                                    id="task1">
-                                    <div class="userstory-options">
-                                        <p class="clickable-paragraph" data-paragraph-id="1"
-                                        data-paragraph-content="Contenu du paragraphe 1" 
-                                            contentEditable="true">
-                                            gérer les utilisateurs de l'application </p>
-
-                                        <img src="./assets/icons/modif.svg" class="modifier-story"
-                                            onclick="editParagraph(this)">
-                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
-                                            alt="supprimer user story" class="supprimer-story"
-                                            onclick="supprimerStory(this)">
-
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="scrum-board-story ">
-                                            <img
-                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb mb-0 fs-14">
-                                                    <li class="breadcrumb-item text-secondary">
-                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
-                                                    </li>
-
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                        <div class="circle">
-                                            <p>AA</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="zone p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
-                                    id="task2">
-                                    <div class="userstory-options">
-                                        <p  class="clickable-paragraph" data-paragraph-id="2"
-                                            data-paragraph-content="Contenu du paragraphe 2" contentEditable="true">
-                                            Gérer les utilisateurs</p>
-
-                                        <img src="./assets/icons/modif.svg" class="modifier-story"
-                                            onclick="editParagraph(this)">
-                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
-                                            alt="supprimer user story" class="supprimer-story"
-                                            onclick="supprimerStory(this)">
-
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="scrum-board-story ">
-                                            <img
-                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb mb-0 fs-8">
-                                                    <li class="breadcrumb-item text-secondary ">
-                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
-                                                    </li>
-
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                        <div class="circle">
-                                            <p>AA</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="zone p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
-                                    id="task3">
-                                    <div class="userstory-options">
-                                        <p class="clickable-paragraph" data-paragraph-id="3"
-                                        data-paragraph-content="Contenu du paragraphe 3" 
-                                            contentEditable="true">
-                                            Drag and Drop in Board Page</p>
-                                        <img src="./assets/icons/modif.svg" class="modifier-story"
-                                            onclick="editParagraph(this)">
-                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
-                                            alt="supprimer user story" class="supprimer-story"
-                                            onclick="supprimerStory(this)">
-
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="scrum-board-story ">
-                                            <img
-                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb mb-0 fs-14">
-                                                    <li class="breadcrumb-item text-secondary">
-                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
-                                                    </li>
-
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                        <div class="circle">
-                                            <p>AA</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="zone p-2 rounded bg-white mt-2" draggable="true" ondragstart="start(event)"
-                                    id="task4">
-                                    <div class="userstory-options">
-                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
-                                            contentEditable="true">
-                                            Documentation globale en java Script </p>
-
-                                        <img src="./assets/icons/modif.svg" class="modifier-story"
-                                            onclick="editParagraph(this)">
-                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
-                                            alt="supprimer user story" class="supprimer-story"
-                                            onclick="supprimerStory(this)">
-
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="scrum-board-story ">
-                                            <img
-                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb mb-0 fs-14">
-                                                    <li class="breadcrumb-item text-secondary">
-                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
-                                                    </li>
-
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                        <div class="circle">
-                                            <p>AA</p>
-                                        </div>
-
-                                    </div>
-                                </div>
                             </div>
-
                         </div>
-
-                        <!---------------------------------------------------------------EN COURS ------------------------------------------------------------>
+                        <!----------en cours-->
                         <div class="carte col-sm-3">
-                            <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)" id="sortable2">
+                            <div class="arrive p-3" id="sortable2">
                                 <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">En cours</div>
                                     <img src="./assets/icons/modif.svg" class="modifierButton">
                                 </div>
-                                <div class="zone p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
-                                    id="task5">
-                                    <div class="userstory-options">
-                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
-                                            contentEditable="true">
-                                            Contact page maquette for ( Desktop, Tablette, mobile ) </p>
-
-                                        <img src="./assets/icons/modif.svg" class="modifier-story"
-                                            onclick="editParagraph(this)">
-                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
-                                            alt="supprimer user story" class="supprimer-story"
-                                            onclick="supprimerStory(this)">
-
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="scrum-board-story ">
-                                            <img
-                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb mb-0 fs-14">
-                                                    <li class="breadcrumb-item text-secondary">
-                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
-                                                    </li>
-
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                        <div class="circle">
-                                            <p>AA</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="zone p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
-                                    id="task5">
-                                    <div class="userstory-options">
-                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
-                                            contentEditable="true">
-                                            Contact page with HTML / CSS</p>
-
-                                        <img src="./assets/icons/modif.svg" class="modifier-story"
-                                            onclick="editParagraph(this)">
-                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
-                                            alt="supprimer user story" class="supprimer-story"
-                                            onclick="supprimerStory(this)">
-
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="scrum-board-story ">
-                                            <img
-                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb mb-0 fs-14">
-                                                    <li class="breadcrumb-item text-secondary">
-                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
-                                                    </li>
-
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                        <div class="circle">
-                                            <p>AA</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="zone p-2 rounded bg-white mt-2 " draggable="true" ondragstart="start(event)"
-                                    id="task5">
-                                    <div class="userstory-options">
-                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
-                                            contentEditable="true">
-                                            Prix total pour sidebar et page du panier d'achat </p>
-
-                                        <img src="./assets/icons/modif.svg" class="modifier-story"
-                                            onclick="editParagraph(this)">
-                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
-                                            alt="supprimer user story" class="supprimer-story"
-                                            onclick="supprimerStory(this)">
-
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="scrum-board-story ">
-                                            <img
-                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb mb-0 fs-14">
-                                                    <li class="breadcrumb-item text-secondary">
-                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
-                                                    </li>
-
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                        <div class="circle">
-                                            <p>AA</p>
-                                        </div>
-
-                                    </div>
-                                </div>
                             </div>
                         </div>
-
-                        <!-----------------------------------------------------------FINI---------------------------------------------------------------------->
+                        <!-----------fini-->
                         <div class="carte col-sm-3">
-                            <div class="arrive p-3" ondragover="over(event)" ondrop="drop(event)"
-                                id="inProgressColumn1">
+                            <div class="arrive p-3" id="sortable3">
                                 <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">Fini</div>
                                     <img src="./assets/icons/modif.svg" class="modifierButton">
                                 </div>
-                                <div class="zone p-2 rounded bg-white" draggable="true" ondragstart="start(event)"
-                                    id="task8">
-                                    <div class="userstory-options">
-                                        <p class="paragraphe" data-bs-toggle="modal" data-bs-target="#myModal"
-                                            contentEditable="true">
-                                            Rendre toutes les pages réactives </p>
-
-                                        <img src="./assets/icons/modif.svg" class="modifier-story"
-                                            onclick="editParagraph(this)">
-                                        <img style="width: 20px; height: 20px;" src="./assets/icons/supprimer-story.png"
-                                            alt="supprimer user story" class="supprimer-story"
-                                            onclick="supprimerStory(this)">
-
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="scrum-board-story ">
-                                            <img
-                                                src="https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb mb-0 fs-14">
-                                                    <li class="breadcrumb-item text-secondary">
-                                                        <a class="breadcrumb-scrum" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">SCRUMBOARD-1</a>
-                                                    </li>
-
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                        <div class="circle">
-                                            <p>AA</p>
-                                        </div>
-
-                                    </div>
-                                </div>
                             </div>
                         </div>
-
                     </div>
-
-                </div>
-                <!--------------------------------------------------------MODAL---------------------------------------------------->
-                <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
-                                <div class="modal-header-img">
-                                    <img src="./assets/icons/eye.png" alt="photo">
-                                    <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
-                                    <img src="./assets/icons/like-regular-24 1.png" alt="photo">
-                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
-                                        <span aria-hidden="true"><img src="./assets/icons/x-fermer-modale.png"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row m-1">
-                                    <div class="col-sm-6 ">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="h5">Description</div>
-                                            <div class="d-flex">
-                                                <select id="fontSize" onchange="changeFontSize()">
-                                                    <option>Size</option>
-                                                    <option value="12px">12px</option>
-                                                    <option value="16px">16px</option>
-                                                    <option value="20px">20px</option>
-                                                </select>
-                                                <div>
-                                                    <label for="fontColor"></label>
-                                                    <input type="color" value="#8B919A" id="fontColor"
-                                                        onchange="changeFontColor()">
-                                                </div>
-                                            </div>
-                                        </div>
-         
-                                        <div class="form-group">
-                                            <label for="editableContent"></label>
-                                            <textarea class="form-control" id="editableContent"></textarea>
-                                        </div>
+                    <!--------------------------------------------------------MODAL---------------------------------------------------->
+                    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="modalLabel">Créer l’histoire d’utilisateur</h3>
+                                    <div class="modal-header-img">
+                                        <img src="./assets/icons/eye.png" alt="photo">
+                                        <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                                        <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                                            <span aria-hidden="true"><img
+                                                    src="./assets/icons/x-fermer-modale.png"></span>
+                                        </button>
                                     </div>
-                                    <div class="col-sm-6 border ">
-                                        <div class="h5 border-bottom">Détails</div>
-                                        <div class="d-flex justify-content-between">
-                                            <p>Responsable</p>
-                                            <div class="d-flex">
-                                                <div class="circle1">
-                                                    <p>AA</p>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row m-1">
+                                        <div class="col-sm-6 ">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="h5">Description</div>
+                                                <div class="d-flex">
+                                                    <select id="fontSize" onchange="changeFontSize()">
+                                                        <option>Size</option>
+                                                        <option value="12px">12px</option>
+                                                        <option value="16px">16px</option>
+                                                        <option value="20px">20px</option>
+                                                    </select>
+                                                    <div>
+                                                        <label for="fontColor"></label>
+                                                        <input type="color" value="#8B919A" id="fontColor"
+                                                            onchange="changeFontColor()">
+                                                    </div>
                                                 </div>
-                                                <p>Anass AIT</p>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="editableContent"></label>
+                                                <textarea class="form-control" id="editableContent"></textarea>
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between">
-                                            <p>Sprint</p>
-                                            <p>Board Sprint 1</p>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <p>Story point estimate</p>
-                                            <p>Aucun Story </p>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <p>Rapporteur</p>
-                                            <div class="d-flex">
-                                                <div class="circle1">
-                                                    <p>MB</p>
+                                        <div class="col-sm-6 border ">
+                                            <div class="h5 border-bottom">Détails</div>
+                                            <div class="d-flex justify-content-between">
+                                                <p>Responsable</p>
+                                                <div class="d-flex">
+                                                    <div class="circle1">
+                                                        <p>AA</p>
+                                                    </div>
+                                                    <p>Anass AIT</p>
                                                 </div>
-                                                <p>Med BNE</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <p>Sprint</p>
+                                                <p>Board Sprint 1</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <p>Story point estimate</p>
+                                                <p>Aucun Story </p>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <p>Rapporteur</p>
+                                                <div class="d-flex">
+                                                    <div class="circle1">
+                                                        <p>MB</p>
+                                                    </div>
+                                                    <p>Med BNE</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                <button type="button" class="btn btn-primary" id="saveChanges">Sauvegarder les
-                                    modifications</button>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-primary" id="saveChangesButton">Sauvegarder les modifications</button>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-------------------------------------------------------------------Modal terminer sprint---------------------------------------------------->
-                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <img src="./assets/icons/modale-sprint.png" alt="image de background">
-                            </div>
-                            <div class="modal-body">
-                                <h5>Terminer Tableau sprint 1</h5>
-                                <p>Ce sprint comprend :</p>
-                                <ul class="list-group m-4">
-                                    <li>0 ticket terminé</li>
-                                    <li>3 tickets ouverts</li>
-                                </ul>
-                                <p>Déplacer les tickets ouverts vers</p>
-                                <select class="select-input" name="pets">
-                                    <option>Nouveau sprint</option>
-                                    <option>Backlog</option>
-                                </select>
+                    <!-------------------------------------------------------------------Modal terminer sprint---------------------------------------------------->
+                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <img src="./assets/icons/modale-sprint.png" alt="image de background">
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Terminer Tableau sprint 1</h5>
+                                    <p>Ce sprint comprend :</p>
+                                    <ul class="list-group m-4">
+                                        <li>0 ticket terminé</li>
+                                        <li>3 tickets ouverts</li>
+                                    </ul>
+                                    <p>Déplacer les tickets ouverts vers</p>
+                                    <select class="select-input" name="pets">
+                                        <option>Nouveau sprint</option>
+                                        <option>Backlog</option>
+                                    </select>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terminer le
+                                        sprint</button>
+                                    <button type="button" class="btn btn-primary"
+                                        data-bs-dismiss="modal">Annuler</button>
+                                </div>
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terminer le
-                                    sprint</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
-                            </div>
-
                         </div>
                     </div>
-                </div>
 
             </main>
         </div>
     </div>
     </div>
-   
+
     <script>
-        
+
+
         $(function () {
             $(".arrive").sortable({
                 connectWith: ".arrive",
@@ -569,7 +293,232 @@
         });
 
     </script>
-    <script src="./scripts/main.js"></script>
+    <script>
+        let sprints = [
+            {
+                name: 'Sprint 1',
+                description: 'Description du Sprint 1'
+            },
+            {
+                name: 'Sprint 2',
+                description: 'Description du Sprint 2'
+            },
+            {
+                name: 'Sprint 3',
+                description: 'Description du Sprint 3'
+            }
+        ];
+
+        // Function to create a sprint card
+       // Function to create a sprint card
+function createSprintCard(sprint) {
+    const card = document.createElement('div');
+    card.className = 'zone p-2 rounded bg-white mt-2';
+
+    const paragraph = document.createElement('p');
+    paragraph.className = 'clickable-paragraph';
+    paragraph.contentEditable = true;
+    paragraph.textContent = sprint.name;
+
+    const editIcon = document.createElement('img');
+    editIcon.src = './assets/icons/modif.svg';
+    editIcon.className = 'modifier-story';
+    editIcon.onclick = function () {
+        editParagraph(this);
+    };
+
+    const deleteIcon = document.createElement('img');
+    deleteIcon.src = './assets/icons/supprimer-story.png';
+    deleteIcon.className = 'supprimer-story';
+    deleteIcon.onclick = function () {
+        supprimerStory(this);
+    };
+
+    const additionalInfo = document.createElement('div');
+    additionalInfo.className = 'd-flex justify-content-between';
+
+    const scrumBoardStory = document.createElement('div');
+    scrumBoardStory.className = 'scrum-board-story';
+
+    const avatarImg = document.createElement('img');
+    avatarImg.src = 'https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium';
+
+    const breadcrumbNav = document.createElement('nav');
+    breadcrumbNav.setAttribute('aria-label', 'breadcrumb');
+
+    const breadcrumbOl = document.createElement('ol');
+    breadcrumbOl.className = 'breadcrumb mb-0 fs-14';
+
+    const breadcrumbLi = document.createElement('li');
+    breadcrumbLi.className = 'breadcrumb-item text-secondary';
+
+    const breadcrumbLink = document.createElement('a');
+    breadcrumbLink.className = 'breadcrumb-scrum';
+    breadcrumbLink.textContent = 'SCRUMBOARD-1';
+    breadcrumbLink.setAttribute('data-bs-toggle', 'modal');
+    breadcrumbLink.setAttribute('data-bs-target', '#myModal');
+
+    breadcrumbLink.addEventListener('click', function () {
+        // Remplissez le textarea du modal avec la description du sprint
+        const editableContent = document.getElementById('editableContent');
+        editableContent.value = sprint.description;
+    });
+
+    const circleDiv = document.createElement('div');
+    circleDiv.className = 'circle';
+    circleDiv.innerHTML = '<p>AA</p>';
+
+    additionalInfo.appendChild(scrumBoardStory);
+    scrumBoardStory.appendChild(avatarImg);
+    scrumBoardStory.appendChild(breadcrumbNav);
+    breadcrumbNav.appendChild(breadcrumbOl);
+    breadcrumbOl.appendChild(breadcrumbLi);
+    breadcrumbLi.appendChild(breadcrumbLink);
+    additionalInfo.appendChild(circleDiv);
+
+    card.appendChild(paragraph);
+    card.appendChild(editIcon);
+    card.appendChild(deleteIcon);
+    card.appendChild(additionalInfo);
+
+    return card;
+}
+
+// ...
+
+
+        function supprimerStory(button) {
+            var userStory = button.closest('.zone');
+            if (userStory) {
+                // Obtenez l'index de la carte (sprint)
+                const index = Array.from(userStory.parentNode.children).indexOf(userStory);
+                if (index !== -1) {
+                    sprints.splice(index, 1);
+                    userStory.remove();
+                    saveSprintsToLocalStorage(); // Sauvegarder les sprints mis à jour dans le local storage
+                }
+            }
+        }
+
+        function editParagraph(button) {
+            var parentParagraph = button.previousElementSibling;
+            parentParagraph.focus();
+            saveSprintsToLocalStorage();
+        }
+
+
+
+        // Function to load sprints from local storage
+        function loadSprintsFromLocalStorage() {
+            const sprintsJSON = localStorage.getItem('sprints');
+            return sprintsJSON ? JSON.parse(sprintsJSON) : [];
+        }
+
+        // Function to save sprints to local storage
+        function saveSprintsToLocalStorage() {
+            localStorage.setItem('sprints', JSON.stringify(sprints));
+        }
+
+
+        // Call the function to load sprints into "A FAIRE" section
+        window.addEventListener('load', loadSprintsToAfaire);
+
+
+        
+
+        //SEAECH BOUTON
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const content = document.getElementById('content');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            filterContent(searchTerm);
+        });
+
+
+        function filterContent(searchTerm) {
+            const searshes = content.querySelectorAll('.zone');
+
+            for (const item of searshes) {
+                const text = item.textContent.toLowerCase();
+
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+
+        // Au chargement de la page, assurez-vous que tous les éléments sont affichés
+        window.addEventListener('load', function () {
+            filterContent('');
+        });
+
+        // Changer la taille du texte
+function changeFontSize() {
+    var fontSize = document.getElementById("fontSize").value;
+    document.getElementById("editableContent").style.fontSize = fontSize;
+}
+
+// Changer la couleur du texte
+function changeFontColor() {
+    var fontColor = document.getElementById("fontColor").value;
+    document.getElementById("editableContent").style.color = fontColor;
+}
+
+
+///
+function loadSprintsToAfaire() {
+    const todoSection = document.querySelector('.carte .arrive');
+    sprints.forEach((sprint) => {
+        const card = createSprintCard(sprint);
+        todoSection.appendChild(card);
+
+        const breadcrumbLink = card.querySelector('.breadcrumb-scrum');
+        breadcrumbLink.addEventListener('click', function () {
+            openModalForSprint(sprint);
+        });
+    });
+    saveSprintsToLocalStorage(); 
+}
+let currentSprint = null; // Variable pour suivre le sprint actuellement édité
+
+function openModalForSprint(sprint) {
+    currentSprint = sprint; 
+    const editableContent = document.getElementById('editableContent');
+    editableContent.value = sprint.description;
+}
+
+// Gestionnaire de clic pour le bouton "Fermer" du modal
+const closeButton = document.getElementById('closeButton');
+if (closeButton) {
+    closeButton.addEventListener('click', function () {
+        //  pour ne pas enregistrer les modifications
+        currentSprint = null;
+    });
+}
+
+// Gestionnaire de clic pour le bouton "Sauvegarder" du modal
+const saveChangesButton = document.getElementById('saveChangesButton');
+if (saveChangesButton) {
+    saveChangesButton.addEventListener('click', function () {
+        if (currentSprint) {
+            // Récupérez le contenu modifié de la description du sprint dans le modal
+            const modifiedDescription = document.getElementById('editableContent').value;
+
+            // Mettez à jour la description du sprint actuellement édité
+            currentSprint.description = modifiedDescription;
+
+            // Sauvegardez les sprints mis à jour dans le local storage
+            saveSprintsToLocalStorage();
+        }
+    });
+}
+
+    </script>
+
 
 </body>
 
