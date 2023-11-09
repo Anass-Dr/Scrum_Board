@@ -211,43 +211,53 @@ const controlVue = (e) => {
 function generate_user_html(title) {
   const htmluser = ` <div
   id="userStorie"
-    class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
-    draggable="true" 
+  class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
+  draggable="true"
+>
+  <div
+    class="title_userstori_sprint d-flex align-items-center w-75 p-2"
+    data-bs-toggle="modal"
+    data-bs-target="#myModal"
   >
-    <div
-      class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
-    >
-  
     <h6>
-      <img
-        src="./assets/icons/userstori_icon.svg"
-        alt=""
-        class="mx-2"
-      />
+      <!-- <img src="./assets/icons/userstori_icon.svg" alt="" class="mx-2" /> -->
     </h6>
-      <h6 class="pt-2 px-2 m-0">${title}</h6>
-      <p class="pt-2 m-0 mx-4">user storie</p>
-    </div>
+    <h6 class="pt-2 px-2 m-0">${title}</h6>
+    <p class="pt-2 m-0 mx-4">user storie</p>
+  </div>
+  <div class="option_userstorie d-flex align-items-center w-25">
     <div
-      class="option_userstorie d-flex align-items-center w-25"
+      class="select_userstorie align-items-center justify-content-center rounded"
     >
-      <select
-        name="select_userstorie"
-        class="select_userstorie w-25 h-75 px-2 align-items-center justify-content-center rounded"
-      >
-        <option value="to do" class="todo">to do</option>
-        <option value="doing">doing</option>
-        <option value="done" class="done text-success">
-          done
-        </option>
-      </select>
-      <span class="deadline_userstorie mx-4 h-25">-</span>
-  
-      <div class="user"><span>AA</span></div>
+      <div class="all_status d-flex" onclick="vue_status(event)">
+        <p class="fill m-0">status</p>
+        <img src="./assets/icons/arrow-down-1.png" alt="" class="arrodown" />
+      </div>
+      <div class="status_storie" >
+        <div class="todo" onclick="choix(event)">
+          <span class="hv"></span>
+          <p class="todo2 px-2 m-0">to do</p>
+        </div>
+        <div class="todo" onclick="choix(event)">
+          <span class="hv"></span>
+          <p class="todo2 px-2 m-0">doing</p>
+        </div>
+        <div class="todo"onclick="choix(event)">
+          <span class="hv"></span>
+          <p class="todo2 px-2 m-0">done</p>
+        </div>
+      </div>
     </div>
-  </div>`;
+
+    <img class="arrowup" src="./assets/icons/arrow-up-1.png" alt="" onclick = "closing_status(event)"/>
+    <span class="deadline_userstorie mx-4 h-25">-</span>
+
+    <div class="user"><span>AA</span></div>
+  </div>
+</div>`;
   return htmluser;
 }
+
 // create new sprint
 
 const inputHtml = `  <input type="text" class="create_name_userstorie" id="create_title" placeholder="Qu'est-ce qui doit etre fait ?">`;
@@ -260,10 +270,11 @@ function account_tickets_sprint() {
 }
 const container1 = document.getElementById("container");
 let NumberTicket_sprint = 0;
+const button = document.getElementById("add_backlog_btn");
 function createNewDiv() {
   // Clone the existing container div
-  const button = document.getElementById("add_backlog_btn");
   button.disabled = true;
+  button2.disabled = true;
   container1.insertAdjacentHTML("beforeend", inputHtml);
 
   const create_name_userstorie = document.querySelector(
@@ -282,6 +293,7 @@ function createNewDiv() {
       create_name_userstorie.remove();
       account_tickets_sprint();
       button.disabled = false;
+      button2.disabled = false;
     }
   });
 }
@@ -297,8 +309,9 @@ const container2 = document.getElementById("container2");
 let accordion = document.querySelector("#tickets_backlog");
 let NumberTicket_backlog = 0;
 
+const button2 = document.getElementById("add_backlog_btn2");
 function createNewDiv2() {
-  const button2 = document.getElementById("add_backlog_btn2");
+  button.disabled = true;
   button2.disabled = true;
   container2.insertAdjacentHTML("beforeend", inputHtml);
   const create_name_userstorie = document.querySelector(
@@ -317,9 +330,55 @@ function createNewDiv2() {
 
       create_name_userstorie.remove();
       account_tickets_backlog();
+      button.disabled = false;
       button2.disabled = false;
     }
   });
+}
+// controle the status for user storie
+
+function vue_status(event) {
+  event.currentTarget.nextElementSibling.style.display = "block";
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".arrowup").style.display = "block";
+  event.currentTarget.querySelector(".arrodown").style.display = "none";
+}
+
+function closing_status(event) {
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".status_storie").style.display = "none";
+
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".arrodown").style.display = "block";
+
+  event.target.style.display = "none";
+}
+
+// const ststus_usersstories = document.getElementsByClassName("fill");
+// const todoandmore = document.getElementsByClassName("todo2");
+function choix(event) {
+  console.log(1);
+  console.log(
+    event.currentTarget.closest(".option_userstorie").querySelector(".fill")
+  );
+  console.log(event.currentTarget.querySelectorAll(".todo2"));
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".fill").innerHTML =
+    event.currentTarget.querySelector(".todo2").innerHTML;
+  event.target.style.display = "none";
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".status_storie").style.display = "none";
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".arrodown").style.display = "block";
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".arrowup").style.display = "none";
 }
 
 /***  settings PAGE STYLES    ***/
