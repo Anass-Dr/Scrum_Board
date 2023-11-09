@@ -1,9 +1,11 @@
 "use strict";
 
 // GLOBAL VARIABLES :
+const onlyMonthsTr = document.getElementById("only-months");
 const monthsTr = document.getElementById("months");
 const weekdaysTr = document.getElementById("weekdays");
-const sprintsTr = document.getElementById("sprints-tr");
+const sprintsWTr = document.getElementById("sprints-tr_vw");
+const sprintsMTr = document.getElementById("sprints-tr_vm");
 const tbody = document.querySelector("tbody");
 const timelineMonths = [
   "JAN",
@@ -40,6 +42,8 @@ function controlAside(e) {
 }
 
 /***  TIMELINE PAGE SCRIPT    ***/
+
+// Check if the current page is timer.html :
 if (window.location.pathname.split("/").slice(-1) == "timer.html")
   loadTableRows();
 
@@ -73,15 +77,16 @@ function getMonth(startDate) {
     : currDate.getMonth() - 1;
 }
 
-// Load table rows :
+// Load all table rows :
 function loadTableRows() {
   const startDate = getStartPoint(21, 10, 2023);
-  const endDate = getEndPoint(9, 12, 2023);
+  const endDate = getEndPoint(9, 11, 2023);
   loadWeeksTd(startDate, endDate);
   loadMonthsTd(startDate, endDate);
-  loadSprints(startDate);
+  loadSprintsWV(startDate);
+  loadSprintsMV(startDate);
   loadUserStories(startDate);
-  loadYearMonths();
+  loadYearMonths(startDate, endDate);
 }
 
 // load table td for months :
@@ -92,10 +97,23 @@ function loadMonthsTd(startDate, endDate) {
   for (let i = 0; i < monthsNumber; i++) {
     monthsTr?.insertAdjacentHTML(
       "beforeend",
-      `<th scope="col" colspan="7">${timelineMonths[getMonth(currDate)]}</th>`
+      `<th scope="col" colspan="7">${
+        timelineMonths[getMonth(currDate) + 1]
+      }</th>`
     );
     currDate.setDate(currDate.getDate() + 7);
   }
+}
+
+// Load Only Months :
+function loadYearMonths(startDate, endDate) {
+  for (let i = startDate.getMonth(); i <= endDate.getMonth(); i++)
+    onlyMonthsTr?.insertAdjacentHTML(
+      "beforeend",
+      `<th scope="col" colspan="7">${timelineMonths[i]}</th>`
+    );
+
+  onlyMonthsTr?.classList.add("hidden");
 }
 
 // load table td for weekdays :
@@ -114,8 +132,8 @@ function loadWeeksTd(startDate, endDate) {
   }
 }
 
-// load Sprints in table :
-function loadSprints(startDate) {
+// load Sprints in table for Weeks vue :
+function loadSprintsWV(startDate) {
   projectData.sprints.forEach((sprint, indx) => {
     let colspan;
     if (indx == 0) colspan = (new Date(sprint.start) - startDate) / 86400000;
@@ -127,7 +145,7 @@ function loadSprints(startDate) {
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
-    sprintsTr?.insertAdjacentHTML(
+    sprintsWTr?.insertAdjacentHTML(
       "beforeend",
       `
         <td colspan="${colspan}"></td>
@@ -139,6 +157,37 @@ function loadSprints(startDate) {
         `
     );
   });
+}
+
+// load Sprints in table for Weeks vue :
+function loadSprintsMV(startDate) {
+  projectData.sprints.forEach((sprint, indx) => {
+    const sprintStartDate = new Date(sprint.start);
+    let colspan, nDays;
+    if (indx == 0) {
+      nDays = sprintStartDate.getDate();
+    } else {
+      const endDate = new Date(projectData.sprints[indx - 1].start);
+      endDate.setDate(
+        endDate.getDate() + projectData.sprints[indx - 1].duration
+      );
+      nDays = (sprintStartDate - endDate) / 86400000;
+    }
+
+    colspan = (nDays * 7) / 28;
+    sprintsMTr?.insertAdjacentHTML(
+      "beforeend",
+      `
+        <td colspan="${Math.round(colspan)}"></td>
+        <td colspan="${Math.round((sprint.duration * 7) / 30)}" class="sprints">
+          <span class="d-block bg-sprint1 rounded-3 fs-14 text-primary">
+            ${sprint.name}
+          </span>
+        </td>
+        `
+    );
+  });
+  sprintsMTr?.classList.add("hidden");
 }
 
 // load User Stories in Table :
@@ -164,9 +213,6 @@ function loadUserStories(startDate) {
   });
 }
 
-// Load all Months :
-function loadYearMonths() {}
-
 // change vue :
 const controlVue = (e) => {
   const value = e.target.textContent.toLowerCase();
@@ -177,9 +223,17 @@ const controlVue = (e) => {
   );
   e.target.classList.add("active");
   if (value == "months") {
+    onlyMonthsTr?.classList.remove("hidden");
+    sprintsMTr.classList.remove("hidden");
+    sprintsWTr.classList.add("hidden");
+    monthsTr?.classList.add("hidden");
     weekdaysTr?.classList.add("hidden");
     storiesTr.forEach((story) => story.classList.add("hidden"));
   } else if (value == "weeks") {
+    onlyMonthsTr?.classList.add("hidden");
+    sprintsMTr.classList.add("hidden");
+    sprintsWTr.classList.remove("hidden");
+    monthsTr?.classList.remove("hidden");
     weekdaysTr?.classList.remove("hidden");
     storiesTr.forEach((story) => story.classList.remove("hidden"));
   }

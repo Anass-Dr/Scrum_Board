@@ -24,8 +24,13 @@
           </a>
         </div>
         <div class="curr_page">
-          <img src="./assets/icons/backlog_icon.svg" alt="backlog_icon" />
-          <span>Backlog</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" role="presentation">
+            <path
+              d="M6 2h10a3 3 0 010 6H6a3 3 0 110-6zm0 2a1 1 0 100 2h10a1 1 0 000-2H6zm4 5h8a3 3 0 010 6h-8a3 3 0 010-6zm0 2a1 1 0 000 2h8a1 1 0 000-2h-8zm-4 5h6a3 3 0 010 6H6a3 3 0 010-6zm0 2a1 1 0 000 2h6a1 1 0 000-2H6z"
+              fill-rule="evenodd"
+            ></path>
+          </svg>
+          <span>Timer</span>
         </div>
         <div class="user_info">
           <img
@@ -37,15 +42,16 @@
       </header>
       <div class="flex-grow-1 d-flex bg-cyan">
         <aside id="aside">
+          <div id="aside_icon"></div>
           <div class="aside_head">
-            <div class="project_img"></div>
-            <div class="project_info">
+            <div class="project_img aside_mobile_hidden"></div>
+            <div class="project_info aside_tablet_hidden">
               <h5>Project 1</h5>
               <p>Software Project</p>
             </div>
           </div>
-          <h6>PLANNING</h6>
-          <ul class="aside_pages">
+          <h6 class="aside_tablet_hidden">PLANNING</h6>
+          <ul class="aside_pages aside_mobile_hidden">
             <li>
               <a href="./timer.html">
                 <svg
@@ -59,7 +65,7 @@
                     fill-rule="evenodd"
                   ></path>
                 </svg>
-                <span>Timeline</span>
+                <span class="aside_tablet_hidden">Timeline</span>
               </a>
             </li>
             <li class="active">
@@ -83,7 +89,7 @@
                     ></path>
                   </g>
                 </svg>
-                <span>Backlog</span>
+                <span class="aside_tablet_hidden">Backlog</span>
               </a>
             </li>
             <li>
@@ -101,23 +107,23 @@
                     <path d="M8 6v12h2V6zm6 0v12h2V6z"></path>
                   </g>
                 </svg>
-                <span>Board</span>
+                <span class="aside_tablet_hidden">Board</span>
               </a>
             </li>
             <li>
               <a href="./settings.html">
                 <i class="fa-solid fa-gear"></i>
-                <span>Settings</span>
+                <span class="aside_tablet_hidden">Settings</span>
               </a>
             </li>
           </ul>
-          <h6>Users</h6>
-          <div class="aside_users">
+          <h6 class="aside_tablet_hidden">Users</h6>
+          <div class="aside_users aside_tablet_hidden">
             <div class="user"></div>
             <div class="user"></div>
             <div class="user"></div>
           </div>
-          <p class="aside_footer">
+          <p class="aside_footer aside_tablet_hidden">
             Vous faites partie d'un projet géré par l'équipe
           </p>
         </aside>
@@ -142,34 +148,12 @@
             <table class="table">
               <thead>
                 <tr id="months" class="fs-11 text-center"></tr>
+                <tr id="only-months" class="fs-11 text-center"></tr>
                 <tr id="weekdays"></tr>
               </thead>
               <tbody>
-                <tr id="sprints-tr"></tr>
-                <!-- <tr>
-                  <td colspan="5"></td>
-                  <td style="--i: 1" class="user_story user1" colspan="2">
-                    <span></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="7"></td>
-                  <td style="--i: 2" class="user_story user2"><span></span></td>
-                </tr>
-                <tr>
-                  <td colspan="8"></td>
-                  <td style="--i: 3" class="user_story user3"><span></span></td>
-                </tr>
-                <tr>
-                  <td colspan="9"></td>
-                  <td style="--i: 4" class="user_story user4"><span></span></td>
-                </tr>
-                <tr>
-                  <td colspan="10"></td>
-                  <td style="--i: 5" class="user_story user5" colspan="2">
-                    <span></span>
-                  </td>
-                </tr> -->
+                <tr id="sprints-tr_vw"></tr>
+                <tr id="sprints-tr_vm"></tr>
               </tbody>
             </table>
           </section>
