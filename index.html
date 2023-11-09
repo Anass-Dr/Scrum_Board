@@ -43,15 +43,16 @@
       </header>
       <div class="backlog flex-grow-1 d-flex">
         <aside id="aside">
+          <div id="aside_icon"></div>
           <div class="aside_head">
-            <div class="project_img"></div>
-            <div class="project_info">
+            <div class="project_img aside_mobile_hidden"></div>
+            <div class="project_info aside_tablet_hidden">
               <h5>Project 1</h5>
               <p>Software Project</p>
             </div>
           </div>
-          <h6>PLANNING</h6>
-          <ul class="aside_pages">
+          <h6 class="aside_tablet_hidden">PLANNING</h6>
+          <ul class="aside_pages  aside_mobile_hidden">
             <li>
               <a href="./timer.html">
                 <svg
@@ -65,7 +66,7 @@
                     fill-rule="evenodd"
                   ></path>
                 </svg>
-                <span>Timeline</span>
+                <span class="aside_tablet_hidden">Timeline</span>
               </a>
             </li>
             <li class="active">
@@ -89,7 +90,7 @@
                     ></path>
                   </g>
                 </svg>
-                <span>Backlog</span>
+                <span class="aside_tablet_hidden">Backlog</span>
               </a>
             </li>
             <li>
@@ -107,23 +108,23 @@
                     <path d="M8 6v12h2V6zm6 0v12h2V6z"></path>
                   </g>
                 </svg>
-                <span>Board</span>
+                <span class="aside_tablet_hidden">Board</span>
               </a>
             </li>
             <li>
               <a href="./settings.html">
                 <i class="fa-solid fa-gear"></i>
-                <span>Settings</span>
+                <span class="aside_tablet_hidden">Settings</span>
               </a>
             </li>
           </ul>
-          <h6>Users</h6>
-          <div class="aside_users">
+          <h6 class="aside_tablet_hidden">Users</h6>
+          <div class="aside_users aside_tablet_hidden">
             <div class="user"></div>
             <div class="user"></div>
             <div class="user"></div>
           </div>
-          <p class="aside_footer">
+          <p class="aside_footer aside_tablet_hidden">
             Vous faites partie d'un projet géré par l'équipe
           </p>
         </aside>
@@ -440,7 +441,10 @@
           </section>
         </main>
       </div>
+      
     </div>
+
+    <script src="./scripts/main.js"></script>
     <script>
       $(function () {
         $(".accordion-body").sortable({
@@ -455,4 +459,3 @@
     <script src="./scripts/bootstrap.js"></script>
   </body>
 </html>
-<script src="./scripts/main.js"></script>
