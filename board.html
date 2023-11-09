@@ -235,7 +235,8 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Fermer</button>
-                                        <button type="button" class="btn btn-primary" id="saveChangesButton">Sauvegarder les modifications</button>
+                                    <button type="button" class="btn btn-primary" id="saveChangesButton">Sauvegarder les
+                                        modifications</button>
 
                                 </div>
                             </div>
@@ -294,111 +295,122 @@
 
     </script>
     <script>
-        let sprints = [
+        let user_stories = [
             {
-                name: 'Sprint 1',
-                description: 'Description du Sprint 1'
+                name: 'userStory 1',
+                description: 'Description du Sprint 1',
+                status: "To Do",
+                start: "01-01-2000",
+                duration: 1
             },
             {
-                name: 'Sprint 2',
-                description: 'Description du Sprint 2'
+                name: 'userStory 2',
+                description: 'Description du Sprint 2',
+                status: "To Do",
+                start: "01-01-2000",
+                duration: 1
             },
             {
-                name: 'Sprint 3',
-                description: 'Description du Sprint 3'
+                name: 'userStory 3',
+                description: 'Description du Sprint 3',
+                status: "To Do",
+                start: "01-01-2000",
+                duration: 1
             }
         ];
 
         // Function to create a sprint card
-       // Function to create a sprint card
-function createSprintCard(sprint) {
-    const card = document.createElement('div');
-    card.className = 'zone p-2 rounded bg-white mt-2';
+        // Function to create a sprint card
+        function createSprintCard(sprint) {
+            const card = document.createElement('div');
+            card.className = 'zone p-2 rounded bg-white mt-2';
 
-    const paragraph = document.createElement('p');
-    paragraph.className = 'clickable-paragraph';
-    paragraph.contentEditable = true;
-    paragraph.textContent = sprint.name;
+            const paragraph = document.createElement('p');
+            paragraph.className = 'clickable-paragraph';
+            paragraph.contentEditable = true;
+            paragraph.textContent = sprint.name;
 
-    const editIcon = document.createElement('img');
-    editIcon.src = './assets/icons/modif.svg';
-    editIcon.className = 'modifier-story';
-    editIcon.onclick = function () {
-        editParagraph(this);
-    };
+            const editIcon = document.createElement('img');
+            editIcon.src = './assets/icons/modif.svg';
+            editIcon.className = 'modifier-story';
+            editIcon.onclick = function () {
+                editParagraph(this);
+            };
 
-    const deleteIcon = document.createElement('img');
-    deleteIcon.src = './assets/icons/supprimer-story.png';
-    deleteIcon.className = 'supprimer-story';
-    deleteIcon.onclick = function () {
-        supprimerStory(this);
-    };
+            const deleteIcon = document.createElement('img');
+            deleteIcon.src = './assets/icons/supprimer-story.png';
+            deleteIcon.className = 'supprimer-story';
+            deleteIcon.onclick = function () {
+                supprimerStory(this);
+            };
 
-    const additionalInfo = document.createElement('div');
-    additionalInfo.className = 'd-flex justify-content-between';
+            const additionalInfo = document.createElement('div');
+            additionalInfo.className = 'd-flex justify-content-between';
 
-    const scrumBoardStory = document.createElement('div');
-    scrumBoardStory.className = 'scrum-board-story';
+            const scrumBoardStory = document.createElement('div');
+            scrumBoardStory.className = 'scrum-board-story';
 
-    const avatarImg = document.createElement('img');
-    avatarImg.src = 'https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium';
+            const avatarImg = document.createElement('img');
+            avatarImg.src = 'https://breif.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium';
 
-    const breadcrumbNav = document.createElement('nav');
-    breadcrumbNav.setAttribute('aria-label', 'breadcrumb');
+            const breadcrumbNav = document.createElement('nav');
+            breadcrumbNav.setAttribute('aria-label', 'breadcrumb');
 
-    const breadcrumbOl = document.createElement('ol');
-    breadcrumbOl.className = 'breadcrumb mb-0 fs-14';
+            const breadcrumbOl = document.createElement('ol');
+            breadcrumbOl.className = 'breadcrumb mb-0 fs-14';
 
-    const breadcrumbLi = document.createElement('li');
-    breadcrumbLi.className = 'breadcrumb-item text-secondary';
+            const breadcrumbLi = document.createElement('li');
+            breadcrumbLi.className = 'breadcrumb-item text-secondary';
 
-    const breadcrumbLink = document.createElement('a');
-    breadcrumbLink.className = 'breadcrumb-scrum';
-    breadcrumbLink.textContent = 'SCRUMBOARD-1';
-    breadcrumbLink.setAttribute('data-bs-toggle', 'modal');
-    breadcrumbLink.setAttribute('data-bs-target', '#myModal');
+            const breadcrumbLink = document.createElement('a');
+            breadcrumbLink.className = 'breadcrumb-scrum';
+            breadcrumbLink.textContent = 'SCRUMBOARD-1';
+            breadcrumbLink.setAttribute('data-bs-toggle', 'modal');
+            breadcrumbLink.setAttribute('data-bs-target', '#myModal');
 
-    breadcrumbLink.addEventListener('click', function () {
-        // Remplissez le textarea du modal avec la description du sprint
-        const editableContent = document.getElementById('editableContent');
-        editableContent.value = sprint.description;
-    });
+            breadcrumbLink.addEventListener('click', function () {
+                // Remplissez le textarea du modal avec la description du sprint
+                const editableContent = document.getElementById('editableContent');
+                editableContent.value = sprint.description;
+            });
 
-    const circleDiv = document.createElement('div');
-    circleDiv.className = 'circle';
-    circleDiv.innerHTML = '<p>AA</p>';
+            const circleDiv = document.createElement('div');
+            circleDiv.className = 'circle';
+            circleDiv.innerHTML = '<p>AA</p>';
 
-    additionalInfo.appendChild(scrumBoardStory);
-    scrumBoardStory.appendChild(avatarImg);
-    scrumBoardStory.appendChild(breadcrumbNav);
-    breadcrumbNav.appendChild(breadcrumbOl);
-    breadcrumbOl.appendChild(breadcrumbLi);
-    breadcrumbLi.appendChild(breadcrumbLink);
-    additionalInfo.appendChild(circleDiv);
+            additionalInfo.appendChild(scrumBoardStory);
+            scrumBoardStory.appendChild(avatarImg);
+            scrumBoardStory.appendChild(breadcrumbNav);
+            breadcrumbNav.appendChild(breadcrumbOl);
+            breadcrumbOl.appendChild(breadcrumbLi);
+            breadcrumbLi.appendChild(breadcrumbLink);
+            additionalInfo.appendChild(circleDiv);
 
-    card.appendChild(paragraph);
-    card.appendChild(editIcon);
-    card.appendChild(deleteIcon);
-    card.appendChild(additionalInfo);
+            card.appendChild(paragraph);
+            card.appendChild(editIcon);
+            card.appendChild(deleteIcon);
+            card.appendChild(additionalInfo);
 
-    return card;
-}
+            return card;
+        }
 
-// ...
+        // ...
 
 
         function supprimerStory(button) {
-            var userStory = button.closest('.zone');
-            if (userStory) {
-                // Obtenez l'index de la carte (sprint)
-                const index = Array.from(userStory.parentNode.children).indexOf(userStory);
-                if (index !== -1) {
-                    sprints.splice(index, 1);
-                    userStory.remove();
-                    saveSprintsToLocalStorage(); // Sauvegarder les sprints mis à jour dans le local storage
-                }
-            }
+    var userStory = button.closest('.zone');
+    if (userStory) {
+        // Obtenez l'index de la carte (sprint)
+        const index = Array.from(document.querySelectorAll('.zone')).indexOf(userStory);
+        if (index !== -1) {
+            // Supprimez l'élément du tableau user_stories
+            user_stories.splice(index, 1);
+            userStory.remove();
+            saveSprintsToLocalStorage();
         }
+    }
+}
+
 
         function editParagraph(button) {
             var parentParagraph = button.previousElementSibling;
@@ -410,13 +422,13 @@ function createSprintCard(sprint) {
 
         // Function to load sprints from local storage
         function loadSprintsFromLocalStorage() {
-            const sprintsJSON = localStorage.getItem('sprints');
+            const sprintsJSON = localStorage.getItem('user_stories');
             return sprintsJSON ? JSON.parse(sprintsJSON) : [];
         }
 
         // Function to save sprints to local storage
         function saveSprintsToLocalStorage() {
-            localStorage.setItem('sprints', JSON.stringify(sprints));
+            localStorage.setItem('user_stories', JSON.stringify(user_stories));
         }
 
 
@@ -424,7 +436,7 @@ function createSprintCard(sprint) {
         window.addEventListener('load', loadSprintsToAfaire);
 
 
-        
+
 
         //SEAECH BOUTON
         const searchInput = document.getElementById('searchInput');
@@ -457,65 +469,65 @@ function createSprintCard(sprint) {
         });
 
         // Changer la taille du texte
-function changeFontSize() {
-    var fontSize = document.getElementById("fontSize").value;
-    document.getElementById("editableContent").style.fontSize = fontSize;
-}
+        function changeFontSize() {
+            var fontSize = document.getElementById("fontSize").value;
+            document.getElementById("editableContent").style.fontSize = fontSize;
+        }
 
-// Changer la couleur du texte
-function changeFontColor() {
-    var fontColor = document.getElementById("fontColor").value;
-    document.getElementById("editableContent").style.color = fontColor;
-}
+        // Changer la couleur du texte
+        function changeFontColor() {
+            var fontColor = document.getElementById("fontColor").value;
+            document.getElementById("editableContent").style.color = fontColor;
+        }
 
 
-///
-function loadSprintsToAfaire() {
-    const todoSection = document.querySelector('.carte .arrive');
-    sprints.forEach((sprint) => {
-        const card = createSprintCard(sprint);
-        todoSection.appendChild(card);
+        ///
+        function loadSprintsToAfaire() {
+            const todoSection = document.querySelector('.carte .arrive');
+            user_stories.forEach((sprint) => {
+                const card = createSprintCard(sprint);
+                todoSection.appendChild(card);
 
-        const breadcrumbLink = card.querySelector('.breadcrumb-scrum');
-        breadcrumbLink.addEventListener('click', function () {
-            openModalForSprint(sprint);
-        });
-    });
-    saveSprintsToLocalStorage(); 
-}
-let currentSprint = null; // Variable pour suivre le sprint actuellement édité
-
-function openModalForSprint(sprint) {
-    currentSprint = sprint; 
-    const editableContent = document.getElementById('editableContent');
-    editableContent.value = sprint.description;
-}
-
-// Gestionnaire de clic pour le bouton "Fermer" du modal
-const closeButton = document.getElementById('closeButton');
-if (closeButton) {
-    closeButton.addEventListener('click', function () {
-        //  pour ne pas enregistrer les modifications
-        currentSprint = null;
-    });
-}
-
-// Gestionnaire de clic pour le bouton "Sauvegarder" du modal
-const saveChangesButton = document.getElementById('saveChangesButton');
-if (saveChangesButton) {
-    saveChangesButton.addEventListener('click', function () {
-        if (currentSprint) {
-            // Récupérez le contenu modifié de la description du sprint dans le modal
-            const modifiedDescription = document.getElementById('editableContent').value;
-
-            // Mettez à jour la description du sprint actuellement édité
-            currentSprint.description = modifiedDescription;
-
-            // Sauvegardez les sprints mis à jour dans le local storage
+                const breadcrumbLink = card.querySelector('.breadcrumb-scrum');
+                breadcrumbLink.addEventListener('click', function () {
+                    openModalForSprint(sprint);
+                });
+            });
             saveSprintsToLocalStorage();
         }
-    });
-}
+        let currentSprint = null; // Variable pour suivre le sprint actuellement édité
+
+        function openModalForSprint(sprint) {
+            currentSprint = sprint;
+            const editableContent = document.getElementById('editableContent');
+            editableContent.value = sprint.description;
+        }
+
+        // Gestionnaire de clic pour le bouton "Fermer" du modal
+        const closeButton = document.getElementById('closeButton');
+        if (closeButton) {
+            closeButton.addEventListener('click', function () {
+                //  pour ne pas enregistrer les modifications
+                currentSprint = null;
+            });
+        }
+
+        // Gestionnaire de clic pour le bouton "Sauvegarder" du modal
+        const saveChangesButton = document.getElementById('saveChangesButton');
+        if (saveChangesButton) {
+            saveChangesButton.addEventListener('click', function () {
+                if (currentSprint) {
+                    // Récupérez le contenu modifié de la description du sprint dans le modal
+                    const modifiedDescription = document.getElementById('editableContent').value;
+
+                    // Mettez à jour la description du sprint actuellement édité
+                    currentSprint.description = modifiedDescription;
+
+                    // Sauvegardez les sprints mis à jour dans le local storage
+                    saveSprintsToLocalStorage();
+                }
+            });
+        }
 
     </script>
 
