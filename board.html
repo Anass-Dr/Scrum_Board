@@ -131,12 +131,12 @@
                     </div>
                     <div class="cartes row mt-2 " style="width: 1250px;" id="content">
 
-                        <!-- "A FAIRE" Card Section -->
+                        <!-- "A FAIRE"  -->
                         <div class="carte col-sm-3">
                             <div class="arrive p-3" id="sortable1">
                                 <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">A faire</div>
-                                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                                    <p class="title h6 text-muted" id="cartesAFaireCount">1</p>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                             <div class="arrive p-3" id="sortable2">
                                 <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">En cours</div>
-                                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                                    <p class="title h6 text-muted" id="cartesEnCoursCount">0</p>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                             <div class="arrive p-3" id="sortable3">
                                 <div class="sticky-choice d-flex justify-content-between">
                                     <div class="title h6 text-muted" contentEditable="true">Fini</div>
-                                    <img src="./assets/icons/modif.svg" class="modifierButton">
+                                    <p class="title h6 text-muted" id="cartesFiniCount">0</p>
                                 </div>
                             </div>
                         </div>
@@ -253,8 +253,8 @@
                                 <div class="modal-body">
                                     <h5>Terminer Tableau sprint 1</h5>
                                     <p>Ce sprint comprend :</p>
-                                    <ul class="list-group m-4">
-                                        <li>0 ticket terminé</li>
+                                    <ul id="ticketsTermines" class="list-group m-4">
+                                        <li >0 ticket terminé</li>
                                         <li>3 tickets ouverts</li>
                                     </ul>
                                     <p>Déplacer les tickets ouverts vers</p>
@@ -280,47 +280,54 @@
     </div>
     </div>
 
-    <script>
 
-
-        $(function () {
-            $(".arrive").sortable({
-                connectWith: ".arrive",
-                helper: "clone",
-                placeholder: "ui-state-highlight",
-            });
-
-            $(".arrive").disableSelection();
-        });
-    </script>
-
-    <script src="./scripts/main.js"></script>
 
     <script>
+        let cartesAFaireCount = 0;
         let user_stories = [
             {
                 name: 'userStory 1',
                 description: 'Description du Sprint 1',
-                status: "To Do",
+                status: 0,
                 start: "01-01-2000",
                 duration: 1
             },
             {
                 name: 'userStory 2',
                 description: 'Description du Sprint 2',
-                status: "To Do",
+                status: 0,
                 start: "01-01-2000",
                 duration: 1
             },
             {
                 name: 'userStory 3',
                 description: 'Description du Sprint 3',
-                status: "To Do",
+                status: 0,
                 start: "01-01-2000",
                 duration: 1
             }
         ];
 
+        function initializeCards() {
+        const todoSection = document.querySelector('#sortable1');
+        const inProgressSection = document.querySelector('#sortable2');
+        const doneSection = document.querySelector('#sortable3');
+
+        user_stories.forEach((userStory, index) => {
+            const card = createSprintCard(userStory, index);
+            switch (userStory.status) {
+                case 0: // À faire
+                    todoSection.appendChild(card);
+                    break;
+                case 1: // En cours
+                    inProgressSection.appendChild(card);
+                    break;
+                case 2: // Fini
+                    doneSection.appendChild(card);
+                    break;
+            }
+        });
+    }
         // Function to create a sprint card
         // Function to create a sprint card
         function createSprintCard(sprint) {
@@ -396,22 +403,13 @@
             return card;
         }
 
+        initializeCards();
+
         // ...
 
 
-        function supprimerStory(button) {
-            var userStory = button.closest('.zone');
-            if (userStory) {
-                // Obtenez l'index de la carte (sprint)
-                const index = Array.from(document.querySelectorAll('.zone')).indexOf(userStory);
-                if (index !== -1) {
-                    // Supprimez l'élément du tableau user_stories
-                    user_stories.splice(index, 1);
-                    userStory.remove();
-                    saveSprintsToLocalStorage();
-                }
-            }
-        }
+
+
 
 
         function editParagraph(button) {
@@ -435,7 +433,7 @@
 
 
         // Call the function to load sprints into "A FAIRE" section
-        window.addEventListener('load', loadSprintsToAfaire);
+        window.addEventListener('load', loadSprintsToACarte);
 
 
 
@@ -484,19 +482,40 @@
 
 
         ///
-        function loadSprintsToAfaire() {
-            const todoSection = document.querySelector('.carte .arrive');
-            user_stories.forEach((sprint) => {
-                const card = createSprintCard(sprint);
-                todoSection.appendChild(card);
+        function loadSprintsToACarte() {
+            const cartesAFaireCount = user_stories.filter(sprint => sprint.status === 0).length;
+        const cartesEnCoursCount = user_stories.filter(sprint => sprint.status === 1).length;
+        const cartesFiniCount = user_stories.filter(sprint => sprint.status === 2).length;
 
-                const breadcrumbLink = card.querySelector('.breadcrumb-scrum');
-                breadcrumbLink.addEventListener('click', function () {
-                    openModalForSprint(sprint);
-                });
-            });
+        document.getElementById('cartesAFaireCount').textContent = cartesAFaireCount;
+        document.getElementById('cartesEnCoursCount').textContent = cartesEnCoursCount;
+        document.getElementById('cartesFiniCount').textContent = cartesFiniCount;
+            // Enregistrez les sprints dans le stockage local
             saveSprintsToLocalStorage();
         }
+
+
+        function supprimerStory(button) {
+            var userStory = button.closest('.zone');
+            if (userStory) {
+                // Obtenez l'index de la carte (sprint)
+                const index = Array.from(document.querySelectorAll('.zone')).indexOf(userStory);
+                if (index !== -1) {
+                    // Supprimez l'élément du tableau user_stories
+                    const removedSprint = user_stories.splice(index, 1)[0];
+
+                    // Mettez à jour le nombre de cartes "À faire" si la carte supprimée avait le statut 0
+                 
+                    userStory.remove();
+
+                    // Mettez à jour le nombre de cartes "À faire"
+                    loadSprintsToACarte();
+                    saveSprintsToLocalStorage();
+                }
+            }
+        }
+
+
         let currentSprint = null; // Variable pour suivre le sprint actuellement édité
 
         function openModalForSprint(sprint) {
@@ -530,6 +549,59 @@
                 }
             });
         }
+
+        $(".arrive").sortable({
+    connectWith: ".arrive",
+    helper: "clone",
+    placeholder: "ui-state-highlight",
+    stop: function (event, ui) {
+        const draggedUserStory = ui.item[0];
+        const draggedStoryName = $(draggedUserStory).find('.clickable-paragraph').text().trim();
+        const parentSection = draggedUserStory.parentElement;
+
+        // Find the index of the user story with the matching name in the user_stories array
+        const index = user_stories.findIndex(story => story.name === draggedStoryName);
+
+        // Check if the index is valid
+        if (index !== -1) {
+            // Update the status of the user story based on the drop section
+            if (parentSection.id === 'sortable1') {
+                user_stories[index].status = 0; // À faire
+            }
+            if (parentSection.id === 'sortable2') {
+                user_stories[index].status = 1; // En cours
+            }
+            if (parentSection.id === 'sortable3') {
+                user_stories[index].status = 2; // Fini
+            }
+
+            // Save the updated sprints to local storage
+            saveSprintsToLocalStorage();
+
+            // Load sprints into the "À Faire" section
+            loadSprintsToACarte();
+        }
+    }
+});
+
+// À l'intérieur de votre script JavaScript
+$('#myModal2').on('show.bs.modal', function (event) {
+    // Calculer le nombre de tickets dans chaque état
+    const ticketsAFaire = user_stories.filter(story => story.status === 0).length;
+    const ticketsEnCours = user_stories.filter(story => story.status === 1).length;
+    const ticketOuvert = ticketsAFaire + ticketsEnCours; // Additionner les deux
+
+    const ticketsFini = user_stories.filter(story => story.status === 2).length;
+
+    // Mettre à jour le contenu de la modal avec les nouveaux nombres
+    $('#ticketsTermines').html(`
+        <li>${ticketOuvert} ticket${ticketOuvert !== 1 ? 's' : ''} ouvert${ticketOuvert !== 1 ? 's' : ''} </li>
+        <li>${ticketsFini} ticket${ticketsFini !== 1 ? 's' : ''} terminé${ticketsFini !== 1 ? 's' : ''} </li>
+    `);
+});
+
+
+
 
     </script>
 
