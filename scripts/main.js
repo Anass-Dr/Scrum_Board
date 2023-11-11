@@ -1,5 +1,15 @@
 "use strict";
-
+const ObjBacklog = {
+  backlog: [
+    {
+      name: "User 1",
+      status: "To Do",
+      description: "",
+      start: "01-01-2000",
+      duration: 1,
+    },
+  ],
+};
 // GLOBAL VARIABLES :
 const onlyMonthsTr = document.getElementById("only-months");
 const monthsTr = document.getElementById("months");
@@ -242,7 +252,7 @@ const controlVue = (e) => {
 /***  Backlog PAGE SCRIPT    ***/
 
 // generate user-stories HTML
-function generate_user_html(title) {
+function generate_user_html(id_generat, title) {
   const htmluser = ` <div
   id="userStorie"
   class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
@@ -251,12 +261,12 @@ function generate_user_html(title) {
   <div
     class="title_userstori_sprint d-flex align-items-center w-75 p-2"
     data-bs-toggle="modal"
-    data-bs-target="#myModal"
+    data-bs-target="#${id_generat}"
   >
     <h6>
       <!-- <img src="./assets/icons/userstori_icon.svg" alt="" class="mx-2" /> -->
     </h6>
-    <h6 class="pt-2 px-2 m-0">${title}</h6>
+    <h6 class="storie pt-2 px-2 m-0">${title}</h6>
     <p class="pt-2 m-0 mx-4">user storie</p>
   </div>
   <div class="option_userstorie d-flex align-items-center w-25">
@@ -266,6 +276,7 @@ function generate_user_html(title) {
       <div class="all_status d-flex" onclick="vue_status(event)">
         <p class="fill m-0">status</p>
         <img src="./assets/icons/arrow-down-1.png" alt="" class="arrodown" />
+        <img class="arrowup" src="./assets/icons/arrow-up-1.png" alt="" onclick = "closing_status(event)"/>
       </div>
       <div class="status_storie" >
         <div class="todo" onclick="choix(event)">
@@ -283,8 +294,11 @@ function generate_user_html(title) {
       </div>
     </div>
 
-    <img class="arrowup" src="./assets/icons/arrow-up-1.png" alt="" onclick = "closing_status(event)"/>
-    <span class="deadline_userstorie mx-4 h-25">-</span>
+    
+    <div class="DD d-flex justify-content-center mx-4" >
+    <span class="deadline_userstorie" id="deadline_user" onclick="entre_dedline(event)" >-</span>
+    <input type="number" class="duration_userStorie">
+    </div>
 
     <div class="user"><span>AA</span></div>
   </div>
@@ -292,47 +306,113 @@ function generate_user_html(title) {
   return htmluser;
 }
 
+function generate_modal_userstorie(id_generat) {
+  const madalstorie = `<div class="modal fade" id="${id_generat}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="modalLabel">
+              <input type="text" class="title_userstorie">
+              </h3>
+              <div class="modal-header-img">
+                  <img src="./assets/icons/eye.png" alt="photo">
+                  <img src="./assets/icons/share-alt-solid-24 (3) 1.png" alt="photo">
+                  <img src="./assets/icons/like-regular-24 1.png" alt="photo">
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fermer">
+                      <span aria-hidden="true"><img src="./assets/icons/x-02.png"></span>
+                  </button>
+              </div>
+          </div>
+          <div class="modal-body">
+              <div class="row m-1">
+                  <div class="col-sm-6 border">
+                      <div class="h5">Description</div>
+                   <textarea name="disctiption" id="Discription_userstorie" cols="30" rows="10" placeholder="discription to user storie"></textarea>
+                  </div>
+                  <div class="col-sm-6 border ">
+                      <div class="h5">Détails</div>
+                      <div class="duration">
+                      <h3>duration</h3>
+                      <input type="number" class="duration_userstorie mt-2" min="1">
+                      </div>
+                      <div class="date_start_storie">
+                        <input type="text" id="initialTimeDisplay" readonly>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
+              <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+          </div>
+      </div>
+  </div>
+</div>`;
+  return madalstorie;
+}
+
 // create new sprint
 
 const inputHtml = `  <input type="text" class="create_name_userstorie" id="create_title" placeholder="Qu'est-ce qui doit etre fait ?">`;
-// add users stories
-// sprint
+
+/* === add users stories ===*/
+
+/*=== sprint ===*/
 function account_tickets_sprint() {
   const numberTicketsprint = document.querySelector(".account_ticket_sprint");
   NumberTicket_sprint++;
   numberTicketsprint.innerText = `${NumberTicket_sprint} - ticket`;
 }
+
 const container1 = document.getElementById("container");
 let NumberTicket_sprint = 0;
 const button = document.getElementById("add_backlog_btn");
 function createNewDiv() {
-  // Clone the existing container div
+  /* === disable the button for add the user storie === */
   button.disabled = true;
   button2.disabled = true;
-  container1.insertAdjacentHTML("beforeend", inputHtml);
 
+  /* === show the input for creat the name user storie === */
+  container1.insertAdjacentHTML("beforeend", inputHtml);
   const create_name_userstorie = document.querySelector(
     ".create_name_userstorie"
   );
+
+  /* === focus input === */
+  create_name_userstorie.focus();
+
+  /* === creat user storie === */
   create_name_userstorie.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       const creat_title_userstorie = document.getElementById("create_title");
       const thetitle_userstorie = creat_title_userstorie.value;
-
+      const id_generat = `modal_${NumberTicket_sprint}`;
+      console.log(id_generat);
+      account_tickets_sprint();
       container1.insertAdjacentHTML(
         "beforeend",
-        generate_user_html(thetitle_userstorie)
+        generate_user_html(id_generat, thetitle_userstorie)
       );
 
+      /* === generat new is for modal to new user storie === */
+      container1.insertAdjacentHTML(
+        "beforeend",
+        generate_modal_userstorie(id_generat)
+      );
+
+      /* === remove input === */
       create_name_userstorie.remove();
-      account_tickets_sprint();
+
+      /* === show the button for add the user storie === */
       button.disabled = false;
       button2.disabled = false;
     }
   });
 }
 
-// backloge
+/* === backloge === */
+
 function account_tickets_backlog() {
   const numberTicketbacklog = document.querySelector(".account_ticket");
   NumberTicket_backlog++;
@@ -345,37 +425,52 @@ let NumberTicket_backlog = 0;
 
 const button2 = document.getElementById("add_backlog_btn2");
 function createNewDiv2() {
+  /* === disable the button for add the user storie === */
   button.disabled = true;
   button2.disabled = true;
+
+  /* === show the input for creat the name user storie === */
   container2.insertAdjacentHTML("beforeend", inputHtml);
   const create_name_userstorie = document.querySelector(
     ".create_name_userstorie"
   );
 
+  /* === focus input === */
+  create_name_userstorie.focus();
+
+  /* === creat user storie === */
   create_name_userstorie.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       const creat_title_userstorie = document.getElementById("create_title");
       const thetitle_userstorie = creat_title_userstorie.value;
+      const id_generat = `modal_${NumberTicket_backlog + 100}`;
+      account_tickets_backlog();
 
       container2.insertAdjacentHTML(
         "beforeend",
-        generate_user_html(thetitle_userstorie)
+        generate_user_html(id_generat, thetitle_userstorie)
       );
 
+      /* === generat new is for modal to new user storie === */
+      container2.insertAdjacentHTML(
+        "beforeend",
+        generate_modal_userstorie(id_generat)
+      );
+
+      /* === remove input === */
       create_name_userstorie.remove();
-      account_tickets_backlog();
+
+      /* === show the button for add the user storie === */
       button.disabled = false;
       button2.disabled = false;
     }
   });
 }
-// controle the status for user storie
+/* ==== controle the status for user storie ==== */
 
 function vue_status(event) {
   event.currentTarget.nextElementSibling.style.display = "block";
-  event.currentTarget
-    .closest(".option_userstorie")
-    .querySelector(".arrowup").style.display = "block";
+  event.currentTarget.querySelector(".arrowup").style.display = "block";
   event.currentTarget.querySelector(".arrodown").style.display = "none";
 }
 
@@ -384,42 +479,57 @@ function closing_status(event) {
     .closest(".option_userstorie")
     .querySelector(".status_storie").style.display = "none";
 
-  event.currentTarget
-    .closest(".option_userstorie")
-    .querySelector(".arrodown").style.display = "block";
+  event.currentTarget.previousElementSibling.style.display = "block";
 
   event.target.style.display = "none";
+
+  event.stopPropagation();
 }
 
-// const ststus_usersstories = document.getElementsByClassName("fill");
-// const todoandmore = document.getElementsByClassName("todo2");
+/* ==== choix status user storie ==== */
+
 function choix(event) {
-  console.log(1);
-  console.log(
-    event.currentTarget.closest(".option_userstorie").querySelector(".fill")
-  );
-  console.log(event.currentTarget.querySelectorAll(".todo2"));
   event.currentTarget
     .closest(".option_userstorie")
-    .querySelector(".fill").innerHTML =
-    event.currentTarget.querySelector(".todo2").innerHTML;
-  event.target.style.display = "none";
+    .querySelector(".fill").textContent =
+    event.currentTarget.querySelector(".todo2").textContent;
+
   event.currentTarget
     .closest(".option_userstorie")
     .querySelector(".status_storie").style.display = "none";
+
   event.currentTarget
     .closest(".option_userstorie")
     .querySelector(".arrodown").style.display = "block";
+
   event.currentTarget
     .closest(".option_userstorie")
     .querySelector(".arrowup").style.display = "none";
+}
+
+/* ================================= dedline to user storie ================================= */
+
+function entre_dedline(event) {
+  event.target.style.display = "none";
+  event.currentTarget.nextElementSibling.style.display = "block";
+  event.currentTarget.nextElementSibling.focus();
+  event.currentTarget.nextElementSibling.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key === "Enter") {
+        event.currentTarget.previousElementSibling.innerHTML =
+          event.currentTarget.value;
+        event.currentTarget.previousElementSibling.style.display = "flex";
+        event.currentTarget.style.display = "none";
+      }
+    }
+  );
 }
 
 /***  settings PAGE STYLES    ***/
 /***  settings PAGE STYLES    ***/
 
 /***  INFO_SECTION STYLES    ***/
-
 /***  USER_SECTION STYLES    ***/
 
 function add_user() {
@@ -440,58 +550,50 @@ function add_user() {
   </div>
  </th>
 </tr>
-  `
-  document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML)
+  `;
+  document
+    .querySelector("table tbody")
+    .insertAdjacentHTML("beforeend", rowHTML);
 
   // buttonEvent();
 }
 
-function actionEvent(event){
-// deleteUser
-if(event.target.parentElement.classList.contains("btn-sup")){
-  event.currentTarget.remove();
+function actionEvent(event) {
+  // deleteUser
+  if (event.target.parentElement.classList.contains("btn-sup")) {
+    event.currentTarget.remove();
+  }
+  // savaInfo
+  else if (event.target.parentElement.classList.contains("btn-add")) {
+    let saveInfo = event.currentTarget
+      .closest(".tabRow")
+      .querySelectorAll(".inputtab");
+    saveInfo[0].disabled = true;
+    saveInfo[1].disabled = true;
+    event.currentTarget
+      .closest(".tabRow")
+      .querySelector(".btn-add").style.display = "none";
+  }
+  //modifInfo
+  else if (event.target.parentElement.classList.contains("btn-modif")) {
+    event.currentTarget
+      .closest(".tabRow")
+      .querySelector(".btn-add").style.display = "block";
+    let modifInfo = event.currentTarget
+      .closest(".tabRow")
+      .querySelectorAll(".inputtab");
+    modifInfo[0].disabled = false;
+    modifInfo[1].disabled = false;
+  }
+  // editUser
+  // if(event.target.parentElement.classList.contains("btn-modif")){
+  //   event.currentTarget.closest(".tabRow").querySelector(".inputtab").disabled = false;
+  // }
 
+  //saveEdit(disibeled input)
 }
-// savaInfo
-else if(event.target.parentElement.classList.contains("btn-add")){
-  let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab")
-  saveInfo[0].disabled = true
-  saveInfo[1].disabled = true
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "none"
-
-
+function addButtonEvent(event) {
+  event.currentTarget
+    .closest(".tabRow")
+    .querySelector(".btn-add").style.display = "block";
 }
-//modifInfo
-else if(event.target.parentElement.classList.contains("btn-modif")){
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block"
-  let modifInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab")
-  modifInfo[0].disabled = false
-  modifInfo[1].disabled = false
-  
-}
-// editUser
-// if(event.target.parentElement.classList.contains("btn-modif")){
-//   event.currentTarget.closest(".tabRow").querySelector(".inputtab").disabled = false;
-// }
-
-//saveEdit(disibeled input)
-
-
-
-}
-function addButtonEvent(event){
-event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block"
-
-}
-  
-
-  
-  
-  
-
-
-
-  
-  
-
-
