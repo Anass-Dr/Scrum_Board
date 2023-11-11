@@ -16,6 +16,7 @@
 html,
 body {
   height: 100%;
+  width: 100%;
 }
 
 img {
@@ -136,4 +137,45 @@ header .user_img {
 }
 #aside .active svg {
   fill: rgb(99, 166, 255);
+}
+
+@media screen and (max-width: 900px) {
+  #aside {
+    width: auto;
+    position: relative;
+  }
+  #aside #aside_icon {
+    position: absolute;
+    right: 0;
+    top: 70px;
+    transform: translateX(50%);
+    width: 27px;
+    height: 27px;
+    background: url("../icons/aside_icon.png") center no-repeat;
+    background-size: cover;
+    background-color: #fff;
+  }
+  #aside .aside_pages li {
+    padding: 6px 12px;
+    margin-top: 1.3rem;
+    display: flex;
+    justify-content: center;
+  }
+  .aside_tablet_hidden {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .aside_mobile_hidden {
+    display: none;
+  }
+  #aside {
+    padding: 25px 4px;
+    background-color: #2b69b9;
+    border-top-right-radius: 20px;
+    margin-top: 3px;
+  }
+  header .curr_page {
+    display: none;
+  }
 }
