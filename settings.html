@@ -109,7 +109,7 @@
             <li class="active">
               <a href="./settings.html">
                 <i class="fa-solid fa-gear"></i>
-                <span class="aside_tablet_hidden ">Settings</span>
+                <span class="aside_tablet_hidden">Settings</span>
               </a>
             </li>
           </ul>
@@ -204,25 +204,25 @@
         
         
                       <tbody>
-                        <tr class="tabRow" onclick="actionEvent(event)" >
-                            <th ><input class="inputtab" type="text" name="nameUser" value="user1" onfocus="addButtonEvent(event)" ></th>
-                            <th ><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)" ></th>
-                            <th>
-                              <div class="btn-modsup">
-                                <button class="btn-modif" onclick="actionEvent(event)">
-                                  <img src="./assets/icons/modif.svg" alt="" >
-                                </button>
-                                <button class="btn-sup"> 
-                                  <img src="./assets/icons/delete.svg" alt="">
-                                </button>
-                                <button class="btn-add" type="submit" onclick="actionEvent(event)"><span>add</span></button>
-                              
+                        <tr class="tabRow" onclick="actionEvent(event)">
+                          <th><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)"></th>
+                          <th><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)"></th>
+                          <th>
+                            <div class="btn-modsup">
+                              <button class="btn-modif" onclick="actionEvent(event)">
+                                <img src="./assets/icons/modif.svg" alt="">
+                              </button>
+                              <button class="btn-sup" onclick="actionEvent(event)">
+                                <img src="./assets/icons/delete.svg" alt="">
+                              </button>
+                              <button class="btn-add" type="button" onclick="validateForm(event)"><span>save</span></button>
                             </div>
-                           </th>
+                          </th>
                         </tr>
         
                       </tbody>
                     </table>
+
               </main>
       
               </section>
@@ -232,17 +232,6 @@
 
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
     </div>
   </body>
   <script src="./scripts/main.js"></script>
