@@ -131,8 +131,50 @@
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab" tabindex="0">...</div>
+            <div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab" tabindex="0">
+              <section class="info">
+                <main class="flex-grow-1 mt-3">
+                  
+                  <ol class="breadcrumb mb-0 fs-14 ps-40 pt-4">
+                    <li class="breadcrumb-item text-secondary">
+                      <a href="#">Projects</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Project1
+                    </li>
+                  </ol>
+                  <h3 class="fs-4 fw-semibold mt-1 mb-4 ps-40">Parametres</h3>
+                  <div class="profile-pic">
+                    <label class="-label" for="file">
+                      <span>Modifier l’icone</span>
+                    </label>
+                    <input id="file" type="file"/>
+                    <img src="assets/icons/iconBrief.png" id="output" width="200" />
+                  </div>
+        
+                  <form class="">  
+                    <div class="ml-5 mt-3 form-group input1">
+                         <label>Nom :</label>
+                         <input class="form-control w-50" placeholder="Veuillez entrer le nom  ..." type="text">
+                     </div>
+                     <div class="ml-5 mt-3 form-group input2">
+                         <label>Description :</label>
+                         <textarea class=" sizee form-control w-50" placeholder="Veuillez entrer une description  ..." cols="30" rows="5"></textarea>
+                     </div>
+              
+                     <div class="row justify-content-center icon mt-3 ">
+                            
+                        <button class="col-1  btn btn-primary btn2">Enregistrer</button>
+                        <button class=" annuler  col-1  btn btn-outline">Annuler</button>
+              
+                     </div>
+                  </form>   
+              </main>
+              </section>
+            </div>
             <div class="tab-pane fade" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab" tabindex="0">
+
+
               <section class="user_section flex-fill">
                 <main class="d-flex flex-column ps-40 pt-4">
                   <nav aria-label="breadcrumb">
@@ -190,17 +232,6 @@
 
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
     </div>
   </body>
   <script src="./scripts/main.js"></script>
