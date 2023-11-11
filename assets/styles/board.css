@@ -98,6 +98,11 @@
   cursor: pointer;
 }
 
+.zone.nouvelle-couleur-hover {
+  background-color: rgba(99, 166, 255, 0.2);
+}
+
+
 .zone:hover .modifier-story {
   display: block;
 }

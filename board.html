@@ -324,26 +324,24 @@
             user_stories.forEach((userStory, index) => {
                 const card = createSprintCard(userStory, index);
 
-                // Add a click event listener to open the modal for editing
                 card.addEventListener('click', function () {
                     openModalForSprint(userStory);
                 });
 
                 switch (userStory.status) {
-                    case 0: // À faire
+                    case 0: // a faire status 0
                         todoSection.appendChild(card);
                         break;
-                    case 1: // En cours
+                    case 1: // En cours status 1
                         inProgressSection.appendChild(card);
                         break;
-                    case 2: // Fini
+                    case 2: // Fini status 2
                         doneSection.appendChild(card);
                         break;
                 }
             });
         }
 
-        // Function to create a sprint card
         function createSprintCard(story) {
             const card = document.createElement('div');
             card.className = 'zone p-2 rounded bg-white mt-2';
@@ -353,7 +351,7 @@
             paragraph.contentEditable = true;
             paragraph.textContent = story.name;
             const buttonContainer = document.createElement('div');
-            buttonContainer.style.display = 'flex'; // Ajoutez cette ligne pour appliquer display: flex;
+            buttonContainer.style.display = 'flex';
 
             const editIcon = document.createElement('img');
             editIcon.src = './assets/icons/modif.svg';
@@ -395,7 +393,6 @@
             breadcrumbLink.setAttribute('data-bs-target', '#myModal');
 
             breadcrumbLink.addEventListener('click', function () {
-                // Remplissez le textarea du modal avec la description du sprint
                 const editableContent = document.getElementById('editableContent');
                 editableContent.value = story.description;
             });
@@ -416,46 +413,48 @@
             additionalInfo.appendChild(circleDiv);
 
             card.appendChild(paragraph);
-            card.appendChild(buttonContainer); // Ajoutez le conteneur des boutons
+            card.appendChild(buttonContainer);
             card.appendChild(additionalInfo);
+
+            card.addEventListener('mouseover', function () {
+                card.classList.replace('bg-white', 'nouvelle-couleur-hover');
+            });
+
+            card.addEventListener('mouseout', function () {
+                card.classList.replace('nouvelle-couleur-hover', 'bg-white');
+            });
+
 
             return card;
         }
 
         initializeCards();
 
-       
+        //FUNCTION FOR EDIT 
         function editParagraph(button, storyName) {
             var parentCard = button.closest('.zone');
             var paragraph = parentCard.querySelector('.clickable-paragraph');
-
-            // Mettre le focus sur le paragraphe éditable
             paragraph.focus();
-
             const userStory = user_stories.find(story => story.name === storyName);
-
-            // Récupérer la nouvelle valeur du paragraphe
             const newName = paragraph.textContent.trim();
             userStory.name = newName;
             saveSprintsToLocalStorage();
         }
 
 
-
-
-        // Function to load sprints from local storage
+        // Function load from local storage
         function loadSprintsFromLocalStorage() {
             const sprintsJSON = localStorage.getItem('user_stories');
             return sprintsJSON ? JSON.parse(sprintsJSON) : [];
         }
 
-        // Function to save sprints to local storage
+        // Function to save to local storage
         function saveSprintsToLocalStorage() {
             localStorage.setItem('user_stories', JSON.stringify(user_stories));
         }
 
 
-        // Call the function to load sprints into "A FAIRE" section
+        // Call the function to load all
         window.addEventListener('load', loadSprintsToACarte);
 
 
@@ -513,44 +512,36 @@
             document.getElementById('cartesAFaireCount').textContent = cartesAFaireCount;
             document.getElementById('cartesEnCoursCount').textContent = cartesEnCoursCount;
             document.getElementById('cartesFiniCount').textContent = cartesFiniCount;
-            // Enregistrez les sprints dans le stockage local
+
             saveSprintsToLocalStorage();
         }
 
         function supprimerStory(button) {
-    var userStory = button.closest('.zone');
-    if (userStory) {
-        // Obtenez le nom de la carte (sprint)
-        const storyName = userStory.querySelector('.clickable-paragraph').textContent.trim();
+            var userStory = button.closest('.zone');
+            if (userStory) {
+                // Obtenez le nom de la carte
+                const storyName = userStory.querySelector('.clickable-paragraph').textContent.trim();
+                const index = user_stories.findIndex(story => story.name === storyName);
 
-        // Recherchez l'élément dans le tableau user_stories en fonction de son nom
-        const index = user_stories.findIndex(story => story.name === storyName);
+                if (index !== -1) {
+                    // Supprimez l'élément du tableau user_stories
+                    const removedSprint = user_stories.splice(index, 1)[0];
+                    if (removedSprint.status === 0) {
+                        cartesAFaireCount--;
+                        document.getElementById('cartesAFaireCount').textContent = cartesAFaireCount;
+                    }
 
-        if (index !== -1) {
-            // Supprimez l'élément du tableau user_stories
-            const removedSprint = user_stories.splice(index, 1)[0];
-
-            // Mettez à jour le nombre de cartes "À faire" si la carte supprimée avait le statut 0
-            if (removedSprint.status === 0) {
-                cartesAFaireCount--;
-                document.getElementById('cartesAFaireCount').textContent = cartesAFaireCount;
+                    userStory.remove();
+                    loadSprintsToACarte();
+                    saveSprintsToLocalStorage();
+                }
             }
-            
-            // Mettez à jour le nombre de cartes dans d'autres sections en fonction du statut de la user story supprimée
-
-            userStory.remove();
-
-            // Mettez à jour le nombre de cartes "À faire"
-            loadSprintsToACarte();
-            saveSprintsToLocalStorage();
         }
-    }
-}
 
 
+        //Suivre la modification de la description de chaque story
 
-
-        let currentSprint = null; // Variable pour suivre le sprint actuellement édité
+        let currentSprint = null;
 
         function openModalForSprint(story) {
             currentSprint = story;
@@ -562,23 +553,18 @@
         const closeButton = document.getElementById('closeButton');
         if (closeButton) {
             closeButton.addEventListener('click', function () {
-                //  pour ne pas enregistrer les modifications
                 currentSprint = null;
             });
         }
 
-        // Gestionnaire de clic pour le bouton "Sauvegarder" du modal
+        // Gestionnaire de clic pour le bouton "Sauvegarder"
         const saveChangesButton = document.getElementById('saveChangesButton');
         if (saveChangesButton) {
             saveChangesButton.addEventListener('click', function () {
                 if (currentSprint) {
-                    // Récupérez le contenu modifié de la description du sprint dans le modal
                     const modifiedDescription = document.getElementById('editableContent').value;
 
-                    // Mettez à jour la description du sprint actuellement édité
                     currentSprint.description = modifiedDescription;
-
-                    // Sauvegardez les sprints mis à jour dans le local storage
                     saveSprintsToLocalStorage();
                 }
             });
@@ -593,47 +579,44 @@
                 const draggedStoryName = $(draggedUserStory).find('.clickable-paragraph').text().trim();
                 const parentSection = draggedUserStory.parentElement;
 
-                // Find the index of the user story with the matching name in the user_stories array
                 const index = user_stories.findIndex(story => story.name === draggedStoryName);
 
-                // Check if the index is valid
                 if (index !== -1) {
-                    // Update the status of the user story based on the drop section
+
                     if (parentSection.id === 'sortable1') {
-                        user_stories[index].status = 0; // À faire
+                        user_stories[index].status = 0;
                     }
                     if (parentSection.id === 'sortable2') {
-                        user_stories[index].status = 1; // En cours
+                        user_stories[index].status = 1;
                     }
                     if (parentSection.id === 'sortable3') {
-                        user_stories[index].status = 2; // Fini
+                        user_stories[index].status = 2;
                     }
 
 
-                    // Save the updated sprints to local storage
                     saveSprintsToLocalStorage();
-
-                    // Load sprints into the "À Faire" section
                     loadSprintsToACarte();
                 }
             }
         });
 
-        // À l'intérieur de votre script JavaScript
-        $('#myModal2').on('show.bs.modal', function (event) {
-            // Calculer le nombre de tickets dans chaque état
+
+        document.getElementById('myModal2').addEventListener('show.bs.modal', function (event) {
+        
             const ticketsAFaire = user_stories.filter(story => story.status === 0).length;
             const ticketsEnCours = user_stories.filter(story => story.status === 1).length;
-            const ticketOuvert = ticketsAFaire + ticketsEnCours; // Additionner les deux
+            const ticketOuvert = ticketsAFaire + ticketsEnCours;
 
             const ticketsFini = user_stories.filter(story => story.status === 2).length;
 
-            // Mettre à jour le contenu de la modal avec les nouveaux nombres
-            $('#ticketsTermines').html(`
-        <li>${ticketOuvert} ticket${ticketOuvert !== 1 ? 's' : ''} ouvert${ticketOuvert !== 1 ? 's' : ''} </li>
-        <li>${ticketsFini} ticket${ticketsFini !== 1 ? 's' : ''} terminé${ticketsFini !== 1 ? 's' : ''} </li>
-    `);
+            const ticketsTerminesElement = document.getElementById('ticketsTermines');
+
+            ticketsTerminesElement.innerHTML = `
+        <li>${ticketOuvert} ticket${ticketOuvert !== 1 ? 's' : ''} ouvert${ticketOuvert !== 1 ? 's' : ''}</li>
+        <li>${ticketsFini} ticket${ticketsFini !== 1 ? 's' : ''} terminé${ticketsFini !== 1 ? 's' : ''}</li>
+    `;
         });
+
 
 
 
