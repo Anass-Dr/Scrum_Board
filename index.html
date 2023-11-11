@@ -128,6 +128,7 @@
             Vous faites partie d'un projet géré par l'équipe
           </p>
         </aside>
+<!-- =================================== main =============================================== -->
         <main id="mainPart">
           <div class="titel_backloge mx-4">
             <div class="d-flex pt-4">
@@ -229,14 +230,14 @@
                 <div
                   id="collapseOne"
                   class="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
+                  data-bs-parent="#accordion"
                  
                 >
                   <div id="container" class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="sortable1">
                     <!-- user storie 1 -->
                   
                     <!-- modal de user storie -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -263,6 +264,9 @@
                                         <h3>duration</h3>
                                         <input type="number" class="duration_userstorie mt-2" min="1">
                                         </div>
+                                        <div class="date_start_storie">
+                                          <input type="text" id="initialTimeDisplay" readonly>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +276,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                     
               </div>
               <button
@@ -315,7 +319,7 @@
                 <div
                   id="collapseOne2"
                   class="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
+                  data-bs-parent="#accordion_backlog"
                 
                 >
                 <div id="container2" class="accordion-body"  ondragover="over(event)" ondrop="drop(event)" id="sortable1">
@@ -334,10 +338,9 @@
           </section>
         </main>
       </div>
-      
     </div>
-
     <script src="./scripts/main.js"></script>
+<!-- =============================== drage and drop =========================================-->
     <script>
       $(function () {
         $(".accordion-body").sortable({
@@ -349,6 +352,7 @@
         $(".accordion-body").disableSelection(); // Prevent text selection while dragging
       });
     </script>
+<!-- ========================================================================================== -->
     <script src="./scripts/bootstrap.js"></script>
   </body>
 </html>
