@@ -418,7 +418,6 @@ function choix(event) {
 /***  settings PAGE STYLES    ***/
 /***  settings PAGE STYLES    ***/
 
-
 /***  USER_SECTION STYLES    ***/
 
 
