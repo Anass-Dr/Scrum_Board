@@ -529,7 +529,6 @@ function entre_dedline(event) {
 /***  settings PAGE STYLES    ***/
 /***  settings PAGE STYLES    ***/
 
-/***  INFO_SECTION STYLES    ***/
 /***  USER_SECTION STYLES    ***/
 
 function add_user() {
@@ -596,4 +595,54 @@ function addButtonEvent(event) {
   event.currentTarget
     .closest(".tabRow")
     .querySelector(".btn-add").style.display = "block";
+}  
+
+/***  INFO_SECTION STYLES    ***/
+
+let image = document.getElementById('output');
+let file = document.getElementById('file');
+let btn = document.querySelector('.btn');
+
+file.addEventListener('change' , function (event) {
+    image.src = URL.createObjectURL(event.target.files[0]);
+    console.log (image.getAttribute("src"));
+    localStorage.setItem('nvImage' , image.getAttribute("src"));
+})
+
+
+//  localStorage //
+
+
+let nameInput = document.querySelector(".input1 input");
+let descInput = document.querySelector(".input2 textarea")
+let btnEregister = document.querySelector('.btn2');
+
+function addNameInfo () {
+    localStorage.setItem('nameInfo' , nameInput.value);
 }
+
+function antiRefresh () {
+    let nameInfo = localStorage.getItem('nameInfo');
+    if (nameInfo){
+        nameInput.value = nameInfo ;
+    }
+}
+antiRefresh () ;
+
+function addDescInfo () {
+    localStorage.setItem('descInfo' , descInput.value);
+}
+
+function antiRefresh2 () {
+    let descInfo = localStorage.getItem('descInfo');
+    if (descInfo){
+        descInput.value = descInfo ; 
+    }
+} 
+
+antiRefresh2 () ;
+
+btnEregister.addEventListener('click' , () => {
+    addNameInfo() ;
+    addDescInfo() ; 
+})
