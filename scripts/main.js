@@ -418,132 +418,132 @@ function choix(event) {
 /***  settings PAGE STYLES    ***/
 /***  settings PAGE STYLES    ***/
 
-/***  INFO_SECTION STYLES    ***/
-
 /***  USER_SECTION STYLES    ***/
+
 
 function add_user() {
   const rowHTML = `
-  <tr class="tabRow" onclick="actionEvent(event)" >
-  <th ><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)" ></th>
-  <th ><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)" ></th>
-  <th>
-    <div class="btn-modsup">
-      <button class="btn-modif" onclick="actionEvent(event)">
-        <img src="./assets/icons/modif.svg" alt="" >
-      </button>
-      <button class="btn-sup"> 
-        <img src="./assets/icons/delete.svg" alt="">
-      </button>
-      <button class="btn-add" type="submit" onclick="actionEvent(event)"><span>add</span></button>
+    <tr class="tabRow" onclick="actionEvent(event)">
+      <th><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)"></th>
+      <th><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)"></th>
+      <th>
+        <div class="btn-modsup">
+          <button class="btn-modif" onclick="actionEvent(event)">
+            <img src="./assets/icons/modif.svg" alt="">
+          </button>
+          <button class="btn-sup" onclick="actionEvent(event)">
+            <img src="./assets/icons/delete.svg" alt="">
+          </button>
+          <button class="btn-add" type="button" onclick="validateForm(event)"><span>save</span></button>
+        </div>
+      </th>
+    </tr>
+  `;
+  document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML);
+}
+
+function actionEvent(event) {
+  // deleteUser
+  if (event.target.parentElement.classList.contains("btn-sup")) {
+    event.currentTarget.remove();
+  }
+  // saveInfo
+  // else if (event.target.parentElement.classList.contains("btn-add")) {
+  //   let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+  //   saveInfo[0].disabled = true;
+  //   saveInfo[1].disabled = true;
     
-  </div>
- </th>
-</tr>
-  `
-  document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML)
-
-  // buttonEvent();
-}
-
-function actionEvent(event){
-// deleteUser
-if(event.target.parentElement.classList.contains("btn-sup")){
-  event.currentTarget.remove();
-
-}
-// savaInfo
-else if(event.target.parentElement.classList.contains("btn-add")){
-  let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab")
-  saveInfo[0].disabled = true
-  saveInfo[1].disabled = true
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "none"
-
-
-}
-//modifInfo
-else if(event.target.parentElement.classList.contains("btn-modif")){
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block"
-  let modifInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab")
-  modifInfo[0].disabled = false
-  modifInfo[1].disabled = false
-  
-}
-// editUser
-// if(event.target.parentElement.classList.contains("btn-modif")){
-//   event.currentTarget.closest(".tabRow").querySelector(".inputtab").disabled = false;
-// }
-
-//saveEdit(disibeled input)
-
-
-
-}
-function addButtonEvent(event){
-event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block"
-
-}
-  
-
-  /***  Board PAGE SCRIPT    ***/
-  
-// Changer la taille du texte
-function changeFontSize() {
-  var fontSize = document.getElementById("fontSize").value;
-  document.getElementById("editableContent").style.fontSize = fontSize;
-}
-
-// Changer la couleur du texte
-function changeFontColor() {
-  var fontColor = document.getElementById("fontColor").value;
-  document.getElementById("editableContent").style.color = fontColor;
-}
-
-
-// Sélectionnez tous les boutons par leur classe
-var modifierButtons = document.querySelectorAll(".modifierButton");
-
-// Parcourez les boutons et ajoutez un événements "click"
-modifierButtons.forEach(function (button) {
-   button.addEventListener("click", function () {
-       // Trouvez le div parent pour permettre la modification
-       var parentDiv = button.previousElementSibling;
-       parentDiv.focus();
-   });
-});
-
-
-//Code de barre de recherche sur un element dans les trois carte
-
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-const content = document.getElementById('content');
-
-searchInput.addEventListener('input', function () {
-const searchTerm = searchInput.value.toLowerCase();
-filterContent(searchTerm);
-});
-
-
-function filterContent(searchTerm) {
-const searshes = content.querySelectorAll('.zone');
-
-for (const item of searshes) {
-  const text = item.textContent.toLowerCase();
-
-  if (text.includes(searchTerm)) {
-      item.style.display = 'block';
-  } else {
-      item.style.display = 'none';
+  // }
+  // modifInfo
+  else if (event.target.parentElement.classList.contains("btn-modif")) {
+    event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
+    let modifInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+    modifInfo[0].disabled = false;
+    modifInfo[1].disabled = false;
   }
 }
+
+function addButtonEvent(event) {
+  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
 }
 
-// Au chargement de la page, assurez-vous que tous les éléments sont affichés
-window.addEventListener('load', function () {
-filterContent('');
-});
+function validateName(name) {
+  // ValidName
+
+  const nameParts = name.split(' ');
+  return nameParts.length === 2;
+}
+
+function validateForm(event) {
+  const nameInput = event.currentTarget.closest(".tabRow").querySelector('input[name="nameUser"]');
+  const emailInput = event.currentTarget.closest(".tabRow").querySelector('input[name="emailUser"]');
+
+  if (!validateName(nameInput.value)) {
+    alert('Please enter a valid name (First Name Last Name).');
+    return false;
+  }
+
+  // validEmail
+  const emailRegex = /^[a-zA-Z0-9._-]+@(gmail|outlook|hotmail)\.[a-z]{2,4}$/;
+  if (!emailRegex.test(emailInput.value)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+
+  // If all validations pass
+  alert('Saved successfully!');
+  let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+  saveInfo[0].disabled = true;
+  saveInfo[1].disabled = true;
+  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "none";
+}
+
+/***  INFO_SECTION STYLES    ***/
+
+let image = document.getElementById('output');
+let file = document.getElementById('file');
+let btn = document.querySelector('.btn');
+
+file.addEventListener('change' , function (event) {
+    image.src = URL.createObjectURL(event.target.files[0]);
+    console.log (image.getAttribute("src"));
+    localStorage.setItem('nvImage' , image.getAttribute("src"));
+})
 
 
+//  localStorage //
 
 
+let nameInput = document.querySelector(".input1 input");
+let descInput = document.querySelector(".input2 textarea")
+let btnEregister = document.querySelector('.btn2');
+
+function addNameInfo () {
+    localStorage.setItem('nameInfo' , nameInput.value);
+}
+
+function antiRefresh () {
+    let nameInfo = localStorage.getItem('nameInfo');
+    if (nameInfo){
+        nameInput.value = nameInfo ;
+    }
+}
+antiRefresh () ;
+
+function addDescInfo () {
+    localStorage.setItem('descInfo' , descInput.value);
+}
+
+function antiRefresh2 () {
+    let descInfo = localStorage.getItem('descInfo');
+    if (descInfo){
+        descInput.value = descInfo ; 
+    }
+} 
+
+antiRefresh2 () ;
+
+btnEregister.addEventListener('click' , () => {
+    addNameInfo() ;
+    addDescInfo() ; 
+})
