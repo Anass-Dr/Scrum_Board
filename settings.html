@@ -38,15 +38,16 @@
       </header>
       <div class="backlog d-flex flex-grow-1">
         <aside id="aside">
+          <div id="aside_icon"></div>
           <div class="aside_head">
-            <div class="project_img"></div>
-            <div class="project_info">
+            <div class="project_img aside_mobile_hidden"></div>
+            <div class="project_info aside_tablet_hidden">
               <h5>Project 1</h5>
               <p>Software Project</p>
             </div>
           </div>
-          <h6>PLANNING</h6>
-          <ul class="aside_pages">
+          <h6 class="aside_tablet_hidden">PLANNING</h6>
+          <ul class="aside_pages  aside_mobile_hidden">
             <li>
               <a href="./timer.html">
                 <svg
@@ -60,10 +61,10 @@
                     fill-rule="evenodd"
                   ></path>
                 </svg>
-                <span>Timeline</span>
+                <span class="aside_tablet_hidden">Timeline</span>
               </a>
             </li>
-            <li>
+            <li >
               <a href="./index.html">
                 <svg
                   width="24"
@@ -84,7 +85,7 @@
                     ></path>
                   </g>
                 </svg>
-                <span>Backlog</span>
+                <span class="aside_tablet_hidden">Backlog</span>
               </a>
             </li>
             <li>
@@ -102,29 +103,23 @@
                     <path d="M8 6v12h2V6zm6 0v12h2V6z"></path>
                   </g>
                 </svg>
-                <span>Board</span>
+                <span class="aside_tablet_hidden">Board</span>
               </a>
             </li>
             <li class="active">
               <a href="./settings.html">
                 <i class="fa-solid fa-gear"></i>
-                <span>Settings</span>
+                <span class="aside_tablet_hidden">Settings</span>
               </a>
             </li>
-            <!-- <li style="border: none;">
-              <ul class="sous-titre">
-                 <li class="details">Details</li>
-                 <li class="users active">Users</li>
-              </ul>
-            </li> -->
           </ul>
-          <h6>Users</h6>
-          <div class="aside_users">
+          <h6 class="aside_tablet_hidden">Users</h6>
+          <div class="aside_users aside_tablet_hidden">
             <div class="user"></div>
             <div class="user"></div>
             <div class="user"></div>
           </div>
-          <p class="aside_footer">
+          <p class="aside_footer aside_tablet_hidden">
             Vous faites partie d'un projet géré par l'équipe
           </p>
         </aside>
@@ -167,25 +162,25 @@
         
         
                       <tbody>
-                        <tr class="tabRow" onclick="actionEvent(event)" >
-                            <th ><input class="inputtab" type="text" name="nameUser" value="user1" onfocus="addButtonEvent(event)" ></th>
-                            <th ><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)" ></th>
-                            <th>
-                              <div class="btn-modsup">
-                                <button class="btn-modif" onclick="actionEvent(event)">
-                                  <img src="./assets/icons/modif.svg" alt="" >
-                                </button>
-                                <button class="btn-sup"> 
-                                  <img src="./assets/icons/delete.svg" alt="">
-                                </button>
-                                <button class="btn-add" type="submit" onclick="actionEvent(event)"><span>add</span></button>
-                              
+                        <tr class="tabRow" onclick="actionEvent(event)">
+                          <th><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)"></th>
+                          <th><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)"></th>
+                          <th>
+                            <div class="btn-modsup">
+                              <button class="btn-modif" onclick="actionEvent(event)">
+                                <img src="./assets/icons/modif.svg" alt="">
+                              </button>
+                              <button class="btn-sup" onclick="actionEvent(event)">
+                                <img src="./assets/icons/delete.svg" alt="">
+                              </button>
+                              <button class="btn-add" type="button" onclick="validateForm(event)"><span>save</span></button>
                             </div>
-                           </th>
+                          </th>
                         </tr>
         
                       </tbody>
                     </table>
+
               </main>
       
               </section>
