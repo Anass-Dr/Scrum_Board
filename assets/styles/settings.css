@@ -1,0 +1,58 @@
+.table{
+    width: 95%;
+}
+.inputtab{
+    border: none;
+    outline: none;
+    background: none;
+}
+.setting_add{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.settings_add_pers{
+    padding: 5px 6px;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    color: white;
+    background-color: #056df5;
+    border: none;
+}
+.settings_add_pers span{
+    font-weight: bold;
+}
+.btn-add{
+    display: none;
+    padding: 1px 6px;
+    border-radius: 5px;
+    color: white;
+    background-color: #056df5;
+    border: none;
+}
+.btn-add span{
+    font-weight: 600;
+}
+.btn-modif, .btn-sup{
+    border: none;
+    background-color: white;
+}
+.btn-modsup{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+/* .details , .users {
+    padding: 0px;
+    height: 2rem;
+    width: 100px;
+    margin-left : 45%;
+    display: flex;
+    align-items: center;
+  } */
+

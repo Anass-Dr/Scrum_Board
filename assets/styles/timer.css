@@ -44,7 +44,8 @@ td {
 .sticky > div:first-child,
 .sticky > div:nth-child(2),
 thead,
-tbody tr:first-child {
+tbody tr:first-child,
+tbody tr:nth-child(2) {
   border-bottom: 1px solid #cdd7e5;
 }
 thead th,
