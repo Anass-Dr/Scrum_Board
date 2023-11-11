@@ -136,8 +136,42 @@
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab" tabindex="0">...</div>
+            <div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab" tabindex="0">
+              <section class="info">
+                <main class="flex-grow-1 mt-3">
+                  <h6 class="ml-5">Projets / NomDuProjet</h6>
+                  <h2 class="ml-5"> Details </h2>
+                  <div class="profile-pic">
+                    <label class="-label" for="file">
+                      <span>Modifier l’icone</span>
+                    </label>
+                    <input id="file" type="file"/>
+                    <img src="assets/icons/iconBrief.png" id="output" width="200" />
+                  </div>
+        
+                  <form class="">  
+                    <div class="ml-5 mt-3 form-group input1">
+                         <label>Nom :</label>
+                         <input class="form-control w-50" placeholder="Veuillez entrer le nom  ..." type="text">
+                     </div>
+                     <div class="ml-5 mt-3 form-group input2">
+                         <label>Description :</label>
+                         <textarea class=" sizee form-control w-50" placeholder="Veuillez entrer une description  ..." cols="30" rows="5"></textarea>
+                     </div>
+              
+                     <div class="row justify-content-center icon mt-3 ">
+                            
+                        <button class="col-1  btn btn-primary btn2">Enregistrer</button>
+                        <button class=" annuler  col-1  btn btn-outline">Annuler</button>
+              
+                     </div>
+                  </form>   
+              </main>
+              </section>
+            </div>
             <div class="tab-pane fade" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab" tabindex="0">
+
+
               <section class="user_section flex-fill">
                 <main class="d-flex flex-column ps-40 pt-4">
                   <nav aria-label="breadcrumb">
