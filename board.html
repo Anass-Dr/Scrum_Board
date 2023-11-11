@@ -345,6 +345,8 @@
         function createSprintCard(story) {
             const card = document.createElement('div');
             card.className = 'zone p-2 rounded bg-white mt-2';
+            card.setAttribute('data-bs-toggle', 'modal');
+            card.setAttribute('data-bs-target', '#myModal');
 
             const paragraph = document.createElement('p');
             paragraph.className = 'clickable-paragraph';
