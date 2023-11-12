@@ -509,6 +509,7 @@ function validateForm(event) {
     .closest(".tabRow")
     .querySelector(".btn-add").style.display = "none";
 }
+
 /***  INFO_SECTION STYLES    ***/
 
 let image = document.getElementById("output");
