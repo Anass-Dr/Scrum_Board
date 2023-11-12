@@ -76,13 +76,35 @@ function getMonth(startDate) {
 
 // Load all table rows :
 function loadTableRows() {
-  const startDate = getStartPoint(21, 10, 2023);
-  const endDate = getEndPoint(9, 11, 2023);
+  const activeSprints = projectData.sprints
+    .filter((sprint) => sprint.isStarted)
+    .sort((a, b) => new Date(a.start) - new Date(b.start))
+    .map((sprint) => ({
+      ...sprint,
+      user_stories: sprint.user_stories.sort(
+        (a, b) => new Date(a.start) - new Date(b.start)
+      ),
+    }));
+  const firstDate = new Date(activeSprints[0].start);
+  const lastDate = new Date(activeSprints.slice(-1)[0].start);
+  lastDate.setDate(lastDate.getDate() + activeSprints.slice(-1)[0].duration);
+  const firstDateObj = [
+    firstDate.getDate(),
+    firstDate.getMonth() + 1,
+    firstDate.getFullYear(),
+  ];
+  const lastDateObj = [
+    lastDate.getDate(),
+    lastDate.getMonth() + 1,
+    lastDate.getFullYear(),
+  ];
+  const startDate = getStartPoint(...firstDateObj);
+  const endDate = getEndPoint(...lastDateObj);
   loadWeeksTd(startDate, endDate);
   loadMonthsTd(startDate, endDate);
-  loadSprintsWV(startDate);
-  loadSprintsMV(startDate);
-  loadUserStories(startDate);
+  loadSprintsWV(startDate, activeSprints);
+  loadSprintsMV(activeSprints);
+  loadUserStories(startDate, activeSprints);
   loadYearMonths(startDate, endDate);
 }
 
@@ -130,15 +152,13 @@ function loadWeeksTd(startDate, endDate) {
 }
 
 // load Sprints in table for Weeks vue :
-function loadSprintsWV(startDate) {
-  projectData.sprints.forEach((sprint, indx) => {
+function loadSprintsWV(startDate, activeSprints) {
+  activeSprints.forEach((sprint, indx) => {
     let colspan;
     if (indx == 0) colspan = (new Date(sprint.start) - startDate) / 86400000;
     else {
-      const endDate = new Date(projectData.sprints[indx - 1].start);
-      endDate.setDate(
-        endDate.getDate() + projectData.sprints[indx - 1].duration
-      );
+      const endDate = new Date(activeSprints[indx - 1].start);
+      endDate.setDate(endDate.getDate() + activeSprints[indx - 1].duration);
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
@@ -157,17 +177,15 @@ function loadSprintsWV(startDate) {
 }
 
 // load Sprints in table for Weeks vue :
-function loadSprintsMV(startDate) {
-  projectData.sprints.forEach((sprint, indx) => {
+function loadSprintsMV(activeSprints) {
+  activeSprints.forEach((sprint, indx) => {
     const sprintStartDate = new Date(sprint.start);
     let colspan, nDays;
     if (indx == 0) {
       nDays = sprintStartDate.getDate();
     } else {
-      const endDate = new Date(projectData.sprints[indx - 1].start);
-      endDate.setDate(
-        endDate.getDate() + projectData.sprints[indx - 1].duration
-      );
+      const endDate = new Date(activeSprints[indx - 1].start);
+      endDate.setDate(endDate.getDate() + activeSprints[indx - 1].duration);
       nDays = (sprintStartDate - endDate) / 86400000;
     }
 
@@ -188,24 +206,27 @@ function loadSprintsMV(startDate) {
 }
 
 // load User Stories in Table :
-function loadUserStories(startDate) {
-  projectData.sprints.forEach((sprint) => {
+function loadUserStories(startDate, activeSprints) {
+  let currColor = 1;
+  activeSprints.forEach((sprint) => {
     const sprintStart = new Date(sprint.start);
-    sprint.user_stories?.forEach((story) => {
+    sprint.user_stories?.forEach((story, indx) => {
       const colspan = (sprintStart - startDate) / 86400000;
       tbody?.insertAdjacentHTML(
         "beforeend",
         `
         <tr class="user_story_tr">
           <td colspan="${colspan}"></td>
-          <td style="--i: 1" class="user_story user1" colspan="${story.duration}">
+          <td style="--i: ${
+            indx + 1
+          }" class="user_story story${currColor}" colspan="${story.duration}">
             <span></span>
           </td>
         </tr>
       `
       );
-
       sprintStart.setDate(sprintStart.getDate() + story.duration);
+      currColor = currColor == 6 ? 1 : currColor + 1;
     });
   });
 }
@@ -516,7 +537,7 @@ let image = document.getElementById("output");
 let file = document.getElementById("file");
 let btn = document.querySelector(".btn");
 
-file.addEventListener("change", function (event) {
+file?.addEventListener("change", function (event) {
   image.src = URL.createObjectURL(event.target.files[0]);
   console.log(image.getAttribute("src"));
   localStorage.setItem("nvImage", image.getAttribute("src"));
@@ -553,7 +574,7 @@ function antiRefresh2() {
 
 antiRefresh2();
 
-btnEregister.addEventListener("click", () => {
+btnEregister?.addEventListener("click", () => {
   addNameInfo();
   addDescInfo();
 });
