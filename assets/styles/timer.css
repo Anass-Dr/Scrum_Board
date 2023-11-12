@@ -149,3 +149,14 @@ tbody tr:last-of-type .user_story::after {
 .hidden {
   display: none;
 }
+
+@media screen and (max-width: 900px) {
+  section {
+    width: calc(100vw - 111px);
+  }
+}
+@media screen and (max-width: 600px) {
+  section {
+    width: calc(100vw - 49px);
+  }
+}

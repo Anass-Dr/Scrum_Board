@@ -75,10 +75,16 @@ header .user_img {
 /* *************** */
 
 /* SIDEBAR STYLES : */
+.aside_wrapper {
+  min-width: 70.8px;
+  position: relative;
+}
 #aside {
   width: 240px;
+  height: 100%;
   padding: 25px 10px;
   border-right: 1px solid #e2e2e2;
+  transition: all 0.2s ease;
 }
 .aside_head {
   display: flex;
@@ -141,7 +147,7 @@ header .user_img {
 
 @media screen and (max-width: 900px) {
   #aside {
-    width: auto;
+    width: 70.8px;
     position: relative;
   }
   #aside #aside_icon {
@@ -154,6 +160,7 @@ header .user_img {
     background: url("../icons/aside_icon.png") center no-repeat;
     background-size: cover;
     background-color: #fff;
+    cursor: pointer;
   }
   #aside .aside_pages li {
     padding: 6px 12px;
@@ -164,12 +171,36 @@ header .user_img {
   .aside_tablet_hidden {
     display: none !important;
   }
+  .aside_tablet_f_hidden {
+    display: none !important;
+  }
+  .aside_pos {
+    width: 240px !important;
+    background-color: #fff !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 25px 10px !important;
+    border-radius: 0 !important;
+  }
+  .aside_pos .aside_tablet_hidden,
+  .aside_pos .aside_mobile_hidden {
+    display: initial !important;
+  }
+  .aside_pos .aside_tablet_f_hidden {
+    display: flex !important;
+  }
 }
 @media screen and (max-width: 600px) {
   .aside_mobile_hidden {
     display: none;
   }
+  .aside_wrapper {
+    min-width: 8.8px;
+  }
   #aside {
+    width: 8.8px;
     padding: 25px 4px;
     background-color: #2b69b9;
     border-top-right-radius: 20px;

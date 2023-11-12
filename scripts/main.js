@@ -31,14 +31,11 @@ const projectData = {
 document.getElementById("aside_icon").addEventListener("click", controlAside);
 
 function controlAside(e) {
-  console.log(e);
-  const tabAsideItems = document.querySelectorAll(".aside_tablet_hidden");
-  const mobAsideItems = document.querySelectorAll(".aside_mobile_hidden");
-
-  [...tabAsideItems, ...mobAsideItems].forEach((item) => {
-    item.setAttribute("style", "display: block !important");
-  });
-  e.target.style.transform = "translateX(50%) rotate(180deg)";
+  const aside = document.getElementById("aside");
+  e.target.style.transform = ` translateX(50%) ${
+    aside.classList.contains("aside_pos") ? "rotate(0deg)" : "rotate(180deg)"
+  }`;
+  aside.classList.toggle("aside_pos");
 }
 
 /***  TIMELINE PAGE SCRIPT    ***/
@@ -241,56 +238,74 @@ const controlVue = (e) => {
 
 /***  Backlog PAGE SCRIPT    ***/
 
-// generate user HTML
+// generate user-stories HTML
 function generate_user_html(title) {
   const htmluser = ` <div
   id="userStorie"
-    class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
-    draggable="true" 
+  class="users_storise_sprint w-100 rounded d-flex align-items-center justify-content-between border"
+  draggable="true"
+>
+  <div
+    class="title_userstori_sprint d-flex align-items-center w-75 p-2"
+    data-bs-toggle="modal"
+    data-bs-target="#myModal"
   >
-    <div
-      class="title_userstori_sprint d-flex align-items-center w-75 p-2" data-bs-toggle="modal" data-bs-target="#myModal"
-    >
-  
     <h6>
-      <img
-        src="./assets/icons/userstori_icon.svg"
-        alt=""
-        class="mx-2"
-      />
+      <!-- <img src="./assets/icons/userstori_icon.svg" alt="" class="mx-2" /> -->
     </h6>
-      <h6 class="pt-2 px-2 m-0">${title}</h6>
-      <p class="pt-2 m-0 mx-4">user storie</p>
-    </div>
+    <h6 class="pt-2 px-2 m-0">${title}</h6>
+    <p class="pt-2 m-0 mx-4">user storie</p>
+  </div>
+  <div class="option_userstorie d-flex align-items-center w-25">
     <div
-      class="option_userstorie d-flex align-items-center w-25"
+      class="select_userstorie align-items-center justify-content-center rounded"
     >
-      <select
-        name="select_userstorie"
-        class="select_userstorie w-25 h-75 px-2 align-items-center justify-content-center rounded"
-      >
-        <option value="to do" class="todo">to do</option>
-        <option value="doing">doing</option>
-        <option value="done" class="done text-success">
-          done
-        </option>
-      </select>
-      <span class="deadline_userstorie mx-4 h-25">-</span>
-  
-      <div class="user"><span>AA</span></div>
+      <div class="all_status d-flex" onclick="vue_status(event)">
+        <p class="fill m-0">status</p>
+        <img src="./assets/icons/arrow-down-1.png" alt="" class="arrodown" />
+      </div>
+      <div class="status_storie" >
+        <div class="todo" onclick="choix(event)">
+          <span class="hv"></span>
+          <p class="todo2 px-2 m-0">to do</p>
+        </div>
+        <div class="todo" onclick="choix(event)">
+          <span class="hv"></span>
+          <p class="todo2 px-2 m-0">doing</p>
+        </div>
+        <div class="todo"onclick="choix(event)">
+          <span class="hv"></span>
+          <p class="todo2 px-2 m-0">done</p>
+        </div>
+      </div>
     </div>
-  </div>`;
+
+    <img class="arrowup" src="./assets/icons/arrow-up-1.png" alt="" onclick = "closing_status(event)"/>
+    <span class="deadline_userstorie mx-4 h-25">-</span>
+
+    <div class="user"><span>AA</span></div>
+  </div>
+</div>`;
   return htmluser;
 }
+
+// create new sprint
 
 const inputHtml = `  <input type="text" class="create_name_userstorie" id="create_title" placeholder="Qu'est-ce qui doit etre fait ?">`;
 // add users stories
 // sprint
+function account_tickets_sprint() {
+  const numberTicketsprint = document.querySelector(".account_ticket_sprint");
+  NumberTicket_sprint++;
+  numberTicketsprint.innerText = `${NumberTicket_sprint} - ticket`;
+}
 const container1 = document.getElementById("container");
+let NumberTicket_sprint = 0;
+const button = document.getElementById("add_backlog_btn");
 function createNewDiv() {
   // Clone the existing container div
-  const button = document.getElementById("add_backlog_btn");
   button.disabled = true;
+  button2.disabled = true;
   container1.insertAdjacentHTML("beforeend", inputHtml);
 
   const create_name_userstorie = document.querySelector(
@@ -300,23 +315,34 @@ function createNewDiv() {
     if (event.key === "Enter") {
       const creat_title_userstorie = document.getElementById("create_title");
       const thetitle_userstorie = creat_title_userstorie.value;
-      console.log(thetitle_userstorie);
+
       container1.insertAdjacentHTML(
         "beforeend",
         generate_user_html(thetitle_userstorie)
       );
 
       create_name_userstorie.remove();
+      account_tickets_sprint();
       button.disabled = false;
+      button2.disabled = false;
     }
   });
 }
 
 // backloge
-const container2 = document.getElementById("container2");
+function account_tickets_backlog() {
+  const numberTicketbacklog = document.querySelector(".account_ticket");
+  NumberTicket_backlog++;
+  numberTicketbacklog.innerText = `${NumberTicket_backlog} - ticket`;
+}
 
+const container2 = document.getElementById("container2");
+let accordion = document.querySelector("#tickets_backlog");
+let NumberTicket_backlog = 0;
+
+const button2 = document.getElementById("add_backlog_btn2");
 function createNewDiv2() {
-  const button2 = document.getElementById("add_backlog_btn2");
+  button.disabled = true;
   button2.disabled = true;
   container2.insertAdjacentHTML("beforeend", inputHtml);
   const create_name_userstorie = document.querySelector(
@@ -327,59 +353,206 @@ function createNewDiv2() {
     if (event.key === "Enter") {
       const creat_title_userstorie = document.getElementById("create_title");
       const thetitle_userstorie = creat_title_userstorie.value;
-      console.log(thetitle_userstorie);
+
       container2.insertAdjacentHTML(
         "beforeend",
         generate_user_html(thetitle_userstorie)
       );
 
       create_name_userstorie.remove();
-
+      account_tickets_backlog();
+      button.disabled = false;
       button2.disabled = false;
     }
   });
 }
+// controle the status for user storie
+
+function vue_status(event) {
+  event.currentTarget.nextElementSibling.style.display = "block";
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".arrowup").style.display = "block";
+  event.currentTarget.querySelector(".arrodown").style.display = "none";
+}
+
+function closing_status(event) {
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".status_storie").style.display = "none";
+
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".arrodown").style.display = "block";
+
+  event.target.style.display = "none";
+}
+
+// const ststus_usersstories = document.getElementsByClassName("fill");
+// const todoandmore = document.getElementsByClassName("todo2");
+function choix(event) {
+  console.log(1);
+  console.log(
+    event.currentTarget.closest(".option_userstorie").querySelector(".fill")
+  );
+  console.log(event.currentTarget.querySelectorAll(".todo2"));
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".fill").innerHTML =
+    event.currentTarget.querySelector(".todo2").innerHTML;
+  event.target.style.display = "none";
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".status_storie").style.display = "none";
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".arrodown").style.display = "block";
+  event.currentTarget
+    .closest(".option_userstorie")
+    .querySelector(".arrowup").style.display = "none";
+}
 
 /***  settings PAGE STYLES    ***/
 /***  settings PAGE STYLES    ***/
-
-/***  INFO_SECTION STYLES    ***/
 
 /***  USER_SECTION STYLES    ***/
 
 function add_user() {
   const rowHTML = `
-      <tr class="tabRow">
-      <th ><input class="inputtab" type="text" placeholder="User_name"></th>
-      <th ><input class="inputtab" type="email" placeholder="User_email"></th>
+    <tr class="tabRow" onclick="actionEvent(event)">
+      <th><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)"></th>
+      <th><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)"></th>
       <th>
         <div class="btn-modsup">
-          <button class="btn-modif">
+          <button class="btn-modif" onclick="actionEvent(event)">
             <img src="./assets/icons/modif.svg" alt="">
           </button>
-          <button class="btn-sup"> 
+          <button class="btn-sup" onclick="actionEvent(event)">
             <img src="./assets/icons/delete.svg" alt="">
           </button>
-
+          <button class="btn-add" type="button" onclick="validateForm(event)"><span>save</span></button>
         </div>
       </th>
     </tr>
-      `;
+  `;
   document
     .querySelector("table tbody")
     .insertAdjacentHTML("beforeend", rowHTML);
-
-  buttonEvent();
 }
-buttonEvent();
 
-function buttonEvent() {
-  let tabRow = document.querySelectorAll(".tabRow");
-  let delButton = document.querySelectorAll(".btn-sup");
-  for (let i = 0; i < delButton.length; i++) {
-    delButton[i].addEventListener("click", function () {
-      console.log(tabRow);
-      tabRow[i].remove();
-    });
+function actionEvent(event) {
+  // deleteUser
+  if (event.target.parentElement.classList.contains("btn-sup")) {
+    event.currentTarget.remove();
+  }
+  // saveInfo
+  // else if (event.target.parentElement.classList.contains("btn-add")) {
+  //   let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+  //   saveInfo[0].disabled = true;
+  //   saveInfo[1].disabled = true;
+
+  // }
+  // modifInfo
+  else if (event.target.parentElement.classList.contains("btn-modif")) {
+    event.currentTarget
+      .closest(".tabRow")
+      .querySelector(".btn-add").style.display = "block";
+    let modifInfo = event.currentTarget
+      .closest(".tabRow")
+      .querySelectorAll(".inputtab");
+    modifInfo[0].disabled = false;
+    modifInfo[1].disabled = false;
   }
 }
+
+function addButtonEvent(event) {
+  event.currentTarget
+    .closest(".tabRow")
+    .querySelector(".btn-add").style.display = "block";
+}
+
+function validateName(name) {
+  // ValidName
+
+  const nameParts = name.split(" ");
+  return nameParts.length === 2;
+}
+
+function validateForm(event) {
+  const nameInput = event.currentTarget
+    .closest(".tabRow")
+    .querySelector('input[name="nameUser"]');
+  const emailInput = event.currentTarget
+    .closest(".tabRow")
+    .querySelector('input[name="emailUser"]');
+
+  if (!validateName(nameInput.value)) {
+    alert("Please enter a valid name (First Name Last Name).");
+    return false;
+  }
+
+  // validEmail
+  const emailRegex = /^[a-zA-Z0-9._-]+@(gmail|outlook|hotmail)\.[a-z]{2,4}$/;
+  if (!emailRegex.test(emailInput.value)) {
+    alert("Please enter a valid email address.");
+    return false;
+  }
+
+  // If all validations pass
+  alert("Saved successfully!");
+  let saveInfo = event.currentTarget
+    .closest(".tabRow")
+    .querySelectorAll(".inputtab");
+  saveInfo[0].disabled = true;
+  saveInfo[1].disabled = true;
+  event.currentTarget
+    .closest(".tabRow")
+    .querySelector(".btn-add").style.display = "none";
+}
+/***  INFO_SECTION STYLES    ***/
+
+let image = document.getElementById("output");
+let file = document.getElementById("file");
+let btn = document.querySelector(".btn");
+
+file.addEventListener("change", function (event) {
+  image.src = URL.createObjectURL(event.target.files[0]);
+  console.log(image.getAttribute("src"));
+  localStorage.setItem("nvImage", image.getAttribute("src"));
+});
+
+//  localStorage //
+
+let nameInput = document.querySelector(".input1 input");
+let descInput = document.querySelector(".input2 textarea");
+let btnEregister = document.querySelector(".btn2");
+
+function addNameInfo() {
+  localStorage.setItem("nameInfo", nameInput.value);
+}
+
+function antiRefresh() {
+  let nameInfo = localStorage.getItem("nameInfo");
+  if (nameInfo) {
+    nameInput.value = nameInfo;
+  }
+}
+antiRefresh();
+
+function addDescInfo() {
+  localStorage.setItem("descInfo", descInput.value);
+}
+
+function antiRefresh2() {
+  let descInfo = localStorage.getItem("descInfo");
+  if (descInfo) {
+    descInput.value = descInfo;
+  }
+}
+
+antiRefresh2();
+
+btnEregister.addEventListener("click", () => {
+  addNameInfo();
+  addDescInfo();
+});
