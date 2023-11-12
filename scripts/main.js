@@ -23,44 +23,7 @@ const timelineMonths = [
 ];
 const projectData = {
   backlog: JSON.parse(localStorage.getItem("backlog")) || [],
-  sprints: JSON.parse(localStorage.getItem("sprints")) || [
-    {
-      name: "Sprint 1",
-      duration: 7,
-      start: "2023-10-21",
-      isStarted: true,
-      user_stories: [
-        {
-          name: "User 1",
-          status: 0,
-          description: "",
-          start: "2023-10-21",
-          duration: 1,
-        },
-        {
-          name: "User 2",
-          status: 0,
-          description: "",
-          start: "2023-10-22",
-          duration: 1,
-        },
-        {
-          name: "User 3",
-          status: 0,
-          description: "",
-          start: "2023-10-23",
-          duration: 1,
-        },
-        {
-          name: "User 2",
-          status: 0,
-          description: "",
-          start: "2023-10-24",
-          duration: 1,
-        },
-      ],
-    },
-  ],
+  sprints: JSON.parse(localStorage.getItem("sprints")) || [],
   users: JSON.parse(localStorage.getItem("users")) || [],
 };
 
