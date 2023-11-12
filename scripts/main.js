@@ -31,14 +31,11 @@ const projectData = {
 document.getElementById("aside_icon").addEventListener("click", controlAside);
 
 function controlAside(e) {
-  console.log(e);
-  const tabAsideItems = document.querySelectorAll(".aside_tablet_hidden");
-  const mobAsideItems = document.querySelectorAll(".aside_mobile_hidden");
-
-  [...tabAsideItems, ...mobAsideItems].forEach((item) => {
-    item.setAttribute("style", "display: block !important");
-  });
-  e.target.style.transform = "translateX(50%) rotate(180deg)";
+  const aside = document.getElementById("aside");
+  e.target.style.transform = ` translateX(50%) ${
+    aside.classList.contains("aside_pos") ? "rotate(0deg)" : "rotate(180deg)"
+  }`;
+  aside.classList.toggle("aside_pos");
 }
 
 /***  TIMELINE PAGE SCRIPT    ***/
@@ -79,13 +76,35 @@ function getMonth(startDate) {
 
 // Load all table rows :
 function loadTableRows() {
-  const startDate = getStartPoint(21, 10, 2023);
-  const endDate = getEndPoint(9, 11, 2023);
+  const activeSprints = projectData.sprints
+    .filter((sprint) => sprint.isStarted)
+    .sort((a, b) => new Date(a.start) - new Date(b.start))
+    .map((sprint) => ({
+      ...sprint,
+      user_stories: sprint.user_stories.sort(
+        (a, b) => new Date(a.start) - new Date(b.start)
+      ),
+    }));
+  const firstDate = new Date(activeSprints[0].start);
+  const lastDate = new Date(activeSprints.slice(-1)[0].start);
+  lastDate.setDate(lastDate.getDate() + activeSprints.slice(-1)[0].duration);
+  const firstDateObj = [
+    firstDate.getDate(),
+    firstDate.getMonth() + 1,
+    firstDate.getFullYear(),
+  ];
+  const lastDateObj = [
+    lastDate.getDate(),
+    lastDate.getMonth() + 1,
+    lastDate.getFullYear(),
+  ];
+  const startDate = getStartPoint(...firstDateObj);
+  const endDate = getEndPoint(...lastDateObj);
   loadWeeksTd(startDate, endDate);
   loadMonthsTd(startDate, endDate);
-  loadSprintsWV(startDate);
-  loadSprintsMV(startDate);
-  loadUserStories(startDate);
+  loadSprintsWV(startDate, activeSprints);
+  loadSprintsMV(activeSprints);
+  loadUserStories(startDate, activeSprints);
   loadYearMonths(startDate, endDate);
 }
 
@@ -133,15 +152,13 @@ function loadWeeksTd(startDate, endDate) {
 }
 
 // load Sprints in table for Weeks vue :
-function loadSprintsWV(startDate) {
-  projectData.sprints.forEach((sprint, indx) => {
+function loadSprintsWV(startDate, activeSprints) {
+  activeSprints.forEach((sprint, indx) => {
     let colspan;
     if (indx == 0) colspan = (new Date(sprint.start) - startDate) / 86400000;
     else {
-      const endDate = new Date(projectData.sprints[indx - 1].start);
-      endDate.setDate(
-        endDate.getDate() + projectData.sprints[indx - 1].duration
-      );
+      const endDate = new Date(activeSprints[indx - 1].start);
+      endDate.setDate(endDate.getDate() + activeSprints[indx - 1].duration);
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
@@ -160,17 +177,15 @@ function loadSprintsWV(startDate) {
 }
 
 // load Sprints in table for Weeks vue :
-function loadSprintsMV(startDate) {
-  projectData.sprints.forEach((sprint, indx) => {
+function loadSprintsMV(activeSprints) {
+  activeSprints.forEach((sprint, indx) => {
     const sprintStartDate = new Date(sprint.start);
     let colspan, nDays;
     if (indx == 0) {
       nDays = sprintStartDate.getDate();
     } else {
-      const endDate = new Date(projectData.sprints[indx - 1].start);
-      endDate.setDate(
-        endDate.getDate() + projectData.sprints[indx - 1].duration
-      );
+      const endDate = new Date(activeSprints[indx - 1].start);
+      endDate.setDate(endDate.getDate() + activeSprints[indx - 1].duration);
       nDays = (sprintStartDate - endDate) / 86400000;
     }
 
@@ -191,24 +206,27 @@ function loadSprintsMV(startDate) {
 }
 
 // load User Stories in Table :
-function loadUserStories(startDate) {
-  projectData.sprints.forEach((sprint) => {
+function loadUserStories(startDate, activeSprints) {
+  let currColor = 1;
+  activeSprints.forEach((sprint) => {
     const sprintStart = new Date(sprint.start);
-    sprint.user_stories?.forEach((story) => {
+    sprint.user_stories?.forEach((story, indx) => {
       const colspan = (sprintStart - startDate) / 86400000;
       tbody?.insertAdjacentHTML(
         "beforeend",
         `
         <tr class="user_story_tr">
           <td colspan="${colspan}"></td>
-          <td style="--i: 1" class="user_story user1" colspan="${story.duration}">
+          <td style="--i: ${
+            indx + 1
+          }" class="user_story story${currColor}" colspan="${story.duration}">
             <span></span>
           </td>
         </tr>
       `
       );
-
       sprintStart.setDate(sprintStart.getDate() + story.duration);
+      currColor = currColor == 6 ? 1 : currColor + 1;
     });
   });
 }
@@ -420,7 +438,6 @@ function choix(event) {
 
 /***  USER_SECTION STYLES    ***/
 
-
 function add_user() {
   const rowHTML = `
     <tr class="tabRow" onclick="actionEvent(event)">
@@ -439,7 +456,9 @@ function add_user() {
       </th>
     </tr>
   `;
-  document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML);
+  document
+    .querySelector("table tbody")
+    .insertAdjacentHTML("beforeend", rowHTML);
 }
 
 function actionEvent(event) {
@@ -452,99 +471,110 @@ function actionEvent(event) {
   //   let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
   //   saveInfo[0].disabled = true;
   //   saveInfo[1].disabled = true;
-    
+
   // }
   // modifInfo
   else if (event.target.parentElement.classList.contains("btn-modif")) {
-    event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
-    let modifInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+    event.currentTarget
+      .closest(".tabRow")
+      .querySelector(".btn-add").style.display = "block";
+    let modifInfo = event.currentTarget
+      .closest(".tabRow")
+      .querySelectorAll(".inputtab");
     modifInfo[0].disabled = false;
     modifInfo[1].disabled = false;
   }
 }
 
 function addButtonEvent(event) {
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
+  event.currentTarget
+    .closest(".tabRow")
+    .querySelector(".btn-add").style.display = "block";
 }
 
 function validateName(name) {
   // ValidName
 
-  const nameParts = name.split(' ');
+  const nameParts = name.split(" ");
   return nameParts.length === 2;
 }
 
 function validateForm(event) {
-  const nameInput = event.currentTarget.closest(".tabRow").querySelector('input[name="nameUser"]');
-  const emailInput = event.currentTarget.closest(".tabRow").querySelector('input[name="emailUser"]');
+  const nameInput = event.currentTarget
+    .closest(".tabRow")
+    .querySelector('input[name="nameUser"]');
+  const emailInput = event.currentTarget
+    .closest(".tabRow")
+    .querySelector('input[name="emailUser"]');
 
   if (!validateName(nameInput.value)) {
-    alert('Please enter a valid name (First Name Last Name).');
+    alert("Please enter a valid name (First Name Last Name).");
     return false;
   }
 
   // validEmail
   const emailRegex = /^[a-zA-Z0-9._-]+@(gmail|outlook|hotmail)\.[a-z]{2,4}$/;
   if (!emailRegex.test(emailInput.value)) {
-    alert('Please enter a valid email address.');
+    alert("Please enter a valid email address.");
     return false;
   }
 
   // If all validations pass
-  alert('Saved successfully!');
-  let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+  alert("Saved successfully!");
+  let saveInfo = event.currentTarget
+    .closest(".tabRow")
+    .querySelectorAll(".inputtab");
   saveInfo[0].disabled = true;
   saveInfo[1].disabled = true;
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "none";
+  event.currentTarget
+    .closest(".tabRow")
+    .querySelector(".btn-add").style.display = "none";
 }
 
 /***  INFO_SECTION STYLES    ***/
-/*
-let image = document.getElementById('output');
-let file = document.getElementById('file');
-let btn = document.querySelector('.btn');
 
-file.addEventListener('change' , function (event) {
-    image.src = URL.createObjectURL(event.target.files[0]);
-    console.log (image.getAttribute("src"));
-    localStorage.setItem('nvImage' , image.getAttribute("src"));
-})
+let image = document.getElementById("output");
+let file = document.getElementById("file");
+let btn = document.querySelector(".btn");
 
+file?.addEventListener("change", function (event) {
+  image.src = URL.createObjectURL(event.target.files[0]);
+  console.log(image.getAttribute("src"));
+  localStorage.setItem("nvImage", image.getAttribute("src"));
+});
 
 //  localStorage //
 
-
 let nameInput = document.querySelector(".input1 input");
-let descInput = document.querySelector(".input2 textarea")
-let btnEregister = document.querySelector('.btn2');
+let descInput = document.querySelector(".input2 textarea");
+let btnEregister = document.querySelector(".btn2");
 
-function addNameInfo () {
-    localStorage.setItem('nameInfo' , nameInput.value);
+function addNameInfo() {
+  localStorage.setItem("nameInfo", nameInput.value);
 }
 
-function antiRefresh () {
-    let nameInfo = localStorage.getItem('nameInfo');
-    if (nameInfo){
-        nameInput.value = nameInfo ;
-    }
+function antiRefresh() {
+  let nameInfo = localStorage.getItem("nameInfo");
+  if (nameInfo) {
+    nameInput.value = nameInfo;
+  }
 }
-antiRefresh () ;
+antiRefresh();
 
-function addDescInfo () {
-    localStorage.setItem('descInfo' , descInput.value);
+function addDescInfo() {
+  localStorage.setItem("descInfo", descInput.value);
 }
 
-function antiRefresh2 () {
-    let descInfo = localStorage.getItem('descInfo');
-    if (descInfo){
-        descInput.value = descInfo ; 
-    }
-} 
+function antiRefresh2() {
+  let descInfo = localStorage.getItem("descInfo");
+  if (descInfo) {
+    descInput.value = descInfo;
+  }
+}
 
-antiRefresh2 () ;
+antiRefresh2();
 
-btnEregister.addEventListener('click' , () => {
-    addNameInfo() ;
-    addDescInfo() ; 
-})
-*/
+btnEregister?.addEventListener("click", () => {
+  addNameInfo();
+  addDescInfo();
+});
