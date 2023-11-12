@@ -31,14 +31,11 @@ const projectData = {
 document.getElementById("aside_icon").addEventListener("click", controlAside);
 
 function controlAside(e) {
-  console.log(e);
-  const tabAsideItems = document.querySelectorAll(".aside_tablet_hidden");
-  const mobAsideItems = document.querySelectorAll(".aside_mobile_hidden");
-
-  [...tabAsideItems, ...mobAsideItems].forEach((item) => {
-    item.setAttribute("style", "display: block !important");
-  });
-  e.target.style.transform = "translateX(50%) rotate(180deg)";
+  const aside = document.getElementById("aside");
+  e.target.style.transform = ` translateX(50%) ${
+    aside.classList.contains("aside_pos") ? "rotate(0deg)" : "rotate(180deg)"
+  }`;
+  aside.classList.toggle("aside_pos");
 }
 
 /***  TIMELINE PAGE SCRIPT    ***/
@@ -420,7 +417,6 @@ function choix(event) {
 
 /***  USER_SECTION STYLES    ***/
 
-
 function add_user() {
   const rowHTML = `
     <tr class="tabRow" onclick="actionEvent(event)">
@@ -439,7 +435,9 @@ function add_user() {
       </th>
     </tr>
   `;
-  document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML);
+  document
+    .querySelector("table tbody")
+    .insertAdjacentHTML("beforeend", rowHTML);
 }
 
 function actionEvent(event) {
@@ -452,98 +450,110 @@ function actionEvent(event) {
   //   let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
   //   saveInfo[0].disabled = true;
   //   saveInfo[1].disabled = true;
-    
+
   // }
   // modifInfo
   else if (event.target.parentElement.classList.contains("btn-modif")) {
-    event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
-    let modifInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+    event.currentTarget
+      .closest(".tabRow")
+      .querySelector(".btn-add").style.display = "block";
+    let modifInfo = event.currentTarget
+      .closest(".tabRow")
+      .querySelectorAll(".inputtab");
     modifInfo[0].disabled = false;
     modifInfo[1].disabled = false;
   }
 }
 
 function addButtonEvent(event) {
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
+  event.currentTarget
+    .closest(".tabRow")
+    .querySelector(".btn-add").style.display = "block";
 }
 
 function validateName(name) {
   // ValidName
 
-  const nameParts = name.split(' ');
+  const nameParts = name.split(" ");
   return nameParts.length === 2;
 }
 
 function validateForm(event) {
-  const nameInput = event.currentTarget.closest(".tabRow").querySelector('input[name="nameUser"]');
-  const emailInput = event.currentTarget.closest(".tabRow").querySelector('input[name="emailUser"]');
+  const nameInput = event.currentTarget
+    .closest(".tabRow")
+    .querySelector('input[name="nameUser"]');
+  const emailInput = event.currentTarget
+    .closest(".tabRow")
+    .querySelector('input[name="emailUser"]');
 
   if (!validateName(nameInput.value)) {
-    alert('Please enter a valid name (First Name Last Name).');
+    alert("Please enter a valid name (First Name Last Name).");
     return false;
   }
 
   // validEmail
   const emailRegex = /^[a-zA-Z0-9._-]+@(gmail|outlook|hotmail)\.[a-z]{2,4}$/;
   if (!emailRegex.test(emailInput.value)) {
-    alert('Please enter a valid email address.');
+    alert("Please enter a valid email address.");
     return false;
   }
 
   // If all validations pass
-  alert('Saved successfully!');
-  let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+  alert("Saved successfully!");
+  let saveInfo = event.currentTarget
+    .closest(".tabRow")
+    .querySelectorAll(".inputtab");
   saveInfo[0].disabled = true;
   saveInfo[1].disabled = true;
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "none";
+  event.currentTarget
+    .closest(".tabRow")
+    .querySelector(".btn-add").style.display = "none";
 }
 
 /***  INFO_SECTION STYLES    ***/
 
-let image = document.getElementById('output');
-let file = document.getElementById('file');
-let btn = document.querySelector('.btn');
+let image = document.getElementById("output");
+let file = document.getElementById("file");
+let btn = document.querySelector(".btn");
 
-file.addEventListener('change' , function (event) {
-    image.src = URL.createObjectURL(event.target.files[0]);
-    console.log (image.getAttribute("src"));
-    localStorage.setItem('nvImage' , image.getAttribute("src"));
-})
-
+file.addEventListener("change", function (event) {
+  image.src = URL.createObjectURL(event.target.files[0]);
+  console.log(image.getAttribute("src"));
+  localStorage.setItem("nvImage", image.getAttribute("src"));
+});
 
 //  localStorage //
 
-
 let nameInput = document.querySelector(".input1 input");
-let descInput = document.querySelector(".input2 textarea")
-let btnEregister = document.querySelector('.btn2');
+let descInput = document.querySelector(".input2 textarea");
+let btnEregister = document.querySelector(".btn2");
 
-function addNameInfo () {
-    localStorage.setItem('nameInfo' , nameInput.value);
+function addNameInfo() {
+  localStorage.setItem("nameInfo", nameInput.value);
 }
 
-function antiRefresh () {
-    let nameInfo = localStorage.getItem('nameInfo');
-    if (nameInfo){
-        nameInput.value = nameInfo ;
-    }
+function antiRefresh() {
+  let nameInfo = localStorage.getItem("nameInfo");
+  if (nameInfo) {
+    nameInput.value = nameInfo;
+  }
 }
-antiRefresh () ;
+antiRefresh();
 
-function addDescInfo () {
-    localStorage.setItem('descInfo' , descInput.value);
+function addDescInfo() {
+  localStorage.setItem("descInfo", descInput.value);
 }
 
-function antiRefresh2 () {
-    let descInfo = localStorage.getItem('descInfo');
-    if (descInfo){
-        descInput.value = descInfo ; 
-    }
-} 
+function antiRefresh2() {
+  let descInfo = localStorage.getItem("descInfo");
+  if (descInfo) {
+    descInput.value = descInfo;
+  }
+}
 
-antiRefresh2 () ;
+antiRefresh2();
 
-btnEregister.addEventListener('click' , () => {
-    addNameInfo() ;
-    addDescInfo() ; 
-})
+btnEregister.addEventListener("click", () => {
+  addNameInfo();
+  addDescInfo();
+});
