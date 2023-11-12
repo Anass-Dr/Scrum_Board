@@ -137,7 +137,7 @@
                         </button>
 
                     </div>
-                    <div class="cartes row" id="content">
+                    <div class="cartes row mt-2" id="content">
 
                         <!-- "A FAIRE"  -->
                         <div class="carte col-lg-3">
@@ -345,8 +345,8 @@
         function createSprintCard(story) {
             const card = document.createElement('div');
             card.className = 'zone p-2 rounded bg-white mt-2';
-            card.setAttribute('data-bs-toggle', 'modal');
-            card.setAttribute('data-bs-target', '#myModal');
+           // card.setAttribute('data-bs-toggle', 'modal');
+            // card.setAttribute('data-bs-target', '#myModal');
 
             const paragraph = document.createElement('p');
             paragraph.className = 'clickable-paragraph';
@@ -587,12 +587,14 @@
 
                     if (parentSection.id === 'sortable1') {
                         user_stories[index].status = 0;
+                        
                     }
                     if (parentSection.id === 'sortable2') {
                         user_stories[index].status = 1;
                     }
                     if (parentSection.id === 'sortable3') {
                         user_stories[index].status = 2;
+                        
                     }
 
 
@@ -624,7 +626,7 @@
 
 
     </script>
-
+<script src="./scripts/main.js"></script>
 
 
 </body>

@@ -499,7 +499,7 @@ function validateForm(event) {
 }
 
 /***  INFO_SECTION STYLES    ***/
-
+/*
 let image = document.getElementById('output');
 let file = document.getElementById('file');
 let btn = document.querySelector('.btn');
@@ -547,3 +547,4 @@ btnEregister.addEventListener('click' , () => {
     addNameInfo() ;
     addDescInfo() ; 
 })
+*/
