@@ -189,7 +189,7 @@
                   </nav>
                   <div class="setting_add">
                     <h3 class="fs-4 fw-semibold mt-1 mb-4">Parametres</h3>
-                    <button class="settings_add_pers" onclick="add_user()"><span>Ajouter des personnes</span></button>
+                    <button class="settings_add_pers" onclick="addUsers()"><span>Ajouter des personnes</span></button>
         
                   </div>
         
@@ -204,22 +204,6 @@
         
         
                       <tbody>
-                        <tr class="tabRow" onclick="actionEvent(event)">
-                          <th><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)"></th>
-                          <th><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)"></th>
-                          <th>
-                            <div class="btn-modsup">
-                              <button class="btn-modif" onclick="actionEvent(event)">
-                                <img src="./assets/icons/modif.svg" alt="">
-                              </button>
-                              <button class="btn-sup" onclick="actionEvent(event)">
-                                <img src="./assets/icons/delete.svg" alt="">
-                              </button>
-                              <button class="btn-add" type="button" onclick="validateForm(event)"><span>save</span></button>
-                            </div>
-                          </th>
-                        </tr>
-        
                       </tbody>
                     </table>
 
