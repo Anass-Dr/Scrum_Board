@@ -458,7 +458,7 @@ function add_user() {
   `;
   document.querySelector("table tbody").insertAdjacentHTML("beforeend", rowHTML);
 }
-
+//actionEvent
 function actionEvent(event) {
   // deleteUser
   if (event.target.parentElement.classList.contains("btn-sup")) {
@@ -476,7 +476,7 @@ function actionEvent(event) {
     modifInfo[1].disabled = false;
   }
 }
-
+//validationInfo
 function addButtonEvent(event) {
   event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
 }
