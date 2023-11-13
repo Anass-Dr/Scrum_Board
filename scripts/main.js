@@ -575,7 +575,7 @@ let image = document.getElementById("output");
 let file = document.getElementById("file");
 let btn = document.querySelector(".btn");
 
-file.addEventListener("change", function (event) {
+file?.addEventListener("change", function (event) {
   image.src = URL.createObjectURL(event.target.files[0]);
   console.log(image.getAttribute("src"));
   localStorage.setItem("nvImage", image.getAttribute("src"));
@@ -612,7 +612,7 @@ function antiRefresh2() {
 
 antiRefresh2();
 
-btnEregister.addEventListener("click", () => {
+btnEregister?.addEventListener("click", () => {
   addNameInfo();
   addDescInfo();
 });
