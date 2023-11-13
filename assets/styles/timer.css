@@ -158,6 +158,9 @@ tbody tr:last-of-type .user_story::after {
 }
 @media screen and (max-width: 600px) {
   section {
-    width: calc(100vw - 49px);
+    width: calc(100vw - 38px);
+  }
+  .sticky {
+    min-width: 180px;
   }
 }
