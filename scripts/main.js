@@ -1,15 +1,4 @@
 "use strict";
-const ObjBacklog = {
-  backlog: [
-    {
-      name: "User 1",
-      status: "To Do",
-      description: "",
-      start: "01-01-2000",
-      duration: 1,
-    },
-  ],
-};
 // GLOBAL VARIABLES :
 const onlyMonthsTr = document.getElementById("only-months");
 const monthsTr = document.getElementById("months");
@@ -251,6 +240,8 @@ const controlVue = (e) => {
 
 /***  Backlog PAGE SCRIPT    ***/
 
+/***  Backlog PAGE SCRIPT    ***/
+
 // generate user-stories HTML
 function generate_user_html(id_generat, title) {
   const htmluser = ` <div
@@ -259,7 +250,7 @@ function generate_user_html(id_generat, title) {
   draggable="true"
 >
   <div
-    class="title_userstori_sprint d-flex align-items-center w-75 p-2"
+    class="title_userstori_sprint d-flex align-items-center p-2"
     data-bs-toggle="modal"
     data-bs-target="#${id_generat}"
   >
@@ -269,7 +260,7 @@ function generate_user_html(id_generat, title) {
     <h6 class="storie pt-2 px-2 m-0">${title}</h6>
     <p class="pt-2 m-0 mx-4">user storie</p>
   </div>
-  <div class="option_userstorie d-flex align-items-center w-25">
+  <div class="option_userstorie d-flex align-items-center">
     <div
       class="select_userstorie align-items-center justify-content-center rounded"
     >
@@ -294,7 +285,7 @@ function generate_user_html(id_generat, title) {
       </div>
     </div>
 
-    
+
     <div class="DD d-flex justify-content-center mx-4" >
     <span class="deadline_userstorie" id="deadline_user" onclick="entre_dedline(event)" >-</span>
     <input type="number" class="duration_userStorie">
@@ -422,8 +413,24 @@ function account_tickets_backlog() {
 const container2 = document.getElementById("container2");
 let accordion = document.querySelector("#tickets_backlog");
 let NumberTicket_backlog = 0;
-
 const button2 = document.getElementById("add_backlog_btn2");
+
+function addUserstorie(name) {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1; // Months are zero-indexed, so add 1
+  const day = currentDate.getDate();
+  projectData.backlog.push({
+    name,
+    status: 0,
+    description: "",
+    start: `${year}-${month}-${day}`,
+    duration: 0,
+  });
+
+  console.log(projectData.backlog);
+}
+
 function createNewDiv2() {
   /* === disable the button for add the user storie === */
   button.disabled = true;
@@ -463,6 +470,7 @@ function createNewDiv2() {
       /* === show the button for add the user storie === */
       button.disabled = false;
       button2.disabled = false;
+      addUserstorie(thetitle_userstorie);
     }
   });
 }
