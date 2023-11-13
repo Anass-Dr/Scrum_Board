@@ -508,23 +508,26 @@ function UpdateInfoModal(event) {
   const newdescription = event.currentTarget
     .closest(".modal-content")
     .querySelector("#Discription_userstorie").value;
-
-  UpdateUserstorie(titreuserstorie, "name", newTitleUserstorie, dadstorie);
-  UpdateUserstorie(titreuserstorie, "description", newdescription, dadstorie);
+  if (newTitleUserstorie)
+    UpdateUserstorie(titreuserstorie, "name", newTitleUserstorie, dadstorie);
+  if (newdescription)
+    UpdateUserstorie(titreuserstorie, "description", newdescription, dadstorie);
 }
 function UpdateUserstorie(namestorie, property, newValue, dadtuser) {
+  console.log(namestorie, property, newValue, dadtuser);
   const currStoryIndex = projectData[dadtuser].findIndex(
     (storie) => storie.name === namestorie
   );
   switch (property) {
     case "name":
       projectData[dadtuser][currStoryIndex].name = newValue;
-      console.log(projectData);
+      // console.log(projectData);
       break;
     case "status":
       projectData[dadtuser][currStoryIndex].status = newValue;
       break;
     case "description":
+      console.log(projectData);
       projectData[dadtuser][currStoryIndex].description = newValue;
       break;
     default:
