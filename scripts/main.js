@@ -418,13 +418,12 @@ function choix(event) {
 /***  settings PAGE STYLES    ***/
 /***  settings PAGE STYLES    ***/
 
-
 /***  USER_SECTION STYLES    ***/
 
 
 function add_user() {
   const rowHTML = `
-    <tr class="tabRow" onclick="actionEvent(event)">
+    <tr class="tabRow" onclick="actionEvent(event)" >
       <th><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)"></th>
       <th><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)"></th>
       <th>
@@ -440,7 +439,8 @@ function add_user() {
       </th>
     </tr>
   `;
-  document.querySelector("table tbody").insertAdjacentHTML('beforeend', rowHTML);
+  document
+    .querySelector("table tbody").insertAdjacentHTML("beforeend", rowHTML);
 }
 
 function actionEvent(event) {
@@ -448,30 +448,26 @@ function actionEvent(event) {
   if (event.target.parentElement.classList.contains("btn-sup")) {
     event.currentTarget.remove();
   }
-  // saveInfo
-  // else if (event.target.parentElement.classList.contains("btn-add")) {
-  //   let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
-  //   saveInfo[0].disabled = true;
-  //   saveInfo[1].disabled = true;
-    
-  // }
   // modifInfo
   else if (event.target.parentElement.classList.contains("btn-modif")) {
-    event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
-    let modifInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
+    event.currentTarget
+      .closest(".tabRow").querySelector(".btn-add").style.display = "block";
+    let modifInfo = event.currentTarget
+      .closest(".tabRow").querySelectorAll(".inputtab");
     modifInfo[0].disabled = false;
     modifInfo[1].disabled = false;
   }
 }
 
 function addButtonEvent(event) {
-  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
+  event.currentTarget
+    .closest(".tabRow").querySelector(".btn-add").style.display = "block";
 }
 
 function validateName(name) {
   // ValidName
 
-  const nameParts = name.split(' ');
+  const nameParts = name.split(" ");
   return nameParts.length === 2;
 }
 
@@ -480,19 +476,19 @@ function validateForm(event) {
   const emailInput = event.currentTarget.closest(".tabRow").querySelector('input[name="emailUser"]');
 
   if (!validateName(nameInput.value)) {
-    alert('Please enter a valid name (First Name Last Name).');
+    alert("Please enter a valid name (First Name Last Name).");
     return false;
   }
 
   // validEmail
   const emailRegex = /^[a-zA-Z0-9._-]+@(gmail|outlook|hotmail)\.[a-z]{2,4}$/;
   if (!emailRegex.test(emailInput.value)) {
-    alert('Please enter a valid email address.');
+    alert("Please enter a valid email address.");
     return false;
   }
 
   // If all validations pass
-  alert('Saved successfully!');
+  alert("Saved successfully!");
   let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
   saveInfo[0].disabled = true;
   saveInfo[1].disabled = true;
@@ -501,50 +497,48 @@ function validateForm(event) {
 
 /***  INFO_SECTION STYLES    ***/
 
-let image = document.getElementById('output');
-let file = document.getElementById('file');
-let btn = document.querySelector('.btn');
+let image = document.getElementById("output");
+let file = document.getElementById("file");
+let btn = document.querySelector(".btn");
 
-file.addEventListener('change' , function (event) {
-    image.src = URL.createObjectURL(event.target.files[0]);
-    console.log (image.getAttribute("src"));
-    localStorage.setItem('nvImage' , image.getAttribute("src"));
-})
-
+file.addEventListener("change", function (event) {
+  image.src = URL.createObjectURL(event.target.files[0]);
+  console.log(image.getAttribute("src"));
+  localStorage.setItem("nvImage", image.getAttribute("src"));
+});
 
 //  localStorage //
 
-
 let nameInput = document.querySelector(".input1 input");
-let descInput = document.querySelector(".input2 textarea")
-let btnEregister = document.querySelector('.btn2');
+let descInput = document.querySelector(".input2 textarea");
+let btnEregister = document.querySelector(".btn2");
 
-function addNameInfo () {
-    localStorage.setItem('nameInfo' , nameInput.value);
+function addNameInfo() {
+  localStorage.setItem("nameInfo", nameInput.value);
 }
 
-function antiRefresh () {
-    let nameInfo = localStorage.getItem('nameInfo');
-    if (nameInfo){
-        nameInput.value = nameInfo ;
-    }
+function antiRefresh() {
+  let nameInfo = localStorage.getItem("nameInfo");
+  if (nameInfo) {
+    nameInput.value = nameInfo;
+  }
 }
-antiRefresh () ;
+antiRefresh();
 
-function addDescInfo () {
-    localStorage.setItem('descInfo' , descInput.value);
+function addDescInfo() {
+  localStorage.setItem("descInfo", descInput.value);
 }
 
-function antiRefresh2 () {
-    let descInfo = localStorage.getItem('descInfo');
-    if (descInfo){
-        descInput.value = descInfo ; 
-    }
-} 
+function antiRefresh2() {
+  let descInfo = localStorage.getItem("descInfo");
+  if (descInfo) {
+    descInput.value = descInfo;
+  }
+}
 
-antiRefresh2 () ;
+antiRefresh2();
 
-btnEregister.addEventListener('click' , () => {
-    addNameInfo() ;
-    addDescInfo() ; 
-})
+btnEregister.addEventListener("click", () => {
+  addNameInfo();
+  addDescInfo();
+});
