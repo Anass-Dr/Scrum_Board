@@ -30,14 +30,11 @@ const projectData = {
 document.getElementById("aside_icon").addEventListener("click", controlAside);
 
 function controlAside(e) {
-  console.log(e);
-  const tabAsideItems = document.querySelectorAll(".aside_tablet_hidden");
-  const mobAsideItems = document.querySelectorAll(".aside_mobile_hidden");
-
-  [...tabAsideItems, ...mobAsideItems].forEach((item) => {
-    item.setAttribute("style", "display: block !important");
-  });
-  e.target.style.transform = "translateX(50%) rotate(180deg)";
+  const aside = document.getElementById("aside");
+  e.target.style.transform = ` translateX(50%) ${
+    aside.classList.contains("aside_pos") ? "rotate(0deg)" : "rotate(180deg)"
+  }`;
+  aside.classList.toggle("aside_pos");
 }
 
 /***  TIMELINE PAGE SCRIPT    ***/
@@ -78,13 +75,35 @@ function getMonth(startDate) {
 
 // Load all table rows :
 function loadTableRows() {
-  const startDate = getStartPoint(21, 10, 2023);
-  const endDate = getEndPoint(9, 11, 2023);
+  const activeSprints = projectData.sprints
+    .filter((sprint) => sprint.isStarted)
+    .sort((a, b) => new Date(a.start) - new Date(b.start))
+    .map((sprint) => ({
+      ...sprint,
+      user_stories: sprint.user_stories.sort(
+        (a, b) => new Date(a.start) - new Date(b.start)
+      ),
+    }));
+  const firstDate = new Date(activeSprints[0].start);
+  const lastDate = new Date(activeSprints.slice(-1)[0].start);
+  lastDate.setDate(lastDate.getDate() + activeSprints.slice(-1)[0].duration);
+  const firstDateObj = [
+    firstDate.getDate(),
+    firstDate.getMonth() + 1,
+    firstDate.getFullYear(),
+  ];
+  const lastDateObj = [
+    lastDate.getDate(),
+    lastDate.getMonth() + 1,
+    lastDate.getFullYear(),
+  ];
+  const startDate = getStartPoint(...firstDateObj);
+  const endDate = getEndPoint(...lastDateObj);
   loadWeeksTd(startDate, endDate);
   loadMonthsTd(startDate, endDate);
-  loadSprintsWV(startDate);
-  loadSprintsMV(startDate);
-  loadUserStories(startDate);
+  loadSprintsWV(startDate, activeSprints);
+  loadSprintsMV(activeSprints);
+  loadUserStories(startDate, activeSprints);
   loadYearMonths(startDate, endDate);
 }
 
@@ -132,15 +151,13 @@ function loadWeeksTd(startDate, endDate) {
 }
 
 // load Sprints in table for Weeks vue :
-function loadSprintsWV(startDate) {
-  projectData.sprints.forEach((sprint, indx) => {
+function loadSprintsWV(startDate, activeSprints) {
+  activeSprints.forEach((sprint, indx) => {
     let colspan;
     if (indx == 0) colspan = (new Date(sprint.start) - startDate) / 86400000;
     else {
-      const endDate = new Date(projectData.sprints[indx - 1].start);
-      endDate.setDate(
-        endDate.getDate() + projectData.sprints[indx - 1].duration
-      );
+      const endDate = new Date(activeSprints[indx - 1].start);
+      endDate.setDate(endDate.getDate() + activeSprints[indx - 1].duration);
       colspan = (new Date(sprint.start) - endDate) / 86400000;
     }
 
@@ -159,17 +176,15 @@ function loadSprintsWV(startDate) {
 }
 
 // load Sprints in table for Weeks vue :
-function loadSprintsMV(startDate) {
-  projectData.sprints.forEach((sprint, indx) => {
+function loadSprintsMV(activeSprints) {
+  activeSprints.forEach((sprint, indx) => {
     const sprintStartDate = new Date(sprint.start);
     let colspan, nDays;
     if (indx == 0) {
       nDays = sprintStartDate.getDate();
     } else {
-      const endDate = new Date(projectData.sprints[indx - 1].start);
-      endDate.setDate(
-        endDate.getDate() + projectData.sprints[indx - 1].duration
-      );
+      const endDate = new Date(activeSprints[indx - 1].start);
+      endDate.setDate(endDate.getDate() + activeSprints[indx - 1].duration);
       nDays = (sprintStartDate - endDate) / 86400000;
     }
 
@@ -190,24 +205,27 @@ function loadSprintsMV(startDate) {
 }
 
 // load User Stories in Table :
-function loadUserStories(startDate) {
-  projectData.sprints.forEach((sprint) => {
+function loadUserStories(startDate, activeSprints) {
+  let currColor = 1;
+  activeSprints.forEach((sprint) => {
     const sprintStart = new Date(sprint.start);
-    sprint.user_stories?.forEach((story) => {
+    sprint.user_stories?.forEach((story, indx) => {
       const colspan = (sprintStart - startDate) / 86400000;
       tbody?.insertAdjacentHTML(
         "beforeend",
         `
         <tr class="user_story_tr">
           <td colspan="${colspan}"></td>
-          <td style="--i: 1" class="user_story user1" colspan="${story.duration}">
+          <td style="--i: ${
+            indx + 1
+          }" class="user_story story${currColor}" colspan="${story.duration}">
             <span></span>
           </td>
         </tr>
       `
       );
-
       sprintStart.setDate(sprintStart.getDate() + story.duration);
+      currColor = currColor == 6 ? 1 : currColor + 1;
     });
   });
 }
@@ -250,17 +268,14 @@ function generate_user_html(id_generat, title) {
   draggable="true"
 >
   <div
-    class="title_userstori_sprint d-flex align-items-center p-2"
+    class="title_userstori_sprint d-flex align-items-center w-75 p-2"
     data-bs-toggle="modal"
     data-bs-target="#${id_generat}"
   >
-    <h6>
-      <!-- <img src="./assets/icons/userstori_icon.svg" alt="" class="mx-2" /> -->
-    </h6>
     <h6 class="storie pt-2 px-2 m-0">${title}</h6>
     <p class="pt-2 m-0 mx-4">user storie</p>
   </div>
-  <div class="option_userstorie d-flex align-items-center">
+  <div class="option_userstorie d-flex align-items-center w-25">
     <div
       class="select_userstorie align-items-center justify-content-center rounded"
     >
@@ -285,7 +300,7 @@ function generate_user_html(id_generat, title) {
       </div>
     </div>
 
-
+    
     <div class="DD d-flex justify-content-center mx-4" >
     <span class="deadline_userstorie" id="deadline_user" onclick="entre_dedline(event)" >-</span>
     <input type="number" class="duration_userStorie">
@@ -322,11 +337,7 @@ function generate_modal_userstorie(id_generat) {
                    <textarea name="disctiption" id="Discription_userstorie" cols="30" rows="10" placeholder="discription to user storie"></textarea>
                   </div>
                   <div class="col-sm-6 border ">
-                      <div class="h5">Détails</div>
-                      <div class="duration">
-                      <h3>duration</h3>
-                      <input type="number" class="duration_userstorie mt-2" min="1">
-                      </div>
+                      <div class="h5">Détails</div>q
                       <div class="date_start_storie">
                         <input type="text" id="initialTimeDisplay" readonly>
                       </div>
@@ -335,7 +346,7 @@ function generate_modal_userstorie(id_generat) {
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fermer</button>
-              <button type="button" class="btn btn-primary">Sauvegarder les modifications</button>
+              <button type="button" class="btn btn-primary" onclick = "UpdateInfoModal(event)" data-bs-dismiss="modal">Sauvegarder les modifications</button>
           </div>
       </div>
   </div>
@@ -379,7 +390,6 @@ function createNewDiv() {
       const creat_title_userstorie = document.getElementById("create_title");
       const thetitle_userstorie = creat_title_userstorie.value;
       const id_generat = `modal_${NumberTicket_sprint}`;
-      console.log(id_generat);
       account_tickets_sprint();
       container1.insertAdjacentHTML(
         "beforeend",
@@ -398,6 +408,7 @@ function createNewDiv() {
       /* === show the button for add the user storie === */
       button.disabled = false;
       button2.disabled = false;
+      addUserstorie(thetitle_userstorie, "sprints");
     }
   });
 }
@@ -414,22 +425,6 @@ const container2 = document.getElementById("container2");
 let accordion = document.querySelector("#tickets_backlog");
 let NumberTicket_backlog = 0;
 const button2 = document.getElementById("add_backlog_btn2");
-
-function addUserstorie(name) {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth() + 1; // Months are zero-indexed, so add 1
-  const day = currentDate.getDate();
-  projectData.backlog.push({
-    name,
-    status: 0,
-    description: "",
-    start: `${year}-${month}-${day}`,
-    duration: 0,
-  });
-
-  console.log(projectData.backlog);
-}
 
 function createNewDiv2() {
   /* === disable the button for add the user storie === */
@@ -470,10 +465,74 @@ function createNewDiv2() {
       /* === show the button for add the user storie === */
       button.disabled = false;
       button2.disabled = false;
-      addUserstorie(thetitle_userstorie);
+      addUserstorie(thetitle_userstorie, "backlog");
     }
   });
 }
+/* =================================UPDATE USERS STORIES DANS LES OBJECTS========================================================= */
+function addUserstorie(name, dadstorie) {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+  projectData[dadstorie].push({
+    name,
+    status: "to do",
+    description: "",
+    start: `${year}-${month}-${day}`,
+    duration: 0,
+  });
+}
+
+function UpdateInfoModal(event) {
+  const modal_id = event.currentTarget
+    .closest(".modal")
+    .getAttribute("id")
+    .split("_")[1];
+  let userstorie, dadstorie;
+  if (modal_id >= 100) {
+    userstorie = document.querySelectorAll("#container2 .users_storise_sprint")[
+      modal_id - 100
+    ];
+    dadstorie = `backlog`;
+  } else {
+    userstorie = document.querySelectorAll("#container .users_storise_sprint")[
+      modal_id
+    ];
+    dadstorie = `sprints`;
+  }
+  const titreuserstorie = userstorie.querySelector(".storie").textContent;
+  const newTitleUserstorie = event.currentTarget
+    .closest(".modal-content")
+    .querySelector(".title_userstorie").value;
+  const newdescription = event.currentTarget
+    .closest(".modal-content")
+    .querySelector("#Discription_userstorie").value;
+
+  UpdateUserstorie(titreuserstorie, "name", newTitleUserstorie, dadstorie);
+  UpdateUserstorie(titreuserstorie, "description", newdescription, dadstorie);
+}
+function UpdateUserstorie(namestorie, property, newValue, dadtuser) {
+  const currStoryIndex = projectData[dadtuser].findIndex(
+    (storie) => storie.name === namestorie
+  );
+  switch (property) {
+    case "name":
+      projectData[dadtuser][currStoryIndex].name = newValue;
+      console.log(projectData);
+      break;
+    case "status":
+      projectData[dadtuser][currStoryIndex].status = newValue;
+      break;
+    case "description":
+      projectData[dadtuser][currStoryIndex].description = newValue;
+      break;
+    default:
+      console.log("Incorrect Property");
+      break;
+  }
+}
+/* ================================================================================================================================ */
 /* ==== controle the status for user storie ==== */
 
 function vue_status(event) {
@@ -493,6 +552,7 @@ function closing_status(event) {
 
   event.stopPropagation();
 }
+// /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* ==== choix status user storie ==== */
 
@@ -501,6 +561,21 @@ function choix(event) {
     .closest(".option_userstorie")
     .querySelector(".fill").textContent =
     event.currentTarget.querySelector(".todo2").textContent;
+
+  const nameUserStorie = event.currentTarget
+    .closest(".users_storise_sprint")
+    .querySelector(".storie").textContent;
+
+  const dadtouserstorie = event.currentTarget.closest("#container2")
+    ? `backlog`
+    : `sprints`;
+
+  UpdateUserstorie(
+    nameUserStorie,
+    "status",
+    event.currentTarget.querySelector(".todo2").textContent,
+    dadtouserstorie
+  );
 
   event.currentTarget
     .closest(".option_userstorie")
@@ -537,53 +612,36 @@ function entre_dedline(event) {
 /***  settings PAGE STYLES    ***/
 /***  settings PAGE STYLES    ***/
 
-/***  INFO_SECTION STYLES    ***/
 /***  USER_SECTION STYLES    ***/
 
 function add_user() {
   const rowHTML = `
-  <tr class="tabRow" onclick="actionEvent(event)" >
-  <th ><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)" ></th>
-  <th ><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)" ></th>
-  <th>
-    <div class="btn-modsup">
-      <button class="btn-modif" onclick="actionEvent(event)">
-        <img src="./assets/icons/modif.svg" alt="" >
-      </button>
-      <button class="btn-sup"> 
-        <img src="./assets/icons/delete.svg" alt="">
-      </button>
-      <button class="btn-add" type="submit" onclick="actionEvent(event)"><span>add</span></button>
-    
-  </div>
- </th>
-</tr>
+    <tr class="tabRow" onclick="actionEvent(event)">
+      <th><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)"></th>
+      <th><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)"></th>
+      <th>
+        <div class="btn-modsup">
+          <button class="btn-modif" onclick="actionEvent(event)">
+            <img src="./assets/icons/modif.svg" alt="">
+          </button>
+          <button class="btn-sup" onclick="actionEvent(event)">
+            <img src="./assets/icons/delete.svg" alt="">
+          </button>
+          <button class="btn-add" type="button" onclick="validateForm(event)"><span>save</span></button>
+        </div>
+      </th>
+    </tr>
   `;
   document
     .querySelector("table tbody")
     .insertAdjacentHTML("beforeend", rowHTML);
-
-  // buttonEvent();
 }
 
 function actionEvent(event) {
   // deleteUser
   if (event.target.parentElement.classList.contains("btn-sup")) {
     event.currentTarget.remove();
-  }
-  // savaInfo
-  else if (event.target.parentElement.classList.contains("btn-add")) {
-    let saveInfo = event.currentTarget
-      .closest(".tabRow")
-      .querySelectorAll(".inputtab");
-    saveInfo[0].disabled = true;
-    saveInfo[1].disabled = true;
-    event.currentTarget
-      .closest(".tabRow")
-      .querySelector(".btn-add").style.display = "none";
-  }
-  //modifInfo
-  else if (event.target.parentElement.classList.contains("btn-modif")) {
+  } else if (event.target.parentElement.classList.contains("btn-modif")) {
     event.currentTarget
       .closest(".tabRow")
       .querySelector(".btn-add").style.display = "block";
@@ -593,15 +651,97 @@ function actionEvent(event) {
     modifInfo[0].disabled = false;
     modifInfo[1].disabled = false;
   }
-  // editUser
-  // if(event.target.parentElement.classList.contains("btn-modif")){
-  //   event.currentTarget.closest(".tabRow").querySelector(".inputtab").disabled = false;
-  // }
-
-  //saveEdit(disibeled input)
 }
+
 function addButtonEvent(event) {
   event.currentTarget
     .closest(".tabRow")
     .querySelector(".btn-add").style.display = "block";
 }
+
+function validateName(name) {
+  // ValidName
+
+  const nameParts = name.split(" ");
+  return nameParts.length === 2;
+}
+
+function validateForm(event) {
+  const nameInput = event.currentTarget
+    .closest(".tabRow")
+    .querySelector('input[name="nameUser"]');
+  const emailInput = event.currentTarget
+    .closest(".tabRow")
+    .querySelector('input[name="emailUser"]');
+
+  if (!validateName(nameInput.value)) {
+    alert("Please enter a valid name (First Name Last Name).");
+    return false;
+  }
+
+  // validEmail
+  const emailRegex = /^[a-zA-Z0-9._-]+@(gmail|outlook|hotmail)\.[a-z]{2,4}$/;
+  if (!emailRegex.test(emailInput.value)) {
+    alert("Please enter a valid email address.");
+    return false;
+  }
+
+  // If all validations pass
+  alert("Saved successfully!");
+  let saveInfo = event.currentTarget
+    .closest(".tabRow")
+    .querySelectorAll(".inputtab");
+  saveInfo[0].disabled = true;
+  saveInfo[1].disabled = true;
+  event.currentTarget
+    .closest(".tabRow")
+    .querySelector(".btn-add").style.display = "none";
+}
+
+/***  INFO_SECTION STYLES    ***/
+
+let image = document.getElementById("output");
+let file = document.getElementById("file");
+let btn = document.querySelector(".btn");
+
+file?.addEventListener("change", function (event) {
+  image.src = URL.createObjectURL(event.target.files[0]);
+  console.log(image.getAttribute("src"));
+  localStorage.setItem("nvImage", image.getAttribute("src"));
+});
+
+//  localStorage //
+
+let nameInput = document.querySelector(".input1 input");
+let descInput = document.querySelector(".input2 textarea");
+let btnEregister = document.querySelector(".btn2");
+
+function addNameInfo() {
+  localStorage.setItem("nameInfo", nameInput.value);
+}
+
+function antiRefresh() {
+  let nameInfo = localStorage.getItem("nameInfo");
+  if (nameInfo) {
+    nameInput.value = nameInfo;
+  }
+}
+antiRefresh();
+
+function addDescInfo() {
+  localStorage.setItem("descInfo", descInput.value);
+}
+
+function antiRefresh2() {
+  let descInfo = localStorage.getItem("descInfo");
+  if (descInfo) {
+    descInput.value = descInfo;
+  }
+}
+
+antiRefresh2();
+
+btnEregister?.addEventListener("click", () => {
+  addNameInfo();
+  addDescInfo();
+});
