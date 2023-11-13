@@ -22,7 +22,57 @@ const timelineMonths = [
 ];
 const projectData = {
   backlog: JSON.parse(localStorage.getItem("backlog")) || [],
-  sprints: JSON.parse(localStorage.getItem("sprints")) || [],
+  sprints: JSON.parse(localStorage.getItem("sprints")) || [
+    {
+      name: "Sprint 1",
+      duration: 7,
+      start: "2023-10-21",
+      isStarted: true,
+      user_stories: [
+        {
+          name: "User 1",
+          status: 0,
+          description: "",
+          start: "2023-10-21",
+          duration: 1,
+        },
+        {
+          name: "User 2",
+          status: 0,
+          description: "",
+          start: "2023-10-22",
+          duration: 2,
+        },
+        {
+          name: "User 3",
+          status: 0,
+          description: "",
+          start: "2023-10-24",
+          duration: 1,
+        },
+        {
+          name: "User 4",
+          status: 0,
+          description: "",
+          start: "2023-10-25",
+          duration: 1,
+        },
+        {
+          name: "User 3",
+          status: 0,
+          description: "",
+          start: "2023-10-26",
+          duration: 2,
+        },
+      ],
+    },
+    {
+      name: "Sprint 2",
+      duration: 8,
+      start: "2023-11-1",
+      isStarted: false,
+    },
+  ],
   users: JSON.parse(localStorage.getItem("users")) || [],
 };
 
@@ -619,7 +669,7 @@ function entre_dedline(event) {
 
 function add_user() {
   const rowHTML = `
-    <tr class="tabRow" onclick="actionEvent(event)">
+    <tr class="tabRow" onclick="actionEvent(event)" >
       <th><input class="inputtab" type="text" name="nameUser" placeholder="User_name" onfocus="addButtonEvent(event)"></th>
       <th><input class="inputtab" type="email" name="emailUser" placeholder="User_email" onfocus="addButtonEvent(event)"></th>
       <th>
@@ -635,31 +685,29 @@ function add_user() {
       </th>
     </tr>
   `;
-  document
-    .querySelector("table tbody")
-    .insertAdjacentHTML("beforeend", rowHTML);
+  document.querySelector("table tbody").insertAdjacentHTML("beforeend", rowHTML);
 }
-
+//actionEvent
 function actionEvent(event) {
   // deleteUser
   if (event.target.parentElement.classList.contains("btn-sup")) {
     event.currentTarget.remove();
-  } else if (event.target.parentElement.classList.contains("btn-modif")) {
+  }
+
+  // modifInfo
+  else if (event.target.parentElement.classList.contains("btn-modif")) {
     event.currentTarget
-      .closest(".tabRow")
-      .querySelector(".btn-add").style.display = "block";
+      .closest(".tabRow").querySelector(".btn-add").style.display = "block";
     let modifInfo = event.currentTarget
-      .closest(".tabRow")
-      .querySelectorAll(".inputtab");
+      .closest(".tabRow").querySelectorAll(".inputtab");
+    
     modifInfo[0].disabled = false;
     modifInfo[1].disabled = false;
   }
 }
-
+//validationInfo
 function addButtonEvent(event) {
-  event.currentTarget
-    .closest(".tabRow")
-    .querySelector(".btn-add").style.display = "block";
+  event.currentTarget.closest(".tabRow").querySelector(".btn-add").style.display = "block";
 }
 
 function validateName(name) {
@@ -691,9 +739,8 @@ function validateForm(event) {
 
   // If all validations pass
   alert("Saved successfully!");
-  let saveInfo = event.currentTarget
-    .closest(".tabRow")
-    .querySelectorAll(".inputtab");
+
+  let saveInfo = event.currentTarget.closest(".tabRow").querySelectorAll(".inputtab");
   saveInfo[0].disabled = true;
   saveInfo[1].disabled = true;
   event.currentTarget
