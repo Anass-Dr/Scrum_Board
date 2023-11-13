@@ -1,6 +1,6 @@
 main {
   height: 100%;
-  width: 100%;
+  flex: 1;
 }
 .option_sprint {
   height: 35px;
@@ -185,6 +185,7 @@ option {
   border: none;
 }
 .title_userstori_sprint {
+  width: auto;
   color: #757575;
 }
 .create_name_userstorie {
