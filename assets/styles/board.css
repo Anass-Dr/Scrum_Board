@@ -1,18 +1,16 @@
-
 .p-3 {
   background: rgb(244, 245, 247);
   border-radius: 10px;
-
 }
 
 .p-2.rounded.bg-white {
-  border: 1px solid #94A3B8;
+  border: 1px solid #94a3b8;
 }
 
 .circle {
   width: 30px;
   height: 30px;
-  background-color: #63A6FF;
+  background-color: #63a6ff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -30,12 +28,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #0055C5;
+  color: #0055c5;
   font-size: 15px;
 }
 
 .custom-bg {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
 }
 
 .modal-header img {
@@ -46,7 +44,7 @@
 .circle1 {
   width: 30px;
   height: 30px;
-  background-color: #63A6FF;
+  background-color: #63a6ff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -59,7 +57,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #0055C5;
+  color: #0055c5;
 }
 
 .modal-header-img img {
@@ -87,7 +85,7 @@
 .modifierButton {
   display: none;
 }
-.sticky-choice:hover .modifierButton{
+.sticky-choice:hover .modifierButton {
   display: block;
 }
 
@@ -101,7 +99,6 @@
 .zone.nouvelle-couleur-hover {
   background-color: rgba(99, 166, 255, 0.2);
 }
-
 
 .zone:hover .modifier-story {
   display: block;
@@ -131,46 +128,43 @@
   cursor: pointer;
 }
 
-
 #searchInput {
   width: 150px;
   height: 30px;
   border-radius: 3px;
-  border: 2px solid #E2E8F0;
-  background-color: #F7F5F5;
-  font-family: 'Font Awesome 5 Free';
+  border: 2px solid #e2e8f0;
+  background-color: #f7f5f5;
+  font-family: "Font Awesome 5 Free";
   font-weight: 700;
   font-size: 10px;
 }
 
-
 .carte {
-  position: relative; 
+  position: relative;
 }
 
 .sticky-choice {
   position: sticky;
-  top: 0;       
-  z-index: 1; 
-  background-color: #F7F5F5;
+  top: 0;
+  z-index: 1;
+  background-color: #f7f5f5;
 }
 
 .arrive {
-  overflow-y: auto; 
-  max-height: 500px; 
+  overflow-y: auto;
+  max-height: 500px;
 }
-.cartes{
+.cartes {
   width: 1200px;
 }
 
 @media screen and (max-width: 1040px) {
-  .cartes{
-   display: flex;
-   flex-wrap: wrap;
-   width: auto;
+  .cartes {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
   }
-  .arrive{
+  .arrive {
     margin-top: 10px;
   }
-  
 }
