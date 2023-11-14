@@ -244,7 +244,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Fermer</button>
-                                    <button type="button" class="btn btn-primary" id="saveChangesButton">Sauvegarder les
+                                    <button type="button" class="btn btn-primary" id="saveChangesButton"  data-bs-dismiss="modal">Sauvegarder les
                                         modifications</button>
 
                                 </div>
@@ -389,7 +389,6 @@
 
             };
 
-
             const additionalInfo = document.createElement('div');
             additionalInfo.className = 'd-flex justify-content-between';
 
@@ -493,12 +492,7 @@
 
                 if (index !== -1) {
                     // Supprimez l'élément du tableau user_stories
-                    const removedSprint = user_stories.splice(index, 1)[0];
-                    if (removedSprint.status === 0) {
-                        cartesAFaireCount--;
-                        document.getElementById('cartesAFaireCount').textContent = cartesAFaireCount;
-                    }
-
+                    const removedSprint = user_stories.splice(index, 1);
                     userStory.remove();
                     loadSprintsToACarte();
                     saveSprintsToLocalStorage();
