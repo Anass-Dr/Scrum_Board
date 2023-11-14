@@ -159,8 +159,8 @@
   overflow-y: auto; 
   max-height: 500px; 
 }
-.cartes{
-  width: 1200px;
+main {
+  flex: 1;
 }
 
 @media screen and (max-width: 1040px) {
@@ -172,5 +172,6 @@
   .arrive{
     margin-top: 10px;
   }
+
   
 }
